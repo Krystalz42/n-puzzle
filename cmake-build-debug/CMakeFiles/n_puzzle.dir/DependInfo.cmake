@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/alexandreroulin/n-puzzle/main.cpp" "/Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles/n_puzzle.dir/main.cpp.o"
+  "/Users/alexandreroulin/n-puzzle/srcs/cores/main.cpp" "/Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

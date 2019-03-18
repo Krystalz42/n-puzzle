@@ -82,10 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/alexandreroulin/n-puzzle/Grid.hpp">
-			<Option target="n_puzzle"/>
-		</Unit>
-		<Unit filename="/Users/alexandreroulin/n-puzzle/main.cpp">
+		<Unit filename="/Users/alexandreroulin/n-puzzle/srcs/cores/main.cpp">
 			<Option target="n_puzzle"/>
 		</Unit>
 		<Unit filename="/Users/alexandreroulin/n-puzzle/CMakeLists.txt">

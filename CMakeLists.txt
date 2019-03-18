@@ -3,5 +3,6 @@ project(n_puzzle)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(n_puzzle main.cpp
-        Grid.hpp)
+add_executable(n_puzzle
+        srcs/cores/main.cpp
+        )

@@ -57,27 +57,27 @@ include CMakeFiles/n_puzzle.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/n_puzzle.dir/flags.make
 
-CMakeFiles/n_puzzle.dir/main.cpp.o: CMakeFiles/n_puzzle.dir/flags.make
-CMakeFiles/n_puzzle.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/n_puzzle.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/n_puzzle.dir/main.cpp.o -c /Users/alexandreroulin/n-puzzle/main.cpp
+CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o: CMakeFiles/n_puzzle.dir/flags.make
+CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o: ../srcs/cores/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o -c /Users/alexandreroulin/n-puzzle/srcs/cores/main.cpp
 
-CMakeFiles/n_puzzle.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/n_puzzle.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/n-puzzle/main.cpp > CMakeFiles/n_puzzle.dir/main.cpp.i
+CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/n-puzzle/srcs/cores/main.cpp > CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.i
 
-CMakeFiles/n_puzzle.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/n_puzzle.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/n-puzzle/main.cpp -o CMakeFiles/n_puzzle.dir/main.cpp.s
+CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/n-puzzle/srcs/cores/main.cpp -o CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.s
 
 # Object files for target n_puzzle
 n_puzzle_OBJECTS = \
-"CMakeFiles/n_puzzle.dir/main.cpp.o"
+"CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o"
 
 # External object files for target n_puzzle
 n_puzzle_EXTERNAL_OBJECTS =
 
-n_puzzle: CMakeFiles/n_puzzle.dir/main.cpp.o
+n_puzzle: CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o
 n_puzzle: CMakeFiles/n_puzzle.dir/build.make
 n_puzzle: CMakeFiles/n_puzzle.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable n_puzzle"

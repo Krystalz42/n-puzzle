@@ -123,32 +123,32 @@ n_puzzle/fast:
 	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/build
 .PHONY : n_puzzle/fast
 
-main.o: main.cpp.o
+srcs/cores/main.o: srcs/cores/main.cpp.o
 
-.PHONY : main.o
+.PHONY : srcs/cores/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/main.cpp.o
-.PHONY : main.cpp.o
+srcs/cores/main.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o
+.PHONY : srcs/cores/main.cpp.o
 
-main.i: main.cpp.i
+srcs/cores/main.i: srcs/cores/main.cpp.i
 
-.PHONY : main.i
+.PHONY : srcs/cores/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/main.cpp.i
-.PHONY : main.cpp.i
+srcs/cores/main.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.i
+.PHONY : srcs/cores/main.cpp.i
 
-main.s: main.cpp.s
+srcs/cores/main.s: srcs/cores/main.cpp.s
 
-.PHONY : main.s
+.PHONY : srcs/cores/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/main.cpp.s
-.PHONY : main.cpp.s
+srcs/cores/main.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.s
+.PHONY : srcs/cores/main.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... n_puzzle"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... srcs/cores/main.o"
+	@echo "... srcs/cores/main.i"
+	@echo "... srcs/cores/main.s"
 .PHONY : help
 
 
