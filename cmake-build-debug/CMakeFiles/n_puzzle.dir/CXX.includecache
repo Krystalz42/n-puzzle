@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/alexandreroulin/n-puzzle/Grid.hpp
+iterator
+-
+
+/Users/alexandreroulin/n-puzzle/main.cpp
+iostream
+-
+Grid.hpp
+/Users/alexandreroulin/n-puzzle/Grid.hpp
+
