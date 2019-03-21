@@ -22,13 +22,10 @@ public:
 	Grid &operator=(const Grid &rhs);
 
 	size_t size() const;
-	iterator begin() {
-		return data.begin();
-	}
 
-	const_iterator begin() const {
-		return data.begin();
-	}
+	iterator begin();
+
+	const_iterator begin() const;
 
 	iterator end() {
 		return data.end();
@@ -113,6 +110,16 @@ bool Grid<_Tp, _Container>::operator==(const Grid &rhs) const {
 template<class _Tp, class _Container>
 bool Grid<_Tp, _Container>::operator!=(const Grid &rhs) const {
 	return !(*this == rhs);
+}
+
+template<class _Tp, class _Container>
+Grid<_Tp, _Container>::iterator Grid<_Tp, _Container>::begin() {
+	return data.begin();
+}
+
+template<class _Tp, class _Container>
+typename Grid<_Tp, _Container>::const_iterator Grid<_Tp, _Container>::begin() const {
+	return data.begin();
 }
 
 #endif //N_PUZZLE_GRID_HPP
