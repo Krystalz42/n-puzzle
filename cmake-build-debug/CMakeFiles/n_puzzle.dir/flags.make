@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++1z
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/Users/alexandreroulin/n-puzzle/incs -I/Users/alexandreroulin/n-puzzle/srcs -isystem /usr/local/include 
 

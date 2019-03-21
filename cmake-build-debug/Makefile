@@ -150,6 +150,60 @@ srcs/cores/main.cpp.s:
 	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.s
 .PHONY : srcs/cores/main.cpp.s
 
+srcs/parser/Parser.o: srcs/parser/Parser.cpp.o
+
+.PHONY : srcs/parser/Parser.o
+
+# target to build an object file
+srcs/parser/Parser.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/parser/Parser.cpp.o
+.PHONY : srcs/parser/Parser.cpp.o
+
+srcs/parser/Parser.i: srcs/parser/Parser.cpp.i
+
+.PHONY : srcs/parser/Parser.i
+
+# target to preprocess a source file
+srcs/parser/Parser.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/parser/Parser.cpp.i
+.PHONY : srcs/parser/Parser.cpp.i
+
+srcs/parser/Parser.s: srcs/parser/Parser.cpp.s
+
+.PHONY : srcs/parser/Parser.s
+
+# target to generate assembly for a file
+srcs/parser/Parser.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/parser/Parser.cpp.s
+.PHONY : srcs/parser/Parser.cpp.s
+
+srcs/resolver/KStar.o: srcs/resolver/KStar.cpp.o
+
+.PHONY : srcs/resolver/KStar.o
+
+# target to build an object file
+srcs/resolver/KStar.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.o
+.PHONY : srcs/resolver/KStar.cpp.o
+
+srcs/resolver/KStar.i: srcs/resolver/KStar.cpp.i
+
+.PHONY : srcs/resolver/KStar.i
+
+# target to preprocess a source file
+srcs/resolver/KStar.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.i
+.PHONY : srcs/resolver/KStar.cpp.i
+
+srcs/resolver/KStar.s: srcs/resolver/KStar.cpp.s
+
+.PHONY : srcs/resolver/KStar.s
+
+# target to generate assembly for a file
+srcs/resolver/KStar.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.s
+.PHONY : srcs/resolver/KStar.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +216,12 @@ help:
 	@echo "... srcs/cores/main.o"
 	@echo "... srcs/cores/main.i"
 	@echo "... srcs/cores/main.s"
+	@echo "... srcs/parser/Parser.o"
+	@echo "... srcs/parser/Parser.i"
+	@echo "... srcs/parser/Parser.s"
+	@echo "... srcs/resolver/KStar.o"
+	@echo "... srcs/resolver/KStar.i"
+	@echo "... srcs/resolver/KStar.s"
 .PHONY : help
 
 

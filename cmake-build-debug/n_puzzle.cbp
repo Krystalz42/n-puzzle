@@ -44,8 +44,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/Users/alexandreroulin/n-puzzle/incs"/>
+					<Add directory="/Users/alexandreroulin/n-puzzle/srcs"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
 					<Add directory="/usr/include"/>
@@ -66,8 +68,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/Users/alexandreroulin/n-puzzle/incs"/>
+					<Add directory="/Users/alexandreroulin/n-puzzle/srcs"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
 					<Add directory="/usr/include"/>
@@ -82,7 +86,25 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/Grid.hpp">
+			<Option target="n_puzzle"/>
+		</Unit>
+		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/PriorityQueueIter.hpp">
+			<Option target="n_puzzle"/>
+		</Unit>
 		<Unit filename="/Users/alexandreroulin/n-puzzle/srcs/cores/main.cpp">
+			<Option target="n_puzzle"/>
+		</Unit>
+		<Unit filename="/Users/alexandreroulin/n-puzzle/srcs/parser/Parser.cpp">
+			<Option target="n_puzzle"/>
+		</Unit>
+		<Unit filename="/Users/alexandreroulin/n-puzzle/srcs/parser/Parser.hpp">
+			<Option target="n_puzzle"/>
+		</Unit>
+		<Unit filename="/Users/alexandreroulin/n-puzzle/srcs/resolver/KStar.cpp">
+			<Option target="n_puzzle"/>
+		</Unit>
+		<Unit filename="/Users/alexandreroulin/n-puzzle/srcs/resolver/KStar.hpp">
 			<Option target="n_puzzle"/>
 		</Unit>
 		<Unit filename="/Users/alexandreroulin/n-puzzle/CMakeLists.txt">

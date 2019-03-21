@@ -5,4 +5,18 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(n_puzzle
         srcs/cores/main.cpp
+        srcs/resolver/KStar.hpp
+        srcs/resolver/KStar.cpp
+        srcs/parser/Parser.cpp
+        srcs/parser/Parser.hpp
+        incs/PriorityQueueIter.hpp
+        incs/Grid.hpp
         )
+
+include_directories(incs)
+include_directories(srcs)
+find_package(Boost QUIET COMPONENTS program_options thread filesystem)
+
+target_link_libraries(n_puzzle PRIVATE Boost::filesystem)
+target_link_libraries(n_puzzle PRIVATE Boost::thread)
+target_link_libraries(n_puzzle PRIVATE Boost::program_options)
