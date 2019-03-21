@@ -12,18 +12,29 @@ void KStar::setHeuristic(const KStar::HeuristicFunction &heuristic) {
 
 KStar::ResolverContainer
 KStar::resolvePuzzle(const KStar::Node &start, const KStar::Node &goal) {
+
+	/*
+	 * Add start to open list
+	 */
+
 	nodeOpenList.push(start);
-	while (!nodeOpenList.empty()) {
-		Node currentNode = nodeOpenList.top();
+
+
+	while (!nodeOpenList.empty()) { // While isn't empty
+
+		Node currentNode = nodeOpenList.top(); // Take smallest one
+		addNeighbour(currentNode);
 		if (currentNode == goal)
 			return KStar::ResolverContainer(); //todo finish
-		else
-			;
 	}
 	return KStar::ResolverContainer();
 }
 
-void KStar::addLESVOISINS(const KStar::Node &node) {
+void KStar::addNeighbour(const KStar::Node &node) {
+	typename Container::iterator it = node.grid.begin();
+	for (; it < node.grid.end() ; ++it) {
+		std::cout << *it << std::endl;
+	}
 }
 
 bool KStar::isInClosedList(const KStar::Node &node) const {
@@ -62,13 +73,8 @@ KStar::Builder &KStar::Builder::setSize(const size_t size) {
 	return *this;
 }
 
-KStar::Builder &KStar::Builder::setArray(const RawArray rawArray) {
-	data_.resize(size_, size_);
-	for (size_t index_array = 0; index_array < size_; ++index_array) {
-		for (size_t index = 0; index < size_; ++index) {
-			data_(index_array,index) = rawArray[index_array][index];
-		}
-	}
+KStar::Builder &KStar::Builder::setArray(const Container &container) {
+	data_ = container;
 	return *this;
 }
 
@@ -82,7 +88,7 @@ KStar::Node KStar::Builder::build() {
  * Node
  */
 
-KStar::Node::Node(const KStar::Container &grid, const size_t &size) :
+KStar::Node::Node(const Container &grid, const size_t &size) :
 	grid(grid),
 	size(size) {
 

@@ -20,8 +20,6 @@ public:
 	 * Typedef
 	 */
 
-	typedef Grid<ValuePuzzle> Container;
-
 	typedef double Cost;
 
 	typedef uint16_t value;
@@ -49,7 +47,7 @@ private:
 
 private:
 
-	void addLESVOISINS(const Node &node);
+	void addNeighbour(const Node &node);
 
 	bool isInClosedList(const Node &node) const;
 
@@ -114,7 +112,7 @@ public:
 
 		Builder &setSize(const size_t size);
 
-		Builder &setArray(const RawArray rawArray);
+		Builder &setArray(const Container &rawArray);
 
 		Node build();
 
