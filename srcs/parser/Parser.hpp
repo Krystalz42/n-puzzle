@@ -7,6 +7,7 @@
 #include <fstream>
 #include <regex>
 #include <n_puzzle.hpp>
+#include <Grid.hpp>
 
 class Parser {
 	using WorkFunction = void (Parser::*)(const std::string &string);
@@ -19,7 +20,7 @@ public:
 	Parser();
 	void parseFile(std::ifstream &file);
 	size_t getSize() const;
-	RawArray getRawArray() const;
+	Container getRawArray() const;
 
 private:
 	void parseLine(const std::string &string);
@@ -35,7 +36,7 @@ private:
 	 */
 	size_t size_;
 	size_t current_;
-	RawArray rawArray;
+	Container rawArray;
 
 };
 

@@ -22,18 +22,12 @@ public:
 	Grid &operator=(const Grid &rhs);
 
 	size_t size() const;
-
 	iterator begin();
 
-	const_iterator begin() const;
+	const_iterator cbegin() const;
+	iterator end();
 
-	iterator end() {
-		return data.end();
-	}
-
-	const_iterator end() const {
-		return data.end();
-	}
+	const_iterator cend() const;
 
 private:
 	size_t x_;
@@ -104,7 +98,7 @@ size_t Grid<_Tp, _Container>::size() const {
 
 template<class _Tp, class _Container>
 bool Grid<_Tp, _Container>::operator==(const Grid &rhs) const {
-	return x_ == rhs.x_ && y_ == rhs.y_ && std::equal(begin(), end(), rhs.begin());
+	return x_ == rhs.x_ && y_ == rhs.y_ && std::equal(cbegin(), cend(), rhs.cbegin());
 }
 
 template<class _Tp, class _Container>
@@ -113,13 +107,24 @@ bool Grid<_Tp, _Container>::operator!=(const Grid &rhs) const {
 }
 
 template<class _Tp, class _Container>
-Grid<_Tp, _Container>::iterator Grid<_Tp, _Container>::begin() {
+typename Grid<_Tp, _Container>::iterator Grid<_Tp, _Container>::begin() {
 	return data.begin();
 }
 
 template<class _Tp, class _Container>
-typename Grid<_Tp, _Container>::const_iterator Grid<_Tp, _Container>::begin() const {
-	return data.begin();
+typename Grid<_Tp, _Container>::const_iterator Grid<_Tp, _Container>::cbegin() const {
+	return data.cbegin();
+}
+
+template<class _Tp, class _Container>
+typename Grid<_Tp, _Container>::const_iterator Grid<_Tp, _Container>::cend() const {
+	return data.end();
+}
+
+template<class _Tp, class _Container>
+typename Grid<_Tp, _Container>::iterator Grid<_Tp, _Container>::end() {
+	return data.end();
+
 }
 
 #endif //N_PUZZLE_GRID_HPP

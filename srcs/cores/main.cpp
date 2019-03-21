@@ -22,14 +22,17 @@ int main(int argc, char *argv[]) {
 					  << desc << std::endl;
 		}
 		std::cout << vm.count("file") << std::endl;
-		if (vm.count("file")) {
-			Parser parser;
-			std::cout  << std::endl;
-			std::ifstream file("../f1");
-			parser.parseFile(file);
-			KStar kStar;
-			kStar.setHeuristic(KStar::Heuristic::hamming);
-		}
+		Parser parser;
+		std::cout  << std::endl;
+		std::ifstream file("../f1");
+		parser.parseFile(file);
+		KStar kStar;
+		kStar.setHeuristic(KStar::Heuristic::hamming);
+		KStar::Builder builder;
+		builder.setSize(parser.getSize());
+		builder.setArray(parser.getRawArray());
+		std::cout << "Resolve Puzzle" << std::endl;
+		kStar.resolvePuzzle(builder.build(), builder.build());
 
 		boost::program_options::notify(vm);
 	} catch (const std::exception &e) {

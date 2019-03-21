@@ -9,7 +9,7 @@ Parser::Parser() :
 		current_(0) {
 	regex[kCommentary] = std::regex(R"(^\s*#.*$)");
 	regex[kSize] = std::regex(R"(^\s*[0-9]+$)");
-	regex[kArrayLine] = std::regex(R"(\s*[0-9]+\s*$)");
+	regex[kArrayLine] = std::regex(R"(\s*[0-9]+\s*)");
 	workFunction[kCommentary] = &Parser::commentaryWork;
 	workFunction[kSize] = &Parser::sizeWork;
 	workFunction[kArrayLine] = &Parser::arrayLineWork;
@@ -42,7 +42,7 @@ size_t Parser::getSize() const {
 	return size_;
 }
 
-RawArray Parser::getRawArray() const {
+Container Parser::getRawArray() const {
 	return rawArray;
 }
 
@@ -54,16 +54,13 @@ void Parser::sizeWork(const std::string &string) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	std::cout << string << std::endl;
 	size_ = std::stoul(string);
-	rawArray.resize(size_);
-	for (auto &array : rawArray) {
-		array.resize(size_);
-	}
+	rawArray.resize(size_, size_);
 }
 
 void Parser::arrayLineWork(const std::string &string) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	assert(size_ != 0);
 	std::cout << "Fill : " << current_ / size_ << " "<< current_ % size_ << std::endl;
-	rawArray[current_ / size_][current_ % size_] = std::stoul(string);
+	rawArray(current_ % size_, current_ / size_) = std::stoul(string);
 	current_++;
 }

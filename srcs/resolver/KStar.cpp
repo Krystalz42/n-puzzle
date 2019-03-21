@@ -31,10 +31,12 @@ KStar::resolvePuzzle(const KStar::Node &start, const KStar::Node &goal) {
 }
 
 void KStar::addNeighbour(const KStar::Node &node) {
-	typename Container::iterator it = node.grid.begin();
-	for (; it < node.grid.end() ; ++it) {
-		std::cout << *it << std::endl;
+	Container::const_iterator cit;
+	if ((cit = std::find(node.grid.cbegin(), node.grid.cend(), 0)) != node.grid.cend()) {
+		long index = std::distance(node.grid.cbegin(), cit);
+		std::cout << "C'est un fucking 0 : " << node.grid(index / node.grid.size(), index % node.grid.size()) << std::endl;
 	}
+
 }
 
 bool KStar::isInClosedList(const KStar::Node &node) const {

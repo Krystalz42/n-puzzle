@@ -112,7 +112,7 @@ public:
 
 		Builder &setSize(const size_t size);
 
-		Builder &setArray(const Container &rawArray);
+		Builder &setArray(const Container &container);
 
 		Node build();
 
