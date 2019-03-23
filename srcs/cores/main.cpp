@@ -6,7 +6,6 @@
 #include <PriorityQueueIter.hpp>
 
 int main(int argc, char *argv[]) {
-	std::priority_queue<int> dl;
 
 	try {
 		boost::program_options::options_description desc("Options");
@@ -24,7 +23,7 @@ int main(int argc, char *argv[]) {
 		std::cout << vm.count("file") << std::endl;
 		Parser parser;
 		std::cout  << std::endl;
-		std::ifstream file("../f1");
+		std::ifstream file("../f2");
 		parser.parseFile(file);
 		KStar kStar;
 		kStar.setHeuristic(KStar::Heuristic::hamming);
@@ -32,7 +31,13 @@ int main(int argc, char *argv[]) {
 		builder.setSize(parser.getSize());
 		builder.setArray(parser.getRawArray());
 		std::cout << "Resolve Puzzle" << std::endl;
-		kStar.resolvePuzzle(builder.build(), builder.build());
+		KStar::Node node(builder.build());
+		size_t n = 1;
+		for (auto &item : node.grid) {
+			item = n++;
+		}
+		node.grid(node.grid.getX() - 1, node.grid.getY() - 1) = 0;
+		kStar.resolvePuzzle(builder.build(), node);
 
 		boost::program_options::notify(vm);
 	} catch (const std::exception &e) {

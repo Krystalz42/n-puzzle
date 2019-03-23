@@ -3,6 +3,8 @@
 
 #include <cstdlib>
 #include <vector>
+#include <iostream>
+#include "Position.hpp"
 
 template <class _Tp, class _Container = std::vector<_Tp>>
 class Grid {
@@ -17,9 +19,19 @@ public:
 	void resize(size_t x, size_t y);
 	_Tp &operator()(size_t x, size_t y);
 	const _Tp &operator()(size_t x, size_t y) const;
+	_Tp &operator()(const Position &position) ;
+	const _Tp &operator()(const Position &position) const;
 	bool operator==(const Grid &rhs) const;
 	bool operator!=(const Grid &rhs) const;
 	Grid &operator=(const Grid &rhs);
+	bool range(const Position &position) const;
+	bool range(int x, int y) const;
+
+	void print() const;
+
+	size_t getX() const;
+
+	size_t getY() const;
 
 	size_t size() const;
 	iterator begin();
@@ -77,9 +89,20 @@ _Tp &Grid<_Tp, _Container>::operator()(size_t x, size_t y) {
 }
 
 template<class _Tp, class _Container>
+const _Tp &Grid<_Tp, _Container>::operator()(const Position &position) const {
+	return data[position.y * y_ + position.x];
+}
+
+template<class _Tp, class _Container>
 const _Tp &Grid<_Tp, _Container>::operator()(size_t x, size_t y) const {
 	return data[y * y_ + x];
 }
+
+template<class _Tp, class _Container>
+_Tp &Grid<_Tp, _Container>::operator()(const Position &position) {
+	return data[position.y * y_ + position.x];
+}
+
 
 template<class _Tp, class _Container>
 Grid<_Tp, _Container> &Grid<_Tp, _Container>::operator=(const Grid &rhs) {
@@ -126,5 +149,36 @@ typename Grid<_Tp, _Container>::iterator Grid<_Tp, _Container>::end() {
 	return data.end();
 
 }
+
+template<class _Tp, class _Container>
+size_t Grid<_Tp, _Container>::getX() const {
+	return x_;
+}
+
+template<class _Tp, class _Container>
+size_t Grid<_Tp, _Container>::getY() const {
+	return y_;
+}
+
+template<class _Tp, class _Container>
+bool Grid<_Tp, _Container>::range(int x, int y) const {
+	return y * y_ + x < size();
+}
+
+template<class _Tp, class _Container>
+bool Grid<_Tp, _Container>::range(const Position &position) const {
+	return position.x >= 0 && position.x < x_ && position.y >= 0 && position.y < y_;
+}
+
+template<class _Tp, class _Container>
+void Grid<_Tp, _Container>::print() const {
+	for (int index = 0; index < size(); ++index) {
+		if ((index % x_) == 0)
+			std::cout << std::endl;
+		std::cout << data[index] << ' ';
+	}
+	std::cout << std::endl;
+}
+
 
 #endif //N_PUZZLE_GRID_HPP

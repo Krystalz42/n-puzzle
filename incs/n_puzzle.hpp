@@ -7,6 +7,6 @@ typedef uint16_t ValuePuzzle;
 
 typedef std::vector<std::vector<ValuePuzzle >> RawArray;
 
-typedef Grid<ValuePuzzle> Container;
+typedef Grid<ValuePuzzle> GridContainer;
 
 #endif //N_PUZZLE_N_PUZZLE_HPP

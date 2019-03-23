@@ -14,21 +14,52 @@ public:
 
 	class Heuristic;
 
-	class Node;
+public:
+	/*
+	 * Node
+	 */
+	typedef size_t Cost;
+
+	class Node {
+	public:
+		Node() = delete;
+
+		Node(const Node &node);
+
+		Node(const GridContainer &grid, const size_t &size);
+
+		Node &operator=(const Node &rhs);
+
+		bool operator==(const Node &rhs) const;
+
+		bool operator!=(const Node &rhs) const;
+
+		friend std::ostream &operator<<(std::ostream &os, const Node &node);
+
+		GridContainer grid;
+		size_t size;
+
+		Node *parent;
+		Cost H;
+		Cost F;
+		Cost G;
+	};
+	struct Compare {
+		bool operator()(const Node &lhs, const Node &rhs) {
+			return lhs.F > rhs.F;
+		}
+	};
 
 	/*
 	 * Typedef
 	 */
 
-	typedef double Cost;
 
-	typedef uint16_t value;
+	typedef size_t (*HeuristicFunction)(Node const &start, Node const &goal);
 
-	typedef double (*HeuristicFunction)(Node const &start, Node const &goal);
+	typedef std::vector<GridContainer> ResolverContainer;
 
-	typedef std::vector<Container> ResolverContainer;
-
-	typedef PriorityQueueIter<Node, std::vector<Node>> NodeContainer;
+	typedef PriorityQueueIter<Node, std::vector<Node>, Compare> NodeContainer;
 
 	/*
 	 * KStar function
@@ -38,6 +69,7 @@ public:
 
 	ResolverContainer resolvePuzzle(Node const &start, Node const &goal);
 
+	void resolveCost(Node &node, const Node &goal);
 private:
 	HeuristicFunction heuristic_;
 
@@ -45,61 +77,30 @@ private:
 
 	NodeContainer nodeCloseList;
 
+	const Position direction[4] = {
+			{-1, 0}, //y, x
+			{ 1, 0},
+			{ 0, -1},
+			{ 0, 1},
+	};
 private:
 
-	void addNeighbour(const Node &node);
 
+	static Position getPositionOf(const Node &node, ValuePuzzle value);
 	bool isInClosedList(const Node &node) const;
 
 	bool isInOpenedList(const Node &node) const;
 
-public:
-	/*
-	 * Node
-	 */
-
-	class Node {
-	public:
-		Node() = delete;
-
-		Node(const Node &node);
-
-		Node(const Container &grid, const size_t &size);
-
-		Node &operator=(const Node &rhs);
-
-		bool operator==(const Node &rhs) const;
-
-		bool operator!=(const Node &rhs) const;
-
-		bool operator<(const Node &rhs) const;
-
-		bool operator>(const Node &rhs) const;
-
-		bool operator<=(const Node &rhs) const;
-
-		bool operator>=(const Node &rhs) const;
-
-		friend std::ostream &operator<<(std::ostream &os, const Node &node);
-
-		Container grid;
-
-		size_t size;
-
-		Cost H;
-		Cost J;
-		Cost G;
-	};
-
 	/*
 	 * Heuristic
 	 */
-
+public:
 	class Heuristic {
 	public:
-		static double hamming(Node const &start, Node const &goal);
-
-		static double manhattan(Node const &start, Node const &goal);
+		static size_t hamming(const Node &start, const Node &goal);
+		static size_t manhattan(const Node &start, const Node &goal);
+		static size_t getTravelCost(const Position &source,
+									const Position &target);
 	};
 
 	/*
@@ -112,13 +113,13 @@ public:
 
 		Builder &setSize(const size_t size);
 
-		Builder &setArray(const Container &container);
+		Builder &setArray(const GridContainer &container);
 
 		Node build();
 
 	private:
 		size_t size_;
-		Container data_;
+		GridContainer data_;
 	};
 
 };

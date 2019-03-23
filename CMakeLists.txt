@@ -11,6 +11,7 @@ add_executable(n_puzzle
         srcs/parser/Parser.hpp
         incs/PriorityQueueIter.hpp
         incs/Grid.hpp
+        incs/Position.hpp
         )
 
 include_directories(incs)

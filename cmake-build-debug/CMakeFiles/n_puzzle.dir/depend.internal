@@ -3,6 +3,7 @@
 
 CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o
  ../incs/Grid.hpp
+ ../incs/Position.hpp
  ../incs/PriorityQueueIter.hpp
  ../incs/n_puzzle.hpp
  ../srcs/parser/Parser.hpp
@@ -944,11 +945,13 @@ CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o
  /usr/local/include/boost/version.hpp
 CMakeFiles/n_puzzle.dir/srcs/parser/Parser.cpp.o
  ../incs/Grid.hpp
+ ../incs/Position.hpp
  ../incs/n_puzzle.hpp
  /Users/alexandreroulin/n-puzzle/srcs/parser/Parser.cpp
  /Users/alexandreroulin/n-puzzle/srcs/parser/Parser.hpp
 CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.o
  ../incs/Grid.hpp
+ ../incs/Position.hpp
  ../incs/PriorityQueueIter.hpp
  ../incs/n_puzzle.hpp
  /Users/alexandreroulin/n-puzzle/srcs/resolver/KStar.cpp

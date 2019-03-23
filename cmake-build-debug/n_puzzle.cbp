@@ -89,6 +89,9 @@
 		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/Grid.hpp">
 			<Option target="n_puzzle"/>
 		</Unit>
+		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/Position.hpp">
+			<Option target="n_puzzle"/>
+		</Unit>
 		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/PriorityQueueIter.hpp">
 			<Option target="n_puzzle"/>
 		</Unit>

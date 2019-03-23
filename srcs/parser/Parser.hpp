@@ -20,7 +20,7 @@ public:
 	Parser();
 	void parseFile(std::ifstream &file);
 	size_t getSize() const;
-	Container getRawArray() const;
+	GridContainer getRawArray() const;
 
 private:
 	void parseLine(const std::string &string);
@@ -36,7 +36,7 @@ private:
 	 */
 	size_t size_;
 	size_t current_;
-	Container rawArray;
+	GridContainer rawArray;
 
 };
 

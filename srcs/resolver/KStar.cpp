@@ -4,45 +4,94 @@
  * KStar
  */
 
-const int DIM = 2;
-
 void KStar::setHeuristic(const KStar::HeuristicFunction &heuristic) {
 	heuristic_ = heuristic;
 }
 
 KStar::ResolverContainer
 KStar::resolvePuzzle(const KStar::Node &start, const KStar::Node &goal) {
+	std::cout << __PRETTY_FUNCTION__<< std::endl;
 
 	/*
 	 * Add start to open list
 	 */
+	Node temp(start);
+	resolveCost(temp, goal);
 
-	nodeOpenList.push(start);
+	nodeOpenList.push(temp);
 
-
+	std::cout << "Start node " << std::endl;
+	start.grid.print();
+	std::cout << "Goal node " << std::endl;
+	goal.grid.print();
 	while (!nodeOpenList.empty()) { // While isn't empty
-
+		std::cout << "Current Node work : " << std::endl;
 		Node currentNode = nodeOpenList.top(); // Take smallest one
-		addNeighbour(currentNode);
+		currentNode.grid.print();
+		std::cout << "H : " <<currentNode.H << " F : " << currentNode.F << " G : " << currentNode.G << std::endl;
 		if (currentNode == goal)
 			return KStar::ResolverContainer(); //todo finish
+		else {
+			nodeCloseList.push(currentNode);
+			nodeOpenList.pop();
+			Position blankTile = getPositionOf(currentNode, 0);
+			for (const auto &dir : direction) {
+				if (currentNode.grid.range(blankTile + dir)) {
+					Node node(currentNode);
+					node.parent = &currentNode;
+					std::cout << "With : " << dir << " go to : " << (blankTile + dir) << std::endl;
+					std::swap(node.grid(blankTile), node.grid(blankTile + dir));
+					resolveCost(node, goal);
+
+					if (!isInClosedList(node)) {
+
+						NodeContainer::iterator it;
+						if ((it = std::find(nodeOpenList.begin(), nodeOpenList.end(), node)) != nodeOpenList.end()) {
+//							std::cout << "find in open" << std::endl;
+//							if (node.H < it->H) {
+//								std::cout << "swap H < H" << std::endl;
+//								std::swap(node, *it);
+//							}
+						} else {
+							nodeOpenList.push(node);
+							std::cout << "Current node open list : " << std::endl;
+							for (auto &item : nodeOpenList) {
+								std::cout << item.F << ' ';
+							}
+							std::cout << std::endl;
+						}
+					}
+				}
+			}
+		}
 	}
 	return KStar::ResolverContainer();
 }
 
-void KStar::addNeighbour(const KStar::Node &node) {
-	Container::const_iterator cit;
-	if ((cit = std::find(node.grid.cbegin(), node.grid.cend(), 0)) != node.grid.cend()) {
-		long index = std::distance(node.grid.cbegin(), cit);
-		std::cout << "C'est un fucking 0 : " << node.grid(index / node.grid.size(), index % node.grid.size()) << std::endl;
-	}
 
+void KStar::resolveCost(KStar::Node &node, const Node &goal) {
+	node.H = heuristic_(node, goal);
+	node.G = (node.parent ? node.parent->G + 1 : 0);
+	node.F = node.H + node.G;
 }
 
+
+Position KStar::getPositionOf(const KStar::Node &node, ValuePuzzle value) {
+	GridContainer::const_iterator cit;
+	if ((cit = std::find(node.grid.cbegin(), node.grid.cend(), value)) != node.grid.cend()) {
+
+		long index = std::distance(node.grid.cbegin(), cit);
+		Position p(index % node.grid.getX(), index / node.grid.getY());
+		return p;
+	}
+	node.grid.print();
+	assert(false);
+	return Position();
+}
+
+
 bool KStar::isInClosedList(const KStar::Node &node) const {
-	return std::any_of(nodeCloseList.begin(),nodeCloseList.end(), [node](const KStar::Node &cmp){
-		return node == cmp;
-	});
+	return std::find(nodeCloseList.begin(), nodeCloseList.end(), node) != nodeCloseList.end();
 }
 
 bool KStar::isInOpenedList(const KStar::Node &node) const {
@@ -55,15 +104,38 @@ bool KStar::isInOpenedList(const KStar::Node &node) const {
  * static heuristic
  */
 
-double
+size_t
 KStar::Heuristic::hamming(const KStar::Node &start, const KStar::Node &goal) {
+	/*
+	 * Hamming - Misplaced tile
+	 * 1 cost each tile is misplaced to the goal
+	 */
+	auto sit = start.grid.cbegin();
+	auto git = goal.grid.cbegin();
 	size_t n = 0;
+	for (; sit != start.grid.cend() ; ) {
+		if (*sit && *git && *sit != *git) ++n;
+		++sit;
+		++git;
+	}
 	return n;
 }
 
-double
+size_t
 KStar::Heuristic::manhattan(const KStar::Node &start, const KStar::Node &goal) {
-	return 0;
+
+	size_t n = 0;
+	for (size_t index = 1; index < start.grid.size(); ++index) {
+		n += getTravelCost(getPositionOf(start, index), getPositionOf(goal, index));
+	}
+	std::cout << "Manhattan : " << n << std::endl;
+	return n;
+}
+
+size_t
+KStar::Heuristic::getTravelCost(const Position &source, const Position &target) {
+//	std::cout << source << " to " << target << " equals to : " << std::abs(target.x - source.x) + std::abs(target.y - source.y) << std::endl;
+	return std::abs(target.x - source.x) + std::abs(target.y - source.y);
 }
 
 /*
@@ -75,11 +147,11 @@ KStar::Builder &KStar::Builder::setSize(const size_t size) {
 	return *this;
 }
 
-KStar::Builder &KStar::Builder::setArray(const Container &container) {
+
+KStar::Builder &KStar::Builder::setArray(const GridContainer &container) {
 	data_ = container;
 	return *this;
 }
-
 
 KStar::Node KStar::Builder::build() {
 	assert(data_.size() > 0);
@@ -90,9 +162,12 @@ KStar::Node KStar::Builder::build() {
  * Node
  */
 
-KStar::Node::Node(const Container &grid, const size_t &size) :
+KStar::Node::Node(const GridContainer &grid, const size_t &size) :
 	grid(grid),
-	size(size) {
+	size(size),
+	H(0),
+	G(0),
+	F(0) {
 
 }
 
@@ -125,22 +200,11 @@ KStar::Node &KStar::Node::operator=(const KStar::Node &rhs) {
 	if (this != &rhs) {
 		size = rhs.size;
 		grid = rhs.grid;
+		parent = rhs.parent;
+		H = rhs.H;
+		G = rhs.G;
+		F = rhs.F;
 	}
 	return *this;
 }
 
-bool KStar::Node::operator<(const KStar::Node &rhs) const {
-	return H < rhs.H;
-}
-
-bool KStar::Node::operator>(const KStar::Node &rhs) const {
-	return rhs < *this;
-}
-
-bool KStar::Node::operator<=(const KStar::Node &rhs) const {
-	return !(rhs < *this);
-}
-
-bool KStar::Node::operator>=(const KStar::Node &rhs) const {
-	return !(*this < rhs);
-}

@@ -11,6 +11,16 @@ cstdlib
 -
 vector
 -
+iostream
+-
+Position.hpp
+../incs/Position.hpp
+
+../incs/Position.hpp
+cstdlib
+-
+ostream
+-
 
 ../incs/PriorityQueueIter.hpp
 queue

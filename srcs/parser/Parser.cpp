@@ -42,7 +42,7 @@ size_t Parser::getSize() const {
 	return size_;
 }
 
-Container Parser::getRawArray() const {
+GridContainer Parser::getRawArray() const {
 	return rawArray;
 }
 
