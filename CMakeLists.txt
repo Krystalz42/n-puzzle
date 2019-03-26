@@ -9,10 +9,9 @@ add_executable(n_puzzle
         srcs/resolver/KStar.cpp
         srcs/parser/Parser.cpp
         srcs/parser/Parser.hpp
-        incs/PriorityQueueIter.hpp
         incs/Grid.hpp
         incs/Position.hpp
-        )
+        incs/PriorityQueue.hpp incs/Grid.cpp)
 
 include_directories(incs)
 include_directories(srcs)

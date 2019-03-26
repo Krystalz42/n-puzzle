@@ -1,0 +1,3 @@
+/Users/alexandreroulin/n-puzzle/CMakeFiles/rebuild_cache.dir
+/Users/alexandreroulin/n-puzzle/CMakeFiles/edit_cache.dir
+/Users/alexandreroulin/n-puzzle/CMakeFiles/n_puzzle.dir

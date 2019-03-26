@@ -92,7 +92,7 @@
 		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/Position.hpp">
 			<Option target="n_puzzle"/>
 		</Unit>
-		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/PriorityQueueIter.hpp">
+		<Unit filename="/Users/alexandreroulin/n-puzzle/incs/PriorityQueue.hpp">
 			<Option target="n_puzzle"/>
 		</Unit>
 		<Unit filename="/Users/alexandreroulin/n-puzzle/srcs/cores/main.cpp">

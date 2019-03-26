@@ -2,19 +2,16 @@
 #define __N_PUZZLE_KSTAR__
 
 #include "KStar.hpp"
-#include <boost/multi_array.hpp>
 #include <ostream>
 #include <n_puzzle.hpp>
 #include <queue>
-#include <PriorityQueueIter.hpp>
+#include <PriorityQueue.hpp>
 #include <Grid.hpp>
+#include <deque>
 
 class KStar {
 public:
 
-	class Heuristic;
-
-public:
 	/*
 	 * Node
 	 */
@@ -30,9 +27,9 @@ public:
 
 		Node &operator=(const Node &rhs);
 
-		bool operator==(const Node &rhs) const;
-
-		bool operator!=(const Node &rhs) const;
+//		bool operator==(const Node &rhs) const;
+//
+//		bool operator!=(const Node &rhs) const;
 
 		friend std::ostream &operator<<(std::ostream &os, const Node &node);
 
@@ -59,7 +56,7 @@ public:
 
 	typedef std::vector<GridContainer> ResolverContainer;
 
-	typedef PriorityQueueIter<Node, std::vector<Node>, Compare> NodeContainer;
+	typedef PriorityQueue<Node, std::vector<Node>, Compare> NodeContainer;
 
 	/*
 	 * KStar function
@@ -68,6 +65,8 @@ public:
 	void setHeuristic(const HeuristicFunction &heuristic);
 
 	ResolverContainer resolvePuzzle(Node const &start, Node const &goal);
+
+	ResolverContainer buildSolution();
 
 	void resolveCost(Node &node, const Node &goal);
 private:
@@ -99,8 +98,8 @@ public:
 	public:
 		static size_t hamming(const Node &start, const Node &goal);
 		static size_t manhattan(const Node &start, const Node &goal);
-		static size_t getTravelCost(const Position &source,
-									const Position &target);
+		static size_t linearConflict(const Node &start, const Node &goal);
+		static size_t getTravelCost(const Position &source, const Position &target);
 	};
 
 	/*

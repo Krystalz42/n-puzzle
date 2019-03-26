@@ -12,26 +12,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="085300e5-cafb-4847-91d0-c0aacd61dba2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/incs/Position.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/incs/Grid.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/incs/PriorityQueue.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/parser/Parser.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/parser/Parser.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/parser/Parser.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/n_puzzle" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/n_puzzle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/n_puzzle.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/n_puzzle.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/incs/Grid.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/incs/Grid.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incs/PriorityQueueIter.hpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/incs/n_puzzle.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/incs/n_puzzle.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/cores/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cores/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/Parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/Parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/Parser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/Parser.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/resolver/KStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/resolver/KStar.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/resolver/KStar.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/resolver/KStar.hpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <ignored path="$PROJECT_DIR$/CMakeFiles/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,10 +45,36 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incs/PriorityQueue.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-435">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
+              <folding>
+                <element signature="e#73#90#0" expanded="true" />
+                <element signature="e#100#209#0" expanded="true" />
+                <element signature="e#575#620#0" expanded="true" />
+                <element signature="e#1340#1385#0" expanded="true" />
+                <element signature="e#703#748#0" expanded="true" />
+                <element signature="e#849#894#0" expanded="true" />
+                <element signature="e#983#1028#0" expanded="true" />
+                <element signature="e#1614#1659#0" expanded="true" />
+                <element signature="e#1788#1833#0" expanded="true" />
+                <element signature="e#2303#2348#0" expanded="true" />
+                <element signature="e#2438#2483#0" expanded="true" />
+                <element signature="e#2586#2631#0" expanded="true" />
+                <element signature="e#2719#2764#0" expanded="true" />
+                <element signature="e#3118#3163#0" expanded="true" />
+                <element signature="e#3278#3323#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2116">
-              <caret line="58" column="51" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="51" />
+            <state relative-caret-position="1216">
+              <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -54,22 +83,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incs/PriorityQueueIter.hpp">
+        <entry file="file:///usr/include/c++/4.2.1/map">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-              <folding>
-                <element signature="e#106#218#0" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-476" />
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+            <state relative-caret-position="486">
+              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <element signature="e#55#75#0" expanded="true" />
               </folding>
@@ -78,21 +102,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incs/n_puzzle.hpp">
+        <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="112">
+              <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incs/Position.hpp">
+        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/map">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+            <state relative-caret-position="-2374">
+              <caret line="804" column="27" selection-start-line="804" selection-start-column="27" selection-end-line="804" selection-end-column="27" />
               <folding>
-                <element signature="e#61#79#0" expanded="true" />
+                <element signature="e#29553#29670#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,33 +128,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/incs/Grid.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="169" column="84" selection-start-line="169" selection-start-column="84" selection-end-line="169" selection-end-column="84" />
+            <state relative-caret-position="144">
+              <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
               <folding>
                 <element signature="e#53#71#0" expanded="true" />
-                <element signature="e#3941#3970#0" expanded="true" />
-                <element signature="e#4114#4143#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/f2">
+        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/vector">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+            <state relative-caret-position="88">
+              <caret line="289" lean-forward="true" selection-start-line="289" selection-end-line="289" />
+              <folding>
+                <element signature="e#11109#11115#0" expanded="true" />
+                <element signature="e#11683#11712#0" expanded="true" />
+                <element signature="e#16255#16307#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file:///usr/include/c++/4.2.1/bits/allocator.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="83" column="2" lean-forward="true" selection-start-line="83" selection-start-column="2" selection-end-line="83" selection-end-column="2" />
+              <folding>
+                <element signature="e#2966#2980#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
+        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__tree">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+            <state relative-caret-position="-2553">
+              <caret line="984" lean-forward="true" selection-start-line="984" selection-end-line="984" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#36219#36264#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,20 +179,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BIN_MV</find>
-      <find>X</find>
-      <find>pointer</find>
-      <find>stoul</find>
-      <find>${NAME}</find>
-      <find>const_iterator</find>
-      <find>_Container::</find>
-      <find>ma</find>
-      <find>__wrap_iter</find>
-      <find>Grid</find>
-      <find>Container</find>
-      <find>KStar::Container</find>
-      <find>setArray</find>
-      <find>cbe</find>
       <find>cbegin</find>
       <find>begin</find>
       <find>operator()</find>
@@ -160,6 +188,27 @@
       <find>start</find>
       <find>PriorityQueueIter</find>
       <find>NodeContainer</find>
+      <find>Heuristic</find>
+      <find>ResolverContainer</find>
+      <find>push_back</find>
+      <find>_Compare</find>
+      <find>comp</find>
+      <find>PriorityQueue</find>
+      <find>With</find>
+      <find>Manhattan</find>
+      <find>sort_heap</find>
+      <find>currentNode</find>
+      <find>std::cout</find>
+      <find>print</find>
+      <find>pop</find>
+      <find>top</find>
+      <find>push</find>
+      <find>checkSolvable</find>
+      <find>VECTOR</find>
+      <find>class</find>
+      <find>_Allocator</find>
+      <find>vector</find>
+      <find>_Allocator</find>
     </findStrings>
     <replaceStrings>
       <replace>Grid</replace>
@@ -169,6 +218,8 @@
       <replace>Container</replace>
       <replace>goal</replace>
       <replace>size_t</replace>
+      <replace>node</replace>
+      <replace>os</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -181,18 +232,21 @@
         <option value="$PROJECT_DIR$/../.zshrc" />
         <option value="$PROJECT_DIR$/Grid.hpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/incs/PriorityQueueIter.hpp" />
         <option value="$PROJECT_DIR$/incs/Array.hpp" />
         <option value="$PROJECT_DIR$/srcs/parser/Parser.hpp" />
         <option value="$PROJECT_DIR$/srcs/parser/Parser.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/incs/Position.hpp" />
-        <option value="$PROJECT_DIR$/incs/Grid.hpp" />
         <option value="$PROJECT_DIR$/f2" />
-        <option value="$PROJECT_DIR$/srcs/cores/main.cpp" />
+        <option value="$PROJECT_DIR$/incs/priority_queue.hpp" />
+        <option value="$PROJECT_DIR$/incs/PriorityQueueIter.hpp" />
         <option value="$PROJECT_DIR$/incs/n_puzzle.hpp" />
-        <option value="$PROJECT_DIR$/srcs/resolver/KStar.cpp" />
+        <option value="$PROJECT_DIR$/incs/Grid.hpp" />
+        <option value="$PROJECT_DIR$/incs/Grid.cpp" />
+        <option value="$PROJECT_DIR$/incs/PriorityQueue.hpp" />
         <option value="$PROJECT_DIR$/srcs/resolver/KStar.hpp" />
+        <option value="$PROJECT_DIR$/srcs/resolver/KStar.cpp" />
+        <option value="$PROJECT_DIR$/srcs/cores/main.cpp" />
       </list>
     </option>
   </component>
@@ -290,7 +344,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552832200561</updated>
-      <workItem from="1552832203161" duration="38114000" />
+      <workItem from="1552832203161" duration="50301000" />
     </task>
     <task id="LOCAL-00001" summary="Add Grid">
       <created>1553171738093</created>
@@ -338,13 +392,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38114000" />
+    <option name="totallyTimeSpent" value="50301000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24034335" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24034335" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
@@ -354,7 +409,7 @@
       <window_info anchor="bottom" id="CMake" weight="0.32891566" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.426506" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5253012" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -437,16 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/queue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1374">
-          <caret line="391" column="27" selection-start-line="391" selection-start-column="27" selection-end-line="391" selection-end-column="27" />
-          <folding>
-            <element signature="e#12467#12577#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/ostream">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-349">
@@ -474,33 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/parser/Parser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/parser/Parser.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding>
-            <element signature="e#57#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/vector">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="188" column="51" selection-start-line="188" selection-end-line="189" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -508,32 +526,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/incs/Grid.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="169" column="84" selection-start-line="169" selection-start-column="84" selection-end-line="169" selection-end-column="84" />
-          <folding>
-            <element signature="e#53#71#0" expanded="true" />
-            <element signature="e#3941#3970#0" expanded="true" />
-            <element signature="e#4114#4143#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/f2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -547,39 +543,192 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6250">
+          <caret line="833" selection-start-line="833" selection-end-line="833" />
+          <folding>
+            <element signature="e#23931#23996#0" expanded="true" />
+            <element signature="e#24064#24093#0" expanded="true" />
+            <element signature="e#25012#25038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-55">
+          <caret line="4992" selection-start-line="4992" selection-end-line="4992" />
+          <folding>
+            <element signature="e#172615#172660#0" expanded="true" />
+            <element signature="e#172814#172999#0" expanded="true" />
+            <element signature="e#173199#173228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/incs/PriorityQueueIter.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="112">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
           <folding>
             <element signature="e#106#218#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/incs/n_puzzle.hpp">
+    <entry file="file://$PROJECT_DIR$/srcs/parser/Parser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="661">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
+    <entry file="file://$PROJECT_DIR$/srcs/parser/Parser.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2116">
-          <caret line="58" column="51" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="51" />
+        <state relative-caret-position="352">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#57#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incs/Grid.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incs/n_puzzle.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/queue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="668" column="20" selection-start-line="668" selection-start-column="20" selection-end-line="668" selection-end-column="20" />
+          <folding>
+            <element signature="e#12467#12577#0" expanded="true" />
+            <element signature="e#17618#17634#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incs/PriorityQueue.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-435">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="e#73#90#0" expanded="true" />
+            <element signature="e#100#209#0" expanded="true" />
+            <element signature="e#575#620#0" expanded="true" />
+            <element signature="e#1340#1385#0" expanded="true" />
+            <element signature="e#703#748#0" expanded="true" />
+            <element signature="e#849#894#0" expanded="true" />
+            <element signature="e#983#1028#0" expanded="true" />
+            <element signature="e#1614#1659#0" expanded="true" />
+            <element signature="e#1788#1833#0" expanded="true" />
+            <element signature="e#2303#2348#0" expanded="true" />
+            <element signature="e#2438#2483#0" expanded="true" />
+            <element signature="e#2586#2631#0" expanded="true" />
+            <element signature="e#2719#2764#0" expanded="true" />
+            <element signature="e#3118#3163#0" expanded="true" />
+            <element signature="e#3278#3323#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+        <state relative-caret-position="486">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding>
             <element signature="e#55#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.2.1/map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1216">
+          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__tree">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2553">
+          <caret line="984" lean-forward="true" selection-start-line="984" selection-end-line="984" />
+          <folding>
+            <element signature="e#36219#36264#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2374">
+          <caret line="804" column="27" selection-start-line="804" selection-start-column="27" selection-end-line="804" selection-end-column="27" />
+          <folding>
+            <element signature="e#29553#29670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incs/Grid.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding>
+            <element signature="e#53#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/vector">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="289" lean-forward="true" selection-start-line="289" selection-end-line="289" />
+          <folding>
+            <element signature="e#11109#11115#0" expanded="true" />
+            <element signature="e#11683#11712#0" expanded="true" />
+            <element signature="e#16255#16307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.2.1/bits/allocator.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="83" column="2" lean-forward="true" selection-start-line="83" selection-start-column="2" selection-end-line="83" selection-end-column="2" />
+          <folding>
+            <element signature="e#2966#2980#0" expanded="true" />
           </folding>
         </state>
       </provider>
