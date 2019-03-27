@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 #include "Position.hpp"
 
 template<class _Tp, class _Container = std::vector<_Tp>>
@@ -12,7 +13,7 @@ class Grid {
 public:
 	typedef typename _Container::iterator iterator;
 	typedef typename _Container::const_iterator const_iterator;
-
+	typedef typename _Container::pointer pointer;
 	Grid();
 
 	Grid(const Grid &rhs);
@@ -20,6 +21,8 @@ public:
 	explicit Grid(size_t size);
 
 	Grid(size_t x, size_t y);
+
+	Grid(std::vector<_Tp> vector_);
 
 	void resize(size_t size);
 
@@ -63,66 +66,77 @@ public:
 
 	const_iterator cend() const;
 
+	pointer data();
+
 private:
 	size_t x_;
 	size_t y_;
-	_Container data;
+	_Container data_;
 };
 
+
 template<class _Tp, class _Container>
-Grid<_Tp, _Container>::Grid() : x_(0), y_(0), data(0) {
+Grid<_Tp, _Container>::Grid(std::vector<_Tp> vector_)
+		: data_(vector_),
+		  x_(std::sqrt(vector_.size())),
+		  y_(std::sqrt(vector_.size()))
+		{
+}
+
+template<class _Tp, class _Container>
+Grid<_Tp, _Container>::Grid() : x_(0), y_(0), data_(0) {
 
 }
 
 template<class _Tp, class _Container>
 Grid<_Tp, _Container>::Grid(const Grid &rhs)  :
-		x_(rhs.x_), y_(rhs.y_), data(rhs.data) {
+		x_(rhs.x_), y_(rhs.y_), data_(rhs.data_) {
 
 }
 
 template<class _Tp, class _Container>
 Grid<_Tp, _Container>::Grid(size_t x, size_t y)
-		: x_(x), y_(y), data(x * y) {
+		: x_(x), y_(y), data_(x * y) {
 
 }
 
 template<class _Tp, class _Container>
 Grid<_Tp, _Container>::Grid(size_t size)
-		: x_(size), y_(size), data(size * size) {
+		: x_(size), y_(size), data_(size * size) {
 
 }
 
 template<class _Tp, class _Container>
 void Grid<_Tp, _Container>::resize(size_t size) {
 	x_ = y_ = size;
-	data.resize(size * size);
+	data_.resize(size * size);
 }
 
 template<class _Tp, class _Container>
 void Grid<_Tp, _Container>::resize(size_t x, size_t y) {
 	x_ = x;
 	y_ = y;
-	data.resize(x * y);
+	data_.resize(x * y);
 }
 
 template<class _Tp, class _Container>
 _Tp &Grid<_Tp, _Container>::operator()(size_t x, size_t y) {
-	return data[y * y_ + x];
+	return data_[y * y_ + x];
 }
 
 template<class _Tp, class _Container>
 const _Tp &Grid<_Tp, _Container>::operator()(const Position &position) const {
-	return data[position.y * y_ + position.x];
+	return data_[position.y * y_ + position.x];
 }
 
 template<class _Tp, class _Container>
 const _Tp &Grid<_Tp, _Container>::operator()(size_t x, size_t y) const {
-	return data[y * y_ + x];
+	return data_[y * y_ + x];
 }
 
 template<class _Tp, class _Container>
 _Tp &Grid<_Tp, _Container>::operator()(const Position &position) {
-	return data[position.y * y_ + position.x];
+	return data_[position.y * y_ + position.x];
 }
 
 
@@ -131,7 +145,7 @@ Grid<_Tp, _Container> &Grid<_Tp, _Container>::operator=(const Grid &rhs) {
 	if (this != &rhs) {
 		x_ = rhs.x_;
 		y_ = rhs.y_;
-		data = rhs.data;
+		data_ = rhs.data_;
 	}
 	return *this;
 }
@@ -154,24 +168,24 @@ bool Grid<_Tp, _Container>::operator!=(const Grid &rhs) const {
 
 template<class _Tp, class _Container>
 typename Grid<_Tp, _Container>::iterator Grid<_Tp, _Container>::begin() {
-	return data.begin();
+	return data_.begin();
 }
 
 template<class _Tp, class _Container>
 typename Grid<_Tp, _Container>::const_iterator
 Grid<_Tp, _Container>::cbegin() const {
-	return data.cbegin();
+	return data_.cbegin();
 }
 
 template<class _Tp, class _Container>
 typename Grid<_Tp, _Container>::const_iterator
 Grid<_Tp, _Container>::cend() const {
-	return data.end();
+	return data_.end();
 }
 
 template<class _Tp, class _Container>
 typename Grid<_Tp, _Container>::iterator Grid<_Tp, _Container>::end() {
-	return data.end();
+	return data_.end();
 
 }
 
@@ -196,18 +210,20 @@ bool Grid<_Tp, _Container>::range(const Position &position) const {
 		   position.y < y_;
 }
 
-
-
 template<class _Tp, class _Container>
 _Tp &Grid<_Tp, _Container>::operator[](int n) const {
-	return data.at(n);
+	return data_.at(n);
 }
 
 template<class _Tp, class _Container>
 _Tp &Grid<_Tp, _Container>::operator[](int n) {
-	return data[n];
+	return data_[n];
 }
 
+template<class _Tp, class _Container>
+typename Grid<_Tp, _Container>::pointer Grid<_Tp, _Container>::data() {
+	return data_.data();
+}
 
 
 #endif //N_PUZZLE_GRID_HPP

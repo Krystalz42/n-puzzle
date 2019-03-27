@@ -8,14 +8,31 @@
 #include <PriorityQueue.hpp>
 #include <Grid.hpp>
 #include <deque>
+#include <set>
 
 class KStar {
 public:
+	class Node;
+	struct Compare;
+	/*
+	 * Typedef
+	 */
+
+	typedef std::vector<GridContainer> ResolverContainer;
+
+	typedef std::shared_ptr<Node> node_pointer;
+
+	typedef std::shared_ptr<const Node> const_node_pointer;
+
+	typedef size_t (*HeuristicFunction)(const_node_pointer start, const_node_pointer goal);
+
+	typedef PriorityQueue<const_node_pointer, std::vector<const_node_pointer>, Compare> NodeContainer;
+
+	typedef size_t Cost;
 
 	/*
 	 * Node
 	 */
-	typedef size_t Cost;
 
 	class Node {
 	public:
@@ -27,36 +44,29 @@ public:
 
 		Node &operator=(const Node &rhs);
 
-//		bool operator==(const Node &rhs) const;
-//
-//		bool operator!=(const Node &rhs) const;
+
+		bool operator==(const Node &rhs) const;
+
+		bool operator!=(const Node &rhs) const;
+
+		bool operator<(const Node &rhs) const;
 
 		friend std::ostream &operator<<(std::ostream &os, const Node &node);
 
 		GridContainer grid;
 		size_t size;
 
-		Node *parent;
+		const_node_pointer parent;
 		Cost H;
 		Cost F;
 		Cost G;
 	};
+
 	struct Compare {
-		bool operator()(const Node &lhs, const Node &rhs) {
-			return lhs.F > rhs.F;
+		bool operator()(const_node_pointer lhs, const_node_pointer rhs) {
+			return lhs->F > rhs->F;
 		}
 	};
-
-	/*
-	 * Typedef
-	 */
-
-
-	typedef size_t (*HeuristicFunction)(Node const &start, Node const &goal);
-
-	typedef std::vector<GridContainer> ResolverContainer;
-
-	typedef PriorityQueue<Node, std::vector<Node>, Compare> NodeContainer;
 
 	/*
 	 * KStar function
@@ -64,31 +74,31 @@ public:
 
 	void setHeuristic(const HeuristicFunction &heuristic);
 
-	ResolverContainer resolvePuzzle(Node const &start, Node const &goal);
+	ResolverContainer resolvePuzzle(node_pointer start, const_node_pointer goal);
 
 	ResolverContainer buildSolution();
 
-	void resolveCost(Node &node, const Node &goal);
+	void resolveCost(node_pointer node, const_node_pointer goal);
+
 private:
 	HeuristicFunction heuristic_;
 
 	NodeContainer nodeOpenList;
 
-	NodeContainer nodeCloseList;
+	std::set<const_node_pointer> nodeCloseList;
 
 	const Position direction[4] = {
-			{-1, 0}, //y, x
-			{ 1, 0},
-			{ 0, -1},
-			{ 0, 1},
+			{-1, 0}, //North
+			{1,  0}, // South
+			{0,  -1}, // East
+			{0,  1}, // West
 	};
 private:
 
 
-	static Position getPositionOf(const Node &node, ValuePuzzle value);
-	bool isInClosedList(const Node &node) const;
+	static Position getPositionOf(const_node_pointer node, ValuePuzzle value);
 
-	bool isInOpenedList(const Node &node) const;
+	bool isInClosedList(const_node_pointer node) const;
 
 	/*
 	 * Heuristic
@@ -96,10 +106,12 @@ private:
 public:
 	class Heuristic {
 	public:
-		static size_t hamming(const Node &start, const Node &goal);
-		static size_t manhattan(const Node &start, const Node &goal);
-		static size_t linearConflict(const Node &start, const Node &goal);
-		static size_t getTravelCost(const Position &source, const Position &target);
+		static size_t hamming(const_node_pointer start, const_node_pointer goal);
+		static size_t manhattan(const_node_pointer start, const_node_pointer goal);
+		static size_t linearConflict(const_node_pointer start, const_node_pointer goal);
+
+		static size_t
+		getTravelCost(const Position &source, const Position &target);
 	};
 
 	/*
@@ -114,7 +126,7 @@ public:
 
 		Builder &setArray(const GridContainer &container);
 
-		Node build();
+		std::shared_ptr<Node> build();
 
 	private:
 		size_t size_;

@@ -27,6 +27,8 @@ Grid.hpp
 -
 deque
 -
+set
+-
 
 /usr/local/include/boost/concept/assert.hpp
 boost/config.hpp
@@ -1898,6 +1900,8 @@ vector
 iostream
 -
 iomanip
+-
+cmath
 -
 Position.hpp
 incs/Position.hpp

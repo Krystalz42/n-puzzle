@@ -18,8 +18,7 @@ struct Position {
 	}
 
 	bool operator==(const Position &rhs) const {
-		return x == rhs.x &&
-			   y == rhs.y;
+		return x == rhs.x && y == rhs.y;
 	}
 
 	bool operator!=(const Position &rhs) const {

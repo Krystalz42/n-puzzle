@@ -15,18 +15,31 @@ public:
 	typedef typename _Container::value_type value_type;
 
 	void push(value_type &&__x);
+
 	void push(const_reference __x);
+
 	const_reference top() const;
+
 	reference top();
+
 	void pop();
+
 	void erase(const_iterator __position);
+
 	void erase(const_iterator __first, const_iterator __last);
+
 	iterator begin();
+
 	const_iterator cbegin() const;
+
 	iterator end();
+
 	const_iterator cend() const;
+
 	size_t size() const;
+
 	bool empty() const;
+
 private:
 	_Container c;
 	_Compare comp;
@@ -34,13 +47,13 @@ private:
 
 template<class _Tp, class _Container, class _Compare>
 void PriorityQueue<_Tp, _Container, _Compare>::push(const_reference __x) {
-	c.push_back( __x );
+	c.push_back(__x);
 	std::push_heap(c.begin(), c.end(), comp);
 }
 
 template<class _Tp, class _Container, class _Compare>
 void PriorityQueue<_Tp, _Container, _Compare>::push(value_type &&__x) {
-	c.push_back( __x );
+	c.push_back(__x);
 	std::push_heap(c.begin(), c.end(), comp);
 }
 
@@ -78,25 +91,25 @@ PriorityQueue<_Tp, _Container, _Compare>::erase(const_iterator __position) {
 }
 
 template<class _Tp, class _Container, class _Compare>
-typename  PriorityQueue<_Tp, _Container, _Compare>::iterator
+typename PriorityQueue<_Tp, _Container, _Compare>::iterator
 PriorityQueue<_Tp, _Container, _Compare>::begin() {
 	return c.begin();
 }
 
 template<class _Tp, class _Container, class _Compare>
-typename  PriorityQueue<_Tp, _Container, _Compare>::const_iterator
+typename PriorityQueue<_Tp, _Container, _Compare>::const_iterator
 PriorityQueue<_Tp, _Container, _Compare>::cbegin() const {
 	return c.cbegin();
 }
 
 template<class _Tp, class _Container, class _Compare>
-typename  PriorityQueue<_Tp, _Container, _Compare>::iterator
+typename PriorityQueue<_Tp, _Container, _Compare>::iterator
 PriorityQueue<_Tp, _Container, _Compare>::end() {
 	return c.end();
 }
 
 template<class _Tp, class _Container, class _Compare>
-typename  PriorityQueue<_Tp, _Container, _Compare>::const_iterator
+typename PriorityQueue<_Tp, _Container, _Compare>::const_iterator
 PriorityQueue<_Tp, _Container, _Compare>::cend() const {
 	return c.cend();
 }

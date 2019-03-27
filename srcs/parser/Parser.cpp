@@ -25,7 +25,6 @@ void Parser::parseFile(std::ifstream &file) {
 }
 
 void Parser::parseLine(const std::string &string) {
-	std::cout << string << std::endl;
 	for (int index = 0; index < kArrayLine + 1; ++index) {
 		std::sregex_iterator it = std::sregex_iterator(string.begin(), string.end(), regex[index]);
 		if (it != std::sregex_iterator()) {
@@ -47,20 +46,17 @@ GridContainer Parser::getRawArray() const {
 }
 
 void Parser::commentaryWork(const std::string &string) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Parser::sizeWork(const std::string &string) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	std::cout << string << std::endl;
+//	std::cout << string << std::endl;
 	size_ = std::stoul(string);
 	rawArray.resize(size_, size_);
 }
 
 void Parser::arrayLineWork(const std::string &string) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	assert(size_ != 0);
-	std::cout << "Fill : " << current_ / size_ << " "<< current_ % size_ << std::endl;
+//	std::cout << "Fill : " << current_ / size_ << " "<< current_ % size_ << std::endl;
 	rawArray(current_ % size_, current_ / size_) = std::stoul(string);
 	current_++;
 }
