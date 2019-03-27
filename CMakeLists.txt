@@ -16,7 +16,7 @@ add_executable(n_puzzle
 include_directories(incs)
 include_directories(srcs)
 find_package(Boost QUIET COMPONENTS program_options thread filesystem)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g3")
 target_link_libraries(n_puzzle PRIVATE Boost::filesystem)
 target_link_libraries(n_puzzle PRIVATE Boost::thread)
 target_link_libraries(n_puzzle PRIVATE Boost::program_options)

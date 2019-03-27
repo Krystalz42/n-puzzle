@@ -9,11 +9,20 @@
 #include <Grid.hpp>
 #include <deque>
 #include <set>
-
+#include <map>
 class KStar {
 public:
+
 	class Node;
+
 	struct Compare;
+
+	enum eHeuristic {
+		kManhattan,
+		kHamming,
+		kLinearConflict
+	};
+
 	/*
 	 * Typedef
 	 */
@@ -24,7 +33,12 @@ public:
 
 	typedef std::shared_ptr<const Node> const_node_pointer;
 
-	typedef size_t (*HeuristicFunction)(const_node_pointer start, const_node_pointer goal);
+	typedef std::shared_ptr<const Node> &const_node_pointer_reference;
+
+	typedef std::shared_ptr<Node> &node_pointer_reference;
+
+	typedef size_t (*HeuristicFunction)(const_node_pointer start,
+										const_node_pointer goal);
 
 	typedef PriorityQueue<const_node_pointer, std::vector<const_node_pointer>, Compare> NodeContainer;
 
@@ -44,7 +58,6 @@ public:
 
 		Node &operator=(const Node &rhs);
 
-
 		bool operator==(const Node &rhs) const;
 
 		bool operator!=(const Node &rhs) const;
@@ -63,8 +76,8 @@ public:
 	};
 
 	struct Compare {
-		bool operator()(const_node_pointer lhs, const_node_pointer rhs) {
-			return lhs->F > rhs->F;
+		bool operator()(const_node_pointer lhs, const_node_pointer rhs) const {
+			return lhs->F < rhs->F;
 		}
 	};
 
@@ -73,12 +86,14 @@ public:
 	 */
 
 	void setHeuristic(const HeuristicFunction &heuristic);
+	void setHeuristic(eHeuristic heuristic);
 
-	ResolverContainer resolvePuzzle(node_pointer start, const_node_pointer goal);
+	ResolverContainer
+	resolvePuzzle(node_pointer start, const_node_pointer goal);
 
 	ResolverContainer buildSolution();
 
-	void resolveCost(node_pointer node, const_node_pointer goal);
+	void resolveCost(node_pointer node, const_node_pointer_reference goal);
 
 private:
 	HeuristicFunction heuristic_;
@@ -106,17 +121,43 @@ private:
 public:
 	class Heuristic {
 	public:
-		static size_t hamming(const_node_pointer start, const_node_pointer goal);
-		static size_t manhattan(const_node_pointer start, const_node_pointer goal);
-		static size_t linearConflict(const_node_pointer start, const_node_pointer goal);
+		static size_t
+		hamming(const_node_pointer start, const_node_pointer goal);
+
+		static size_t
+		manhattan(const_node_pointer start, const_node_pointer goal);
+
+		static size_t
+		linearConflict(const_node_pointer start, const_node_pointer goal);
 
 		static size_t
 		getTravelCost(const Position &source, const Position &target);
 	};
 
+	static const std::map<eHeuristic, HeuristicFunction> heuristicArray;
+
 	/*
 	 * Builder
 	 */
+
+	class Direction {
+	public:
+		enum eDirection {
+			kEast,
+			kSouth,
+			kWest,
+			kNorth
+		};
+
+		Direction();
+		Direction(eDirection direction);
+		Direction &operator++();
+
+		friend std::ostream &
+		operator<<(std::ostream &os, const Direction &direction);
+
+		eDirection direction_;
+	};
 
 	class Builder {
 	public:
@@ -125,6 +166,8 @@ public:
 		Builder &setSize(const size_t size);
 
 		Builder &setArray(const GridContainer &container);
+
+		std::shared_ptr<Node> buildGoalGrid();
 
 		std::shared_ptr<Node> build();
 

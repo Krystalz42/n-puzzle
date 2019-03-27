@@ -14,6 +14,9 @@ public:
 	typedef typename _Container::iterator iterator;
 	typedef typename _Container::const_iterator const_iterator;
 	typedef typename _Container::pointer pointer;
+	typedef typename _Container::value_type value_type;
+	typedef typename _Container::reference reference;
+	typedef typename _Container::const_reference const_reference;
 	Grid();
 
 	Grid(const Grid &rhs);
@@ -22,19 +25,21 @@ public:
 
 	Grid(size_t x, size_t y);
 
-	Grid(std::vector<_Tp> vector_);
+	explicit Grid(std::vector<_Tp> vector_);
+
+	void fill(value_type value);
 
 	void resize(size_t size);
 
 	void resize(size_t x, size_t y);
 
-	_Tp &operator()(size_t x, size_t y);
+	reference operator()(size_t x, size_t y);
 
-	const _Tp &operator()(size_t x, size_t y) const;
+	const_reference operator()(size_t x, size_t y) const;
 
-	_Tp &operator()(const Position &position);
+	reference operator()(const Position &position);
 
-	const _Tp &operator()(const Position &position) const;
+	const_reference operator()(const Position &position) const;
 
 	bool operator==(const Grid &rhs) const;
 
@@ -46,9 +51,9 @@ public:
 
 	bool range(int x, int y) const;
 
-	_Tp &operator[](int n);
+	reference operator[](int n);
 
-	_Tp &operator[](int n) const;
+	reference operator[](int n) const;
 
 	size_t getX() const;
 
@@ -120,22 +125,23 @@ void Grid<_Tp, _Container>::resize(size_t x, size_t y) {
 }
 
 template<class _Tp, class _Container>
-_Tp &Grid<_Tp, _Container>::operator()(size_t x, size_t y) {
+typename Grid<_Tp, _Container>::reference Grid<_Tp, _Container>::operator()(size_t x, size_t y) {
+	std::cout << "y : " << y << " y_ : " << y_ << " x : " << x << " idx : "<< (y * y_ + x) << std::endl;
 	return data_[y * y_ + x];
 }
 
 template<class _Tp, class _Container>
-const _Tp &Grid<_Tp, _Container>::operator()(const Position &position) const {
+typename Grid<_Tp, _Container>::const_reference  Grid<_Tp, _Container>::operator()(const Position &position) const {
 	return data_[position.y * y_ + position.x];
 }
 
 template<class _Tp, class _Container>
-const _Tp &Grid<_Tp, _Container>::operator()(size_t x, size_t y) const {
+typename Grid<_Tp, _Container>::const_reference Grid<_Tp, _Container>::operator()(size_t x, size_t y) const {
 	return data_[y * y_ + x];
 }
 
 template<class _Tp, class _Container>
-_Tp &Grid<_Tp, _Container>::operator()(const Position &position) {
+typename Grid<_Tp, _Container>::reference Grid<_Tp, _Container>::operator()(const Position &position) {
 	return data_[position.y * y_ + position.x];
 }
 
@@ -211,18 +217,26 @@ bool Grid<_Tp, _Container>::range(const Position &position) const {
 }
 
 template<class _Tp, class _Container>
-_Tp &Grid<_Tp, _Container>::operator[](int n) const {
+typename Grid<_Tp, _Container>::reference
+Grid<_Tp, _Container>::operator[](int n) const {
 	return data_.at(n);
 }
 
 template<class _Tp, class _Container>
-_Tp &Grid<_Tp, _Container>::operator[](int n) {
+typename Grid<_Tp, _Container>::reference
+Grid<_Tp, _Container>::operator[](int n) {
 	return data_[n];
 }
 
 template<class _Tp, class _Container>
-typename Grid<_Tp, _Container>::pointer Grid<_Tp, _Container>::data() {
+typename Grid<_Tp, _Container>::pointer
+Grid<_Tp, _Container>::data() {
 	return data_.data();
+}
+
+template<class _Tp, class _Container>
+void Grid<_Tp, _Container>::fill(value_type value) {
+	std::fill(begin(), end(), value);
 }
 
 

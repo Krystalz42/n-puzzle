@@ -50,50 +50,160 @@ bool isSolvable(GridContainer gridContainer)
 		return (findXPosition(gridContainer) & 1) != 0 == !(invCount & 1);
 }
 
+void print(const PriorityQueue<int> &pq) {
+	PriorityQueue<int>::const_iterator ipq = pq.cbegin();
+	for (; ipq != pq.cend(); ++ipq) {
+		std::cout << *ipq << ' ';
+	}
+	std::cout << " Value top : " << pq.top() <<  std::endl;
+	std::cout << std::endl;
+}
+
+void testpq() {
+	PriorityQueue<int> priorityQueue;
+
+	priorityQueue.push(2);
+	std::cout << "Push : 2" << std::endl;
+	print(priorityQueue);
+	priorityQueue.push(3);
+	std::cout << "Push : 3" << std::endl;
+	print(priorityQueue);
+	priorityQueue.push(1);
+	std::cout << "Push : 1" << std::endl;
+	print(priorityQueue);
+	priorityQueue.push(4);
+	std::cout << "Push : 4" << std::endl;
+	print(priorityQueue);
+	priorityQueue.push(3);
+	std::cout << "Push : 3" << std::endl;
+	print(priorityQueue);
+	PriorityQueue<int>::const_iterator ipq = priorityQueue.cbegin();
+	std::cout << "Erase beg: 4" << std::endl;
+	priorityQueue.erase(ipq);
+	print(priorityQueue);
+
+	std::cout << "Erase 3" << std::endl;
+	priorityQueue.erase(std::find(priorityQueue.cbegin(), priorityQueue.cend(), 3));
+	print(priorityQueue);
+	exit(2);
+}
+
 int main(int argc, char *argv[]) {
 
+	const std::map<std::string, KStar::eHeuristic> map {
+			{ "hamming", KStar::kHamming },
+			{ "manhattan", KStar::kManhattan },
+			{ "linear conflict", KStar::kLinearConflict }
+	};
 
 	try {
+		/*
+		 * Set option arguments
+		 */
 		boost::program_options::options_description desc("Options");
 		desc.add_options()
-				("file", "File to be parse")
+				("file", boost::program_options::value<std::string>()->required(), "File to be parse")
 				("hamming", "set heuristic to hamming")
+				("manhattan", "set heuristic to manhattan")
+				("linear conflict", "set heuristic to linear conflict")
 				("help", "display this message");
 
 		boost::program_options::variables_map vm;
+
 		boost::program_options::store(
 				boost::program_options::parse_command_line(argc, argv, desc),
 				vm);
+
+
+		/*
+		 * Help management
+		 */
 		if (vm.count("help")) {
 			std::cout << "Basic Command Line Parameter App" << std::endl
 					  << desc << std::endl;
+			return EXIT_SUCCESS;
 		}
-		Parser parser;
-		std::ifstream file("f3");
-		parser.parseFile(file);
+
+		boost::program_options::notify(vm);
 
 		KStar kStar;
-		kStar.setHeuristic(KStar::Heuristic::manhattan);
 
+		/*
+		 * Option to heuristic management
+		 */
+		if (std::all_of(map.begin(), map.end(), [&vm](std::pair<std::string, KStar::eHeuristic> pair){
+			return vm.count(pair.first) == 0;
+		}))
+			throw boost::program_options::required_option("hamming / manhattan / linear conflict");
+		for (const auto &option : map) {
+			if (vm.count(option.first))
+				kStar.setHeuristic(option.second);
+		}
+
+		/*
+		 * File to parser
+		 */
+
+		std::cout << "Hello" << std::endl;
+		Parser parser;
+		std::ifstream file(vm["file"].as<std::string>());
+		parser.parseFile(file);
+
+
+		/*
+		 * Builder Grid
+		 */
+
+		std::cout << "Hello" << std::endl;
 		KStar::Builder builder;
 		builder.setSize(parser.getSize());
 		builder.setArray(parser.getRawArray());
-		KStar::node_pointer node(builder.build());
-		node->grid = Grid<ValuePuzzle>({1,2,3,8,0,4,7,6,5});
-		if (isSolvable(node->grid)) {
-			std::cout << "Non solvable"<< std::endl;
-			exit(1);
+
+		/*
+		 * Final goal Grid builder
+		 */
+
+		KStar::const_node_pointer node = nullptr;
+		if (parser.getSize() == 3)
+			node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({1,2,3,8,0,4,7,6,5}), parser.getSize());
+		else {
+			node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({
+				1,2,3,4,
+				12,13,14,5,
+				11,0,15,6,
+				10,9,8,7}), parser.getSize());
 		}
 
-		std::cout << "Resolve Puzzle" << std::endl;
-		KStar::ResolverContainer resolverContainer = kStar.resolvePuzzle(
-				builder.build(), node);
+
+		/*
+		 * Check if solvable
+		 */
+
+		if (isSolvable(node->grid)) {
+			std::cout << "Non solvable" << std::endl;
+			exit(1);
+		}
+		/*
+		 * Resolver
+		 */
+		assert(node != nullptr);
+
+		KStar::ResolverContainer resolverContainer = kStar.resolvePuzzle(builder.build(), node);
+
+		/*
+		 * Display solution
+		 */
+
 		for (const auto &grid : resolverContainer) {
 			std::cout << grid << std::endl;
 			std::cout << std::endl;
 		}
 		std::cout << "Size resolver :" << resolverContainer.size() << std::endl;
-		boost::program_options::notify(vm);
+
+		/*
+		 * GG WP
+		 */
+
 	} catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}

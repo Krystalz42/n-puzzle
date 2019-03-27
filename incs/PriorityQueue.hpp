@@ -13,7 +13,8 @@ public:
 	typedef typename _Container::const_reference const_reference;
 	typedef typename _Container::reference reference;
 	typedef typename _Container::value_type value_type;
-
+	typedef typename _Container::size_type size_type;
+	PriorityQueue();
 	void push(value_type &&__x);
 
 	void push(const_reference __x);
@@ -38,6 +39,7 @@ public:
 
 	size_t size() const;
 
+	void reserve(size_type __n);
 	bool empty() const;
 
 private:
@@ -47,32 +49,34 @@ private:
 
 template<class _Tp, class _Container, class _Compare>
 void PriorityQueue<_Tp, _Container, _Compare>::push(const_reference __x) {
-	c.push_back(__x);
-	std::push_heap(c.begin(), c.end(), comp);
+	for (const_iterator __it = cbegin(); __it != cend(); ++__it) {
+		if (comp(*__it, __x)) { c.insert(__it, __x); return; }
+	}
+	c.insert(empty() ? cbegin() : cend(), __x);
 }
 
 template<class _Tp, class _Container, class _Compare>
 void PriorityQueue<_Tp, _Container, _Compare>::push(value_type &&__x) {
-	c.push_back(__x);
-	std::push_heap(c.begin(), c.end(), comp);
+	for (const_iterator __it = cbegin(); __it != cend(); ++__it) {
+		if (comp(*__it, __x)) { c.insert(__it, __x); return; }
+	}
+	c.insert(empty() ? cbegin() : cend(), __x);
 }
 
 template<class _Tp, class _Container, class _Compare>
 typename PriorityQueue<_Tp, _Container, _Compare>::const_reference
 PriorityQueue<_Tp, _Container, _Compare>::top() const {
-	return c.front();
+	return c.back();
 }
 
 template<class _Tp, class _Container, class _Compare>
 typename PriorityQueue<_Tp, _Container, _Compare>::reference
 PriorityQueue<_Tp, _Container, _Compare>::top() {
-	return c.front();
+	return c.back();
 }
 
 template<class _Tp, class _Container, class _Compare>
 void PriorityQueue<_Tp, _Container, _Compare>::pop() {
-
-	std::pop_heap(c.begin(), c.end(), comp);
 	c.pop_back();
 }
 
@@ -80,14 +84,12 @@ template<class _Tp, class _Container, class _Compare>
 void PriorityQueue<_Tp, _Container, _Compare>::erase(const_iterator __first,
 													 const_iterator __last) {
 	c.erase(__first, __last);
-	std::sort_heap(c.begin(), c.end(), comp);
 }
 
 template<class _Tp, class _Container, class _Compare>
 void
 PriorityQueue<_Tp, _Container, _Compare>::erase(const_iterator __position) {
 	c.erase(__position);
-	std::sort_heap(c.begin(), c.end(), comp);
 }
 
 template<class _Tp, class _Container, class _Compare>
@@ -122,6 +124,16 @@ size_t PriorityQueue<_Tp, _Container, _Compare>::size() const {
 template<class _Tp, class _Container, class _Compare>
 bool PriorityQueue<_Tp, _Container, _Compare>::empty() const {
 	return c.empty();
+}
+
+template<class _Tp, class _Container, class _Compare>
+PriorityQueue<_Tp, _Container, _Compare>::PriorityQueue() {
+}
+
+template<class _Tp, class _Container, class _Compare>
+void
+PriorityQueue<_Tp, _Container, _Compare>::reserve(size_type __n) {
+	c.reserve(__n);
 }
 
 #endif //N_PUZZLE_PRIORITY_QUEUE_HPP
