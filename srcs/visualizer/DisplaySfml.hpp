@@ -35,6 +35,7 @@ public:
 
 public:
 	bool exit_;
+	bool restart_;
 	sf::RenderWindow win_;
 	sf::Event ev_;
 

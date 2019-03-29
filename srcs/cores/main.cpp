@@ -95,11 +95,10 @@ void testpq() {
 #include <visualizer/SfVectorInterpolate.hpp>
 #include <visualizer/GridSprite.hpp>
 
-constexpr unsigned int tileSize = 3;
 //Make Min Max
 
-void temp_visualizer(KStar::ResolverContainer resolverContainer) {
-
+void temp_visualizer(KStar::ResolverContainer resolverContainer, unsigned int tileSize) {
+	bool restart = false;
 
 	sf::Texture tileset_;
 
@@ -113,15 +112,32 @@ void temp_visualizer(KStar::ResolverContainer resolverContainer) {
 
 	constexpr std::chrono::nanoseconds timestep(std::chrono::milliseconds(400));
 
-	KStar::ResolverContainer::iterator current_state = resolverContainer.begin();
-	KStar::ResolverContainer::iterator previous_state = resolverContainer.begin();
+	auto resolvedIterCurrentState = resolverContainer.begin();
+	auto resolvedIterPreviousState = resolverContainer.begin();
 
 	GridSprite gs(tileset_, sf::Vector2u(tileSize, tileSize));
 
 	while (!display.exit()) {
-		display.updateInput();
+		//display.updateInput();
 		std::cout << "updateInput" << std::endl;
 
+		while (display.win_.pollEvent(display.ev_)) {
+			if (display.ev_.type == sf::Event::Closed)
+				display.exit_ = true;
+			if (display.ev_.type == sf::Event::KeyPressed) {
+
+				switch (display.ev_.key.code) {
+					case sf::Keyboard::Escape:
+						display.exit_ = true;
+						break;
+					case sf::Keyboard::N:
+						restart = true;
+						break;
+					default :
+						break;
+				}
+			}
+		}
 
 		auto delta_time = std::chrono::high_resolution_clock::now() - time_start;
 		time_start = std::chrono::high_resolution_clock::now();
@@ -132,23 +148,23 @@ void temp_visualizer(KStar::ResolverContainer resolverContainer) {
 			std::cout << "timestep" << std::endl;
 
 			lag -= timestep;
-
-			if (current_state != resolverContainer.end()) {
-				previous_state = current_state;
-				++current_state;
+			if (restart) {
+				resolvedIterCurrentState = resolverContainer.begin();
+				restart = false;
+			}
+			else if (resolvedIterCurrentState != resolverContainer.end()) {
+				resolvedIterPreviousState = resolvedIterCurrentState;
+				++resolvedIterCurrentState;
 				std::cout << "update" << std::endl;
 			}
 		}
-		// calculate how close or far we are from the next timestep
 		float ratio = static_cast<float>(lag.count()) / static_cast<float>(timestep.count());
 
-		//render(interpolated_state);
-
 		display.win_.clear();
-		if (current_state != resolverContainer.end())
-			gs.updateSpritePositionFromGridContainers(*previous_state, *current_state, ratio);
-		else if (previous_state != resolverContainer.end())
-			gs.updateSpritePositionFromGridContainers(*previous_state);
+		if (resolvedIterCurrentState != resolverContainer.end())
+			gs.updateSpritePositionFromGridContainers(*resolvedIterPreviousState, *resolvedIterCurrentState, ratio);
+		else if (resolvedIterPreviousState != resolverContainer.end())
+			gs.updateSpritePositionFromGridContainers(*resolvedIterPreviousState);
 		gs.renderTarget(display.win_);
 		display.render();
 	}
@@ -271,7 +287,7 @@ int main(int argc, char *argv[]) {
 			 * GG WP
 			 */
 			if (vm.count("visualizer"))
-				temp_visualizer(resolverContainer);
+				temp_visualizer(resolverContainer, parser.getSize());
 
 		} catch (const std::exception &e) {
 			std::cout << e.what() << std::endl;

@@ -7,8 +7,6 @@ DisplaySfml::DisplaySfml(unsigned int width, unsigned int height, char const *wi
 
 
 	boost::filesystem::path pathRoot(N_PUZZLE_ROOT);
-	//if (!tileset_.loadFromFile((pathRoot / "ressources" / "snake_tileset.png").generic_string()))
-	//	_error("Tileset cannot be loaded");
 
 	win_.setFramerateLimit(60);
 	win_.clear();

@@ -1,6 +1,0 @@
-/Users/ntoniolo/.brew/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/ntoniolo/goinfre/n-puzzle
-EXTERN : Boost finded
--- Found SFML 2.4.2 in /Users/ntoniolo/.brew/include
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/ntoniolo/goinfre/n-puzzle/cmake-build-debug

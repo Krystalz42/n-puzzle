@@ -45,7 +45,7 @@ add_executable(n_puzzle
         incs/Grid.hpp
         incs/Position.hpp
         incs/Grid.cpp
-        incs/PriorityQueue.hpp incs/IDisplay.hpp srcs/visualizer/GridSprite.cpp srcs/visualizer/GridSprite.hpp)
+        incs/PriorityQueue.hpp incs/IDisplay.hpp srcs/visualizer/GridSprite.cpp srcs/visualizer/GridSprite.hpp srcs/visualizer/Visualizer.cpp srcs/visualizer/Visualizer.hpp)
 
 include_directories(incs)
 include_directories(srcs)
