@@ -124,6 +124,12 @@
 		<Unit filename="/Users/ntoniolo/goinfre/n-puzzle/srcs/visualizer/DisplaySfml.hpp">
 			<Option target="n_puzzle"/>
 		</Unit>
+		<Unit filename="/Users/ntoniolo/goinfre/n-puzzle/srcs/visualizer/GridSprite.cpp">
+			<Option target="n_puzzle"/>
+		</Unit>
+		<Unit filename="/Users/ntoniolo/goinfre/n-puzzle/srcs/visualizer/GridSprite.hpp">
+			<Option target="n_puzzle"/>
+		</Unit>
 		<Unit filename="/Users/ntoniolo/goinfre/n-puzzle/srcs/visualizer/GridVisualizer.cpp">
 			<Option target="n_puzzle"/>
 		</Unit>

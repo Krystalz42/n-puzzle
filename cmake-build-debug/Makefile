@@ -258,6 +258,33 @@ srcs/visualizer/DisplaySfml.cpp.s:
 	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/DisplaySfml.cpp.s
 .PHONY : srcs/visualizer/DisplaySfml.cpp.s
 
+srcs/visualizer/GridSprite.o: srcs/visualizer/GridSprite.cpp.o
+
+.PHONY : srcs/visualizer/GridSprite.o
+
+# target to build an object file
+srcs/visualizer/GridSprite.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridSprite.cpp.o
+.PHONY : srcs/visualizer/GridSprite.cpp.o
+
+srcs/visualizer/GridSprite.i: srcs/visualizer/GridSprite.cpp.i
+
+.PHONY : srcs/visualizer/GridSprite.i
+
+# target to preprocess a source file
+srcs/visualizer/GridSprite.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridSprite.cpp.i
+.PHONY : srcs/visualizer/GridSprite.cpp.i
+
+srcs/visualizer/GridSprite.s: srcs/visualizer/GridSprite.cpp.s
+
+.PHONY : srcs/visualizer/GridSprite.s
+
+# target to generate assembly for a file
+srcs/visualizer/GridSprite.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridSprite.cpp.s
+.PHONY : srcs/visualizer/GridSprite.cpp.s
+
 srcs/visualizer/GridVisualizer.o: srcs/visualizer/GridVisualizer.cpp.o
 
 .PHONY : srcs/visualizer/GridVisualizer.o
@@ -336,6 +363,9 @@ help:
 	@echo "... srcs/visualizer/DisplaySfml.o"
 	@echo "... srcs/visualizer/DisplaySfml.i"
 	@echo "... srcs/visualizer/DisplaySfml.s"
+	@echo "... srcs/visualizer/GridSprite.o"
+	@echo "... srcs/visualizer/GridSprite.i"
+	@echo "... srcs/visualizer/GridSprite.s"
 	@echo "... srcs/visualizer/GridVisualizer.o"
 	@echo "... srcs/visualizer/GridVisualizer.i"
 	@echo "... srcs/visualizer/GridVisualizer.s"

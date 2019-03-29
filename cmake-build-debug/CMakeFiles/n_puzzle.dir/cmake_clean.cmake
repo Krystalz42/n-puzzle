@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/n_puzzle.dir/srcs/visualizer/GridVisualizer.cpp.o"
   "CMakeFiles/n_puzzle.dir/srcs/visualizer/SfVectorInterpolate.cpp.o"
   "CMakeFiles/n_puzzle.dir/incs/Grid.cpp.o"
+  "CMakeFiles/n_puzzle.dir/srcs/visualizer/GridSprite.cpp.o"
   "n_puzzle.pdb"
   "n_puzzle"
 )

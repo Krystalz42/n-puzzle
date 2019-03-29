@@ -14,4 +14,3 @@ typedef Grid<dataVisualizer> GridVisualizer;
 
 GridVisualizer interpolateGridVisualizer(GridVisualizer &a, GridVisualizer &b, float ratio);
 GridVisualizer gridContainerToGridVisualizer(GridContainer &grid);
-void updateRenderTextureFromgridContainer(sf::RenderTexture &render, GridContainer &a, GridContainer &b, float ratio, sf::Texture const &texture);

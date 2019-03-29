@@ -93,11 +93,13 @@ void testpq() {
 #include <boost/filesystem.hpp>
 #include <visualizer/GridVisualizer.hpp>
 #include <visualizer/SfVectorInterpolate.hpp>
+#include <visualizer/GridSprite.hpp>
 
 constexpr unsigned int tileSize = 3;
 //Make Min Max
 
-void temp_visualizer() {
+void temp_visualizer(KStar::ResolverContainer resolverContainer) {
+
 
 	sf::Texture tileset_;
 
@@ -108,38 +110,13 @@ void temp_visualizer() {
 	DisplaySfml display(tileset_.getSize().x + pixelBorder * (tileSize - 1), tileset_.getSize().y + pixelBorder * (tileSize - 1), "Test");
 	std::chrono::nanoseconds lag(std::chrono::nanoseconds(0));
 	auto time_start = std::chrono::high_resolution_clock::now();
-	bool quit_game = false;
 
+	constexpr std::chrono::nanoseconds timestep(std::chrono::milliseconds(400));
 
-	constexpr std::chrono::nanoseconds timestep(std::chrono::milliseconds(1000));
-	unsigned int pixelTileSizeX = tileset_.getSize().x / tileSize;
-	unsigned int pixelTileSizeY = tileset_.getSize().y / tileSize;
+	KStar::ResolverContainer::iterator current_state = resolverContainer.begin();
+	KStar::ResolverContainer::iterator previous_state = resolverContainer.begin();
 
-	GridContainer previous_state(tileSize);
-	uint16_t i = 0;
-	for (unsigned int y = 0; y < tileSize; y++) {
-		for (unsigned int x = 0; x < tileSize; x++) {
-			previous_state(x, y) = i;
-			i++;
-		}
-	}
-
-	GridContainer current_state(previous_state);
-	uint16_t tmp = current_state(0, 0);
-	current_state(0, 0) = current_state(0, 1);
-	current_state(0, 1) = tmp;
-	tmp = current_state(1, 0);
-	current_state(1, 0) = current_state(1, 1);
-	current_state(1, 1) = tmp;
-
-	tmp = current_state(2, 0);
-	current_state(2, 0) = current_state(2, 1);
-	current_state(2, 1) = tmp;
-
-
-	sf::RenderTexture texture;
-	if (!texture.create(tileset_.getSize().x, tileset_.getSize().y))
-		exit(0);
+	GridSprite gs(tileset_, sf::Vector2u(tileSize, tileSize));
 
 	while (!display.exit()) {
 		display.updateInput();
@@ -156,25 +133,23 @@ void temp_visualizer() {
 
 			lag -= timestep;
 
-			GridContainer tmp = previous_state;
-			previous_state = current_state;
-			current_state = tmp;
-
-			//updateInput(&current_state);
-			std::cout << "update" << std::endl;
+			if (current_state != resolverContainer.end()) {
+				previous_state = current_state;
+				++current_state;
+				std::cout << "update" << std::endl;
+			}
 		}
-
 		// calculate how close or far we are from the next timestep
 		float ratio = static_cast<float>(lag.count()) / static_cast<float>(timestep.count());
 
 		//render(interpolated_state);
 
 		display.win_.clear();
-		updateRenderTextureFromgridContainer(texture, previous_state, current_state, ratio, tileset_);
-
-		sf::Sprite sprite(texture.getTexture());
-		sprite.setPosition(sf::Vector2f(pixelBorder, pixelBorder));
-		display.win_.draw(sprite);
+		if (current_state != resolverContainer.end())
+			gs.updateSpritePositionFromGridContainers(*previous_state, *current_state, ratio);
+		else if (previous_state != resolverContainer.end())
+			gs.updateSpritePositionFromGridContainers(*previous_state);
+		gs.renderTarget(display.win_);
 		display.render();
 	}
 }
@@ -216,10 +191,6 @@ int main(int argc, char *argv[]) {
 			return EXIT_SUCCESS;
 		}
 
-		if (vm.count("visualizer")) {
-			temp_visualizer();
-			return EXIT_SUCCESS;
-		}
 		boost::program_options::notify(vm);
 
 		KStar kStar;
@@ -299,6 +270,8 @@ int main(int argc, char *argv[]) {
 			/*
 			 * GG WP
 			 */
+			if (vm.count("visualizer"))
+				temp_visualizer(resolverContainer);
 
 		} catch (const std::exception &e) {
 			std::cout << e.what() << std::endl;
