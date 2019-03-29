@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /Users/ntoniolo/.brew/Cellar/cmake/3.13.2/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /Users/ntoniolo/.brew/Cellar/cmake/3.13.2/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/alexandreroulin/n-puzzle
+CMAKE_SOURCE_DIR = /Users/ntoniolo/goinfre/n-puzzle
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/alexandreroulin/n-puzzle/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ntoniolo/goinfre/n-puzzle/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/alexandreroulin/n-puzzle/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Users/ntoniolo/.brew/Cellar/cmake/3.13.2/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Users/ntoniolo/.brew/Cellar/cmake/3.13.2/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles /Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ntoniolo/goinfre/n-puzzle/cmake-build-debug/CMakeFiles /Users/ntoniolo/goinfre/n-puzzle/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexandreroulin/n-puzzle/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ntoniolo/goinfre/n-puzzle/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,33 @@ n_puzzle: cmake_check_build_system
 n_puzzle/fast:
 	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/build
 .PHONY : n_puzzle/fast
+
+incs/Grid.o: incs/Grid.cpp.o
+
+.PHONY : incs/Grid.o
+
+# target to build an object file
+incs/Grid.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/incs/Grid.cpp.o
+.PHONY : incs/Grid.cpp.o
+
+incs/Grid.i: incs/Grid.cpp.i
+
+.PHONY : incs/Grid.i
+
+# target to preprocess a source file
+incs/Grid.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/incs/Grid.cpp.i
+.PHONY : incs/Grid.cpp.i
+
+incs/Grid.s: incs/Grid.cpp.s
+
+.PHONY : incs/Grid.s
+
+# target to generate assembly for a file
+incs/Grid.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/incs/Grid.cpp.s
+.PHONY : incs/Grid.cpp.s
 
 srcs/cores/main.o: srcs/cores/main.cpp.o
 
@@ -204,6 +231,87 @@ srcs/resolver/KStar.cpp.s:
 	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.s
 .PHONY : srcs/resolver/KStar.cpp.s
 
+srcs/visualizer/DisplaySfml.o: srcs/visualizer/DisplaySfml.cpp.o
+
+.PHONY : srcs/visualizer/DisplaySfml.o
+
+# target to build an object file
+srcs/visualizer/DisplaySfml.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/DisplaySfml.cpp.o
+.PHONY : srcs/visualizer/DisplaySfml.cpp.o
+
+srcs/visualizer/DisplaySfml.i: srcs/visualizer/DisplaySfml.cpp.i
+
+.PHONY : srcs/visualizer/DisplaySfml.i
+
+# target to preprocess a source file
+srcs/visualizer/DisplaySfml.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/DisplaySfml.cpp.i
+.PHONY : srcs/visualizer/DisplaySfml.cpp.i
+
+srcs/visualizer/DisplaySfml.s: srcs/visualizer/DisplaySfml.cpp.s
+
+.PHONY : srcs/visualizer/DisplaySfml.s
+
+# target to generate assembly for a file
+srcs/visualizer/DisplaySfml.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/DisplaySfml.cpp.s
+.PHONY : srcs/visualizer/DisplaySfml.cpp.s
+
+srcs/visualizer/GridVisualizer.o: srcs/visualizer/GridVisualizer.cpp.o
+
+.PHONY : srcs/visualizer/GridVisualizer.o
+
+# target to build an object file
+srcs/visualizer/GridVisualizer.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridVisualizer.cpp.o
+.PHONY : srcs/visualizer/GridVisualizer.cpp.o
+
+srcs/visualizer/GridVisualizer.i: srcs/visualizer/GridVisualizer.cpp.i
+
+.PHONY : srcs/visualizer/GridVisualizer.i
+
+# target to preprocess a source file
+srcs/visualizer/GridVisualizer.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridVisualizer.cpp.i
+.PHONY : srcs/visualizer/GridVisualizer.cpp.i
+
+srcs/visualizer/GridVisualizer.s: srcs/visualizer/GridVisualizer.cpp.s
+
+.PHONY : srcs/visualizer/GridVisualizer.s
+
+# target to generate assembly for a file
+srcs/visualizer/GridVisualizer.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridVisualizer.cpp.s
+.PHONY : srcs/visualizer/GridVisualizer.cpp.s
+
+srcs/visualizer/SfVectorInterpolate.o: srcs/visualizer/SfVectorInterpolate.cpp.o
+
+.PHONY : srcs/visualizer/SfVectorInterpolate.o
+
+# target to build an object file
+srcs/visualizer/SfVectorInterpolate.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/SfVectorInterpolate.cpp.o
+.PHONY : srcs/visualizer/SfVectorInterpolate.cpp.o
+
+srcs/visualizer/SfVectorInterpolate.i: srcs/visualizer/SfVectorInterpolate.cpp.i
+
+.PHONY : srcs/visualizer/SfVectorInterpolate.i
+
+# target to preprocess a source file
+srcs/visualizer/SfVectorInterpolate.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/SfVectorInterpolate.cpp.i
+.PHONY : srcs/visualizer/SfVectorInterpolate.cpp.i
+
+srcs/visualizer/SfVectorInterpolate.s: srcs/visualizer/SfVectorInterpolate.cpp.s
+
+.PHONY : srcs/visualizer/SfVectorInterpolate.s
+
+# target to generate assembly for a file
+srcs/visualizer/SfVectorInterpolate.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/SfVectorInterpolate.cpp.s
+.PHONY : srcs/visualizer/SfVectorInterpolate.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... n_puzzle"
+	@echo "... incs/Grid.o"
+	@echo "... incs/Grid.i"
+	@echo "... incs/Grid.s"
 	@echo "... srcs/cores/main.o"
 	@echo "... srcs/cores/main.i"
 	@echo "... srcs/cores/main.s"
@@ -222,6 +333,15 @@ help:
 	@echo "... srcs/resolver/KStar.o"
 	@echo "... srcs/resolver/KStar.i"
 	@echo "... srcs/resolver/KStar.s"
+	@echo "... srcs/visualizer/DisplaySfml.o"
+	@echo "... srcs/visualizer/DisplaySfml.i"
+	@echo "... srcs/visualizer/DisplaySfml.s"
+	@echo "... srcs/visualizer/GridVisualizer.o"
+	@echo "... srcs/visualizer/GridVisualizer.i"
+	@echo "... srcs/visualizer/GridVisualizer.s"
+	@echo "... srcs/visualizer/SfVectorInterpolate.o"
+	@echo "... srcs/visualizer/SfVectorInterpolate.i"
+	@echo "... srcs/visualizer/SfVectorInterpolate.s"
 .PHONY : help
 
 

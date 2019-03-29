@@ -8,8 +8,7 @@
 // array 'arr[]'. Note that this function can be
 // optimized to work in O(n Log n) time. The idea
 // here is to keep code small and simple.
-int getInvCount(GridContainer gridContainer)
-{
+int getInvCount(GridContainer gridContainer) {
 	int inv_count = 0;
 
 	for (size_t index = 0; index < gridContainer.size(); ++index)
@@ -26,19 +25,20 @@ int getInvCount(GridContainer gridContainer)
 }
 
 // find Position of blank from bottom
-int findXPosition(GridContainer gridContainer)
-{
+int findXPosition(GridContainer gridContainer) {
 	// start from bottom-right corner of matrix
-	for (int y = gridContainer.getY() - 1; y >= 0; --y)
-		for (int x = gridContainer.getX() - 1; x >= 0; --x)
-			if (gridContainer(x, y) == 0)
+	for (int y = gridContainer.getY() - 1; y >= 0; --y) {
+		for (int x = gridContainer.getX() - 1; x >= 0; --x) {
+			if (gridContainer(x, y) == 0) {
 				return gridContainer.getY() - y;
+			}
+		}
+	}
 }
 
 // This function returns true if given
 // instance of N*N - 1 puzzle is solvable
-bool isSolvable(GridContainer gridContainer)
-{
+bool isSolvable(GridContainer gridContainer) {
 	// Count inversions in given puzzle
 	int invCount = getInvCount(gridContainer);
 
@@ -88,6 +88,97 @@ void testpq() {
 	exit(2);
 }
 
+#include <visualizer/DisplaySfml.hpp>
+#include <chrono>
+#include <boost/filesystem.hpp>
+#include <visualizer/GridVisualizer.hpp>
+#include <visualizer/SfVectorInterpolate.hpp>
+
+constexpr unsigned int tileSize = 3;
+//Make Min Max
+
+void temp_visualizer() {
+
+	sf::Texture tileset_;
+
+	boost::filesystem::path pathRoot(N_PUZZLE_ROOT);
+	if (!tileset_.loadFromFile((pathRoot / "ressources" / "test.jpg").generic_string()))
+		exit(0);
+
+	DisplaySfml display(tileset_.getSize().x + pixelBorder * (tileSize - 1), tileset_.getSize().y + pixelBorder * (tileSize - 1), "Test");
+	std::chrono::nanoseconds lag(std::chrono::nanoseconds(0));
+	auto time_start = std::chrono::high_resolution_clock::now();
+	bool quit_game = false;
+
+
+	constexpr std::chrono::nanoseconds timestep(std::chrono::milliseconds(1000));
+	unsigned int pixelTileSizeX = tileset_.getSize().x / tileSize;
+	unsigned int pixelTileSizeY = tileset_.getSize().y / tileSize;
+
+	GridContainer previous_state(tileSize);
+	uint16_t i = 0;
+	for (unsigned int y = 0; y < tileSize; y++) {
+		for (unsigned int x = 0; x < tileSize; x++) {
+			previous_state(x, y) = i;
+			i++;
+		}
+	}
+
+	GridContainer current_state(previous_state);
+	uint16_t tmp = current_state(0, 0);
+	current_state(0, 0) = current_state(0, 1);
+	current_state(0, 1) = tmp;
+	tmp = current_state(1, 0);
+	current_state(1, 0) = current_state(1, 1);
+	current_state(1, 1) = tmp;
+
+	tmp = current_state(2, 0);
+	current_state(2, 0) = current_state(2, 1);
+	current_state(2, 1) = tmp;
+
+
+	sf::RenderTexture texture;
+	if (!texture.create(tileset_.getSize().x, tileset_.getSize().y))
+		exit(0);
+
+	while (!display.exit()) {
+		display.updateInput();
+		std::cout << "updateInput" << std::endl;
+
+
+		auto delta_time = std::chrono::high_resolution_clock::now() - time_start;
+		time_start = std::chrono::high_resolution_clock::now();
+		lag += std::chrono::duration_cast<std::chrono::nanoseconds>(delta_time);
+		std::cout << "lag" << std::endl;
+
+		while(lag >= timestep) {
+			std::cout << "timestep" << std::endl;
+
+			lag -= timestep;
+
+			GridContainer tmp = previous_state;
+			previous_state = current_state;
+			current_state = tmp;
+
+			//updateInput(&current_state);
+			std::cout << "update" << std::endl;
+		}
+
+		// calculate how close or far we are from the next timestep
+		float ratio = static_cast<float>(lag.count()) / static_cast<float>(timestep.count());
+
+		//render(interpolated_state);
+
+		display.win_.clear();
+		updateRenderTextureFromgridContainer(texture, previous_state, current_state, ratio, tileset_);
+
+		sf::Sprite sprite(texture.getTexture());
+		sprite.setPosition(sf::Vector2f(pixelBorder, pixelBorder));
+		display.win_.draw(sprite);
+		display.render();
+	}
+}
+
 int main(int argc, char *argv[]) {
 
 	const std::map<std::string, KStar::eHeuristic> map {
@@ -104,6 +195,7 @@ int main(int argc, char *argv[]) {
 		desc.add_options()
 				("file", boost::program_options::value<std::string>()->required(), "File to be parse")
 				("hamming", "set heuristic to hamming")
+				("visualizer,v", "Enable visualizer")
 				("manhattan", "set heuristic to manhattan")
 				("linear conflict", "set heuristic to linear conflict")
 				("help", "display this message");
@@ -124,6 +216,10 @@ int main(int argc, char *argv[]) {
 			return EXIT_SUCCESS;
 		}
 
+		if (vm.count("visualizer")) {
+			temp_visualizer();
+			return EXIT_SUCCESS;
+		}
 		boost::program_options::notify(vm);
 
 		KStar kStar;
@@ -159,53 +255,54 @@ int main(int argc, char *argv[]) {
 		builder.setSize(parser.getSize());
 		builder.setArray(parser.getRawArray());
 
-		/*
-		 * Final goal Grid builder
-		 */
+			/*
+			 * Final goal Grid builder
+			 */
 
-		KStar::const_node_pointer node = nullptr;
-		if (parser.getSize() == 3)
-			node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({1,2,3,8,0,4,7,6,5}), parser.getSize());
-		else {
-			node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({
-				1,2,3,4,
-				12,13,14,5,
-				11,0,15,6,
-				10,9,8,7}), parser.getSize());
+			KStar::const_node_pointer node = nullptr;
+			if (parser.getSize() == 3)
+				node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({1,2,3,8,0,4,7,6,5}), parser.getSize());
+			else {
+				node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({
+																					 1,2,3,4,
+																					 12,13,14,5,
+																					 11,0,15,6,
+																					 10,9,8,7}), parser.getSize());
+			}
+
+
+			/*
+			 * Check if solvable
+			 */
+
+			if (isSolvable(node->grid)) {
+				std::cout << "Non solvable" << std::endl;
+				exit(1);
+			}
+			/*
+			 * Resolver
+			 */
+			assert(node != nullptr);
+
+			KStar::ResolverContainer resolverContainer = kStar.resolvePuzzle(builder.build(), node);
+
+			/*
+			 * Display solution
+			 */
+
+			for (const auto &grid : resolverContainer) {
+				std::cout << grid << std::endl;
+				std::cout << std::endl;
+			}
+			std::cout << "Size resolver :" << resolverContainer.size() << std::endl;
+
+			/*
+			 * GG WP
+			 */
+
+		} catch (const std::exception &e) {
+			std::cout << e.what() << std::endl;
+			return EXIT_FAILURE;
 		}
-
-
-		/*
-		 * Check if solvable
-		 */
-
-		if (isSolvable(node->grid)) {
-			std::cout << "Non solvable" << std::endl;
-			exit(1);
-		}
-		/*
-		 * Resolver
-		 */
-		assert(node != nullptr);
-
-		KStar::ResolverContainer resolverContainer = kStar.resolvePuzzle(builder.build(), node);
-
-		/*
-		 * Display solution
-		 */
-
-		for (const auto &grid : resolverContainer) {
-			std::cout << grid << std::endl;
-			std::cout << std::endl;
-		}
-		std::cout << "Size resolver :" << resolverContainer.size() << std::endl;
-
-		/*
-		 * GG WP
-		 */
-
-	} catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
+		return 0;
 	}
-	return 0;
-}

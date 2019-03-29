@@ -1,5 +1,6 @@
 #include <zconf.h>
 #include "Parser.hpp"
+#include <cassert>
 
 //
 //
