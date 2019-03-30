@@ -10,7 +10,9 @@
 #include <Grid.hpp>
 
 class Parser {
-	using WorkFunction = void (Parser::*)(const std::string &string);
+private:
+	typedef void (Parser::*WorkFunction)(const std::string &string);
+
 	enum Regex : int {
 		kCommentary = 0,
 		kSize,
@@ -18,15 +20,22 @@ class Parser {
 	};
 public:
 	Parser();
+
 	void parseFile(std::ifstream &file);
+
 	size_t getSize() const;
-	GridContainer getRawArray() const;
+
+	GridContainer getGridContainer() const;
 
 private:
 	void parseLine(const std::string &string);
+
 	void commentaryWork(const std::string &string);
+
 	void sizeWork(const std::string &string);
+
 	void arrayLineWork(const std::string &string);
+
 	std::smatch smatch;
 	WorkFunction workFunction[3];
 	std::regex regex[3];
@@ -36,7 +45,7 @@ private:
 	 */
 	size_t size_;
 	size_t current_;
-	GridContainer rawArray;
+	GridContainer gridContainer;
 
 };
 

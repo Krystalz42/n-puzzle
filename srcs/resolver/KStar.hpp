@@ -10,6 +10,7 @@
 #include <deque>
 #include <set>
 #include <map>
+
 class KStar {
 public:
 
@@ -28,6 +29,17 @@ public:
 	 */
 
 	typedef std::vector<GridContainer> ResolverContainer;
+
+	struct ResolverData {
+		//Path
+		ResolverContainer resolverContainer;
+		//Total number of states ever selected in the "opened" set (complexity in time)
+		size_t complexityInTime;
+		//Maximum number of states ever represented in memory at the same time during the search (complexity in size)
+		size_t complexityInSize;
+		//Number of moves required to transition from the initial state to the final state,according to the search
+		size_t numberOfMove;
+	};
 
 	typedef std::shared_ptr<Node> node_pointer;
 
@@ -86,15 +98,22 @@ public:
 	 */
 
 	void setHeuristic(const HeuristicFunction &heuristic);
+
 	void setHeuristic(eHeuristic heuristic);
 
-	ResolverContainer
+	ResolverData
 	resolvePuzzle(node_pointer start, const_node_pointer goal);
 
-	ResolverContainer buildSolution();
+	ResolverData buildSolution();
 
-	void resolveCost(node_pointer node, const_node_pointer_reference goal);
+	void
+	resolveCost(node_pointer_reference node, const_node_pointer_reference goal);
 
+	bool isSovablePuzzle(const_node_pointer node) const;
+
+	size_t countInversionInPuzzle(const_node_pointer_reference node) const;
+
+	bool isBetween(ValuePuzzle value, ValuePuzzle limit, node_pointer node) const;
 private:
 	HeuristicFunction heuristic_;
 
@@ -111,7 +130,8 @@ private:
 private:
 
 
-	static Position getPositionOf(const_node_pointer node, ValuePuzzle value);
+	static Position
+	getPositionOf(const_node_pointer_reference node, ValuePuzzle value);
 
 	bool isInClosedList(const_node_pointer node) const;
 
@@ -150,7 +170,9 @@ public:
 		};
 
 		Direction();
+
 		Direction(eDirection direction);
+
 		Direction &operator++();
 
 		friend std::ostream &

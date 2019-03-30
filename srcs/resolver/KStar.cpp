@@ -22,10 +22,10 @@ void KStar::setHeuristic(KStar::eHeuristic heuristic) {
 	heuristic_ = heuristicArray.at(heuristic);
 }
 
-KStar::ResolverContainer
+KStar::ResolverData
 KStar::resolvePuzzle(node_pointer start, const_node_pointer goal) {
 	std::cout << __PRETTY_FUNCTION__<< std::endl;
-
+	std::cout << std::boolalpha << isSovablePuzzle(start) << std::endl;
 	/*
 	 * Add start to open list
 	 */
@@ -50,14 +50,10 @@ KStar::resolvePuzzle(node_pointer start, const_node_pointer goal) {
 		 * Take smallest node
 		 */
 		const_node_pointer currentNode = nodeOpenList.top();
-		std::cout << "Current Node work : " << std::endl;
-		std::cout << GRN << currentNode->grid << RST << std::endl;
-		std::cout << "H : " << currentNode->H << " F : " << currentNode->F
-				  << " G : " << currentNode->G << std::endl;
 		/*
 		 * Find goal node
 		 */
-		if (currentNode->grid == goal->grid)
+		if (currentNode->H == 0)
 			return buildSolution();
 		else {
 			/*
@@ -99,48 +95,41 @@ KStar::resolvePuzzle(node_pointer start, const_node_pointer goal) {
 							/*
 							 * Push to open list
 							 */
-							std::cout << "New node push : " << std::endl;
-							std::cout << YEL << node->grid << RST << std::endl;
-							std::cout << "H : " << node->H << " F : 	"
-									  << node->F << " G : " << node->G
-									  << std::endl;
-
 							nodeOpenList.push(node);
 						}
 					}
 				}
 			}
 		}
-//		std::cout <<std::endl;
-//		std::string s;
-//		std::getline(std::cin, s);
 	}
-	return KStar::ResolverContainer();
+	return KStar::ResolverData();
 }
 
 
-KStar::ResolverContainer KStar::buildSolution() {
+KStar::ResolverData KStar::buildSolution() {
 	const_node_pointer node(nodeOpenList.top());
-	ResolverContainer resolverContainer;
-	resolverContainer.push_back(node->grid);
+	ResolverData resolverData;
+	std::memset(&resolverData, 0, sizeof(ResolverData));
+	resolverData.resolverContainer.push_back(node->grid);
 	while (node->parent) {
-		resolverContainer.push_back(node->parent->grid);
-		std::cout << node->F << ' ' << node->H << std::endl;
-
+		resolverData.resolverContainer.push_back(node->parent->grid);
 		node = node->parent;
 	}
-	std::reverse(resolverContainer.begin(), resolverContainer.end());
-	return resolverContainer;
+	std::reverse(resolverData.resolverContainer.begin(), resolverData.resolverContainer.end());
+	resolverData.complexityInTime = nodeOpenList.size();
+	resolverData.complexityInSize = nodeCloseList.size();
+	resolverData.numberOfMove = resolverData.resolverContainer.size();
+	return resolverData;
 }
 
-void KStar::resolveCost(node_pointer node, const_node_pointer_reference goal) {
+inline void KStar::resolveCost(node_pointer_reference node, const_node_pointer_reference goal) {
 	node->H = heuristic_(node, goal);
 	node->G = (node->parent ? node->parent->G + 1 : 0);
 	node->F = node->H + node->G;
 }
 
 
-Position KStar::getPositionOf(const_node_pointer node, ValuePuzzle value) {
+inline Position KStar::getPositionOf(const_node_pointer_reference node, ValuePuzzle value) {
 	GridContainer::const_iterator cit;
 	if ((cit = std::find(node->grid.cbegin(), node->grid.cend(), value)) !=
 		node->grid.cend()) {
@@ -154,7 +143,7 @@ Position KStar::getPositionOf(const_node_pointer node, ValuePuzzle value) {
 }
 
 
-bool KStar::isInClosedList(const_node_pointer node) const {
+inline bool KStar::isInClosedList(const_node_pointer node) const {
 	return std::any_of(nodeCloseList.cbegin(), nodeCloseList.cend(),
 					   [node](const_node_pointer cmp) {
 						   return node->grid == cmp->grid;
@@ -165,7 +154,7 @@ bool KStar::isInClosedList(const_node_pointer node) const {
  * static heuristic
  */
 
-size_t
+inline size_t
 KStar::Heuristic::hamming(const_node_pointer start, const_node_pointer goal) {
 	/*
 	 * Hamming - Misplaced tile
@@ -182,7 +171,7 @@ KStar::Heuristic::hamming(const_node_pointer start, const_node_pointer goal) {
 	return n;
 }
 
-size_t
+inline size_t
 KStar::Heuristic::manhattan(const_node_pointer start, const_node_pointer goal) {
 
 	size_t H = 0;
@@ -194,14 +183,15 @@ KStar::Heuristic::manhattan(const_node_pointer start, const_node_pointer goal) {
 	return H;
 }
 
-size_t
+inline size_t
 KStar::Heuristic::getTravelCost(const Position &source,
 								const Position &target) {
 //	std::cout << source << " to " << target << " equals to : " << std::abs(target.x - source.x) + std::abs(target.y - source.y) << std::endl;
 	return std::abs(target.x - source.x) + std::abs(target.y - source.y);
 }
 
-size_t KStar::Heuristic::linearConflict(const_node_pointer start,
+inline size_t
+KStar::Heuristic::linearConflict(const_node_pointer start,
 										const_node_pointer goal) {
 	static const size_t COST = 2;
 	size_t H = 0;
@@ -239,31 +229,30 @@ std::shared_ptr<KStar::Node> KStar::Builder::build() {
 }
 
 std::shared_ptr<KStar::Node> KStar::Builder::buildGoalGrid() {
-	GridContainer data_(size_);
-	Direction direction(KStar::Direction::eDirection::kEast);
+	GridContainer data(size_);
+	Direction direction_(KStar::Direction::eDirection::kEast);
 	size_t offset = 0;
-	size_t steps = data_.getX() - offset;
+	size_t steps = data.getX();
 	size_t x = 0;
 	size_t y = 0;
 	ValuePuzzle value = 1;
 	int changeOffsetCount = 1; // usually change offset after 2 direction change, but at the beginning is after the first direction change
-	data_.fill(0);
-	while (value < data_.size()) {
-		std::cout << " Value : "<< value << std::endl;
-		data_( x, y ) = value;
+	data.fill(0);
+	while (value < data.size()) {
+		data( x, y ) = value;
 		steps--;
 		if (steps == 0) {
-			++direction;
+			++direction_;
 			changeOffsetCount--;
 			if (changeOffsetCount == 0) {
 				changeOffsetCount = 2;
 				offset++;
 			}
-			steps = data_.getX() - offset;
+			steps = data.getX() - offset;
 		}
 		//	int direction = 0; // 0 = right, 1 = down, 2 = left, 3 = up
 
-		switch (direction.direction_) {
+		switch (direction_.direction_) {
 			case KStar::Direction::eDirection::kEast: ++x; break;
 			case KStar::Direction::eDirection::kSouth: ++y; break;
 			case KStar::Direction::eDirection::kWest: --x; break;
@@ -271,13 +260,13 @@ std::shared_ptr<KStar::Node> KStar::Builder::buildGoalGrid() {
 		}
 		value++;
 	}
-	std::cout << data_(1, 0) << std::endl;
-	return std::make_shared<KStar::Node>(data_, size_);
+	return std::make_shared<KStar::Node>(data, size_);
 }
 
-//->
-//|
-//v
+//0 1 2 3
+//11     4
+//10     5
+//9 8 7 6
 /*
  * Node
  */
@@ -342,8 +331,12 @@ KStar::Direction::Direction(KStar::Direction::eDirection direction)
 }
 
 KStar::Direction &KStar::Direction::operator++() {
-	int temp = static_cast<int>(direction_);
-	direction_ = static_cast<eDirection >(++temp);
+	if (direction_ == kNorth) {
+		direction_ = kEast;
+	} else {
+		int temp = static_cast<int>(direction_);
+		direction_ = static_cast<eDirection >(++temp);
+	}
 	return *this;
 }
 
@@ -356,3 +349,87 @@ std::ostream &operator<<(std::ostream &os, const KStar::Direction &direction) {
 	}
 	return os;
 }
+
+bool KStar::isSovablePuzzle(const_node_pointer node) const {
+	size_t inversionCount = countInversionInPuzzle(node);
+	if (node->grid.getX() & 1) {
+		/*
+		 * Odd part
+		 * If N is odd, then puzzle instance is solvable
+		 * if number of inversions is even in the input state.
+		 */
+		return !(inversionCount & 1);
+	} else {
+		size_t positionOfEmptyFromBottom = node->grid.getY() - getPositionOf(node, 0).y;
+		/*
+		 * Even part
+		 *
+		 * the blank is on an even row counting from the bottom (second-last, fourth-last, etc.)
+		 * and number of inversions is odd.
+		 *
+		 * the blank is on an odd row counting from the bottom (last, third-last, fifth-last, etc.)
+		 * and number of inversions is even.
+		 *
+		 */
+
+		return (positionOfEmptyFromBottom & 1) != 0 == !(inversionCount & 1);
+	}
+}
+
+size_t
+KStar::countInversionInPuzzle(const_node_pointer_reference node) const {
+	Builder builder;
+	builder.setSize(node->grid.getX());
+	node_pointer nodePointer = builder.buildGoalGrid();
+	size_t invCount = 0;
+	/*
+	 * Have to count
+	 */
+	for (int idx = 0; idx < node->grid.size(); ++idx) {
+		for (int idx1 = idx + 1; idx1 < node->grid.size(); ++idx1) {
+			invCount += isBetween(node->grid[idx1], node->grid[idx], nodePointer);
+		}
+	}
+	return invCount;
+}
+
+bool KStar::isBetween(
+		ValuePuzzle value,
+		ValuePuzzle limit,
+		node_pointer node) const {
+
+
+	for (const auto &n : node->grid) {
+		if (value == n)
+			return true;
+		if (limit == n)
+			return false;
+	}
+	return false;
+}
+
+// 7 1 4 2 6 8 3 0 5
+// 1 2 3 8 0 4 7 6 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,10 +23,17 @@ void Parser::parseFile(std::ifstream &file) {
 		if (!buffer.empty())
 			parseLine(buffer);
 	}
+	GridContainer temp(gridContainer);
+	std::sort(temp.begin(), temp.end());
+	GridContainer::const_iterator iterator = std::adjacent_find(temp.cbegin(), temp.cend());
+//	if (iterator != gridContainer.cend()) {
+//		std::string error("n-puzzle error: there is two same value on puzzle");
+//		throw std::runtime_error(error);
+//	}
 }
 
 void Parser::parseLine(const std::string &string) {
-	for (int index = 0; index < kArrayLine + 1; ++index) {
+	for (int index = kCommentary; index < kArrayLine + 1; ++index) {
 		std::sregex_iterator it = std::sregex_iterator(string.begin(), string.end(), regex[index]);
 		if (it != std::sregex_iterator()) {
 			for (; it != std::sregex_iterator() ; ++it) {
@@ -35,29 +42,42 @@ void Parser::parseLine(const std::string &string) {
 			}
 			break;
 		}
+		if (index == kArrayLine) {
+			if (current_ % size_) {
+				std::string buffer("n-puzzle error: missing args on line : ");
+				buffer += string;
+				throw std::runtime_error(buffer);
+			}
+		}
 	}
+
 }
 
 size_t Parser::getSize() const {
 	return size_;
 }
 
-GridContainer Parser::getRawArray() const {
-	return rawArray;
+GridContainer Parser::getGridContainer() const {
+	return gridContainer;
 }
 
 void Parser::commentaryWork(const std::string &string) {
+
 }
 
 void Parser::sizeWork(const std::string &string) {
-//	std::cout << string << std::endl;
 	size_ = std::stoul(string);
-	rawArray.resize(size_, size_);
+	gridContainer.resize(size_, size_);
 }
 
 void Parser::arrayLineWork(const std::string &string) {
-	assert(size_ != 0);
-//	std::cout << "Fill : " << current_ / size_ << " "<< current_ % size_ << std::endl;
-	rawArray(current_ % size_, current_ / size_) = std::stoul(string);
+	if (size_ == 0) {
+		throw std::runtime_error(std::string("n-puzzle error: missing size"));
+	}
+	gridContainer(current_ % size_, current_ / size_) = std::stoul(string);
 	current_++;
 }
+
+/*
+ * Parser Error
+ */

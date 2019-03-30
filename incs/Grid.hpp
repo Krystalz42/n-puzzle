@@ -53,7 +53,7 @@ public:
 
 	reference operator[](int n);
 
-	reference operator[](int n) const;
+	const_reference operator[](int n) const;
 
 	size_t getX() const;
 
@@ -63,11 +63,15 @@ public:
 
 	iterator begin();
 
+	const_iterator begin() const ;
+
 	friend std::ostream &operator<<(std::ostream &os, const Grid &grid);
 
 	const_iterator cbegin() const;
 
 	iterator end();
+
+	const_iterator end() const;
 
 	const_iterator cend() const;
 
@@ -126,7 +130,6 @@ void Grid<_Tp, _Container>::resize(size_t x, size_t y) {
 
 template<class _Tp, class _Container>
 typename Grid<_Tp, _Container>::reference Grid<_Tp, _Container>::operator()(size_t x, size_t y) {
-	std::cout << "y : " << y << " y_ : " << y_ << " x : " << x << " idx : "<< (y * y_ + x) << std::endl;
 	return data_[y * y_ + x];
 }
 
@@ -217,7 +220,7 @@ bool Grid<_Tp, _Container>::range(const Position &position) const {
 }
 
 template<class _Tp, class _Container>
-typename Grid<_Tp, _Container>::reference
+typename Grid<_Tp, _Container>::const_reference
 Grid<_Tp, _Container>::operator[](int n) const {
 	return data_.at(n);
 }
@@ -237,6 +240,18 @@ Grid<_Tp, _Container>::data() {
 template<class _Tp, class _Container>
 void Grid<_Tp, _Container>::fill(value_type value) {
 	std::fill(begin(), end(), value);
+}
+
+template<class _Tp, class _Container>
+typename Grid<_Tp, _Container>::const_iterator
+Grid<_Tp, _Container>::begin() const {
+	return data_.begin();
+}
+
+template<class _Tp, class _Container>
+typename Grid<_Tp, _Container>::const_iterator
+Grid<_Tp, _Container>::end() const {
+	return data_.end();
 }
 
 
