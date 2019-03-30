@@ -21,7 +21,8 @@ public:
 	enum eHeuristic {
 		kManhattan,
 		kHamming,
-		kLinearConflict
+		kLinearConflict,
+		kEuclidean
 	};
 
 	/*
@@ -150,6 +151,9 @@ public:
 		static size_t
 		linearConflict(const_node_pointer start, const_node_pointer goal);
 
+		static size_t
+		euclidean(const_node_pointer start, const_node_pointer goal);
+	private:
 		static size_t
 		getTravelCost(const Position &source, const Position &target);
 	};

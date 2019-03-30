@@ -9,7 +9,8 @@
 const std::map<KStar::eHeuristic, KStar::HeuristicFunction> KStar::heuristicArray = {
 		{kManhattan,      Heuristic::manhattan},
 		{kHamming,        Heuristic::hamming},
-		{kLinearConflict, Heuristic::linearConflict}
+		{kLinearConflict, Heuristic::linearConflict},
+		{kEuclidean,      Heuristic::euclidean}
 };
 
 void KStar::setHeuristic(const KStar::HeuristicFunction &heuristic) {
@@ -206,6 +207,19 @@ KStar::Heuristic::linearConflict(const_node_pointer start,
 		}
 	}
 	return H + manhattan(start, goal);
+}
+
+size_t KStar::Heuristic::euclidean(KStar::const_node_pointer start,
+								   KStar::const_node_pointer goal) {
+	size_t H = 0;
+	for (size_t n = 1; n < start->grid.size(); ++n) {
+		Position positionGoal = getPositionOf(goal, n);
+		Position positionStart = getPositionOf(start, n);
+		size_t dx = std::abs(positionStart.x - positionGoal.x);
+		size_t dy = std::abs(positionStart.y - positionGoal.y);
+		H += std::sqrt(dx * dx + dy * dy);
+	}
+	return H;
 }
 
 /*

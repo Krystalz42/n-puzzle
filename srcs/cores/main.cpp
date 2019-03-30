@@ -90,7 +90,8 @@ int main(int argc, char *argv[]) {
 	const std::map<std::string, KStar::eHeuristic> map {
 			{ "hamming", KStar::kHamming },
 			{ "manhattan", KStar::kManhattan },
-			{ "linear conflict", KStar::kLinearConflict }
+			{ "linear conflict", KStar::kLinearConflict },
+			{ "euclidiean", KStar::kEuclidean }
 	};
 
 	try {
@@ -103,6 +104,7 @@ int main(int argc, char *argv[]) {
 				("hamming,h", "set heuristic to hamming")
 				("visualizer,v", "Enable visualizer")
 				("manhattan,m", "set heuristic to manhattan")
+				("euclidean,e", "set heuristic to euclidean")
 				("linear conflict,l", "set heuristic to linear conflict")
 				("help", "display this message");
 
