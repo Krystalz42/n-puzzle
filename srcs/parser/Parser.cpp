@@ -1,6 +1,7 @@
 #include <zconf.h>
 #include "Parser.hpp"
 #include <cassert>
+#include <unordered_set>
 
 //
 //
@@ -23,13 +24,13 @@ void Parser::parseFile(std::ifstream &file) {
 		if (!buffer.empty())
 			parseLine(buffer);
 	}
-	GridContainer temp(gridContainer);
-	std::sort(temp.begin(), temp.end());
-	GridContainer::const_iterator iterator = std::adjacent_find(temp.cbegin(), temp.cend());
-//	if (iterator != gridContainer.cend()) {
-//		std::string error("n-puzzle error: there is two same value on puzzle");
-//		throw std::runtime_error(error);
-//	}
+	std::unordered_set<int> s;
+	std::copy(gridContainer.begin(), gridContainer.end(), std::inserter(s, s.begin()));
+
+	if (gridContainer.size() != s.size()) {
+		std::string error("n-puzzle error: there is two same value on puzzle");
+		throw std::runtime_error(error);
+	}
 }
 
 void Parser::parseLine(const std::string &string) {

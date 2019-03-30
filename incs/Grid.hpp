@@ -189,7 +189,7 @@ Grid<_Tp, _Container>::cbegin() const {
 template<class _Tp, class _Container>
 typename Grid<_Tp, _Container>::const_iterator
 Grid<_Tp, _Container>::cend() const {
-	return data_.end();
+	return data_.cend();
 }
 
 template<class _Tp, class _Container>
