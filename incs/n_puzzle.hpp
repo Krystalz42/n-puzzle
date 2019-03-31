@@ -3,7 +3,7 @@
 
 #include <Grid.hpp>
 
-typedef uint16_t ValuePuzzle;
+typedef int16_t ValuePuzzle;
 
 typedef std::vector<std::vector<ValuePuzzle >> RawArray;
 

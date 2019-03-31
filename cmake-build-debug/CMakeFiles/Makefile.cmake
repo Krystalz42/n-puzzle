@@ -111,6 +111,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.13.4/CMakeSystem.cmake"
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
+  "../cmake/FindSFML.cmake"
   )
 
 # The corresponding makefile is:

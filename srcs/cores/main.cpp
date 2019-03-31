@@ -91,7 +91,8 @@ int main(int argc, char *argv[]) {
 			{ "hamming", KStar::kHamming },
 			{ "manhattan", KStar::kManhattan },
 			{ "linear conflict", KStar::kLinearConflict },
-			{ "euclidiean", KStar::kEuclidean }
+			{ "euclidiean", KStar::kEuclidean },
+			{ "pattern database", KStar::kPatternDatabase }
 	};
 
 	try {
@@ -106,6 +107,7 @@ int main(int argc, char *argv[]) {
 				("manhattan,m", "set heuristic to manhattan")
 				("euclidean,e", "set heuristic to euclidean")
 				("linear conflict,l", "set heuristic to linear conflict")
+				("pattern database,p", "set pattern databse (only work with size > 3)")
 				("help", "display this message");
 
 		boost::program_options::variables_map vm;
@@ -166,17 +168,7 @@ int main(int argc, char *argv[]) {
 		 * Final goal Grid builder
 		 */
 
-		KStar::const_node_pointer node = nullptr;
-		if (parser.getSize() == 3)
-			node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({1,2,3,8,0,4,7,6,5}), parser.getSize());
-		else {
-			node = std::make_shared<const KStar::Node>(Grid<ValuePuzzle>({
-																				 1,2,3,4,
-																				 12,13,14,5,
-																				 11,0,15,6,
-																				 10,9,8,7}), parser.getSize());
-		}
-
+		KStar::const_node_pointer node = builder.buildGoalGrid();
 
 		/*
 		 * Check if solvable
@@ -195,11 +187,6 @@ int main(int argc, char *argv[]) {
 		/*
 		 * Display solution
 		 */
-
-		for (const auto &grid : resolverData.resolverContainer) {
-			std::cout << grid << std::endl;
-			std::cout << std::endl;
-		}
 		std::cout << "Size resolver :" << resolverData.resolverContainer.size() << std::endl;
 		for (const auto &grid : resolverData.resolverContainer) {
 			std::cout << grid << std::endl;

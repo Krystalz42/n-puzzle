@@ -255,4 +255,5 @@ Grid<_Tp, _Container>::end() const {
 }
 
 
+
 #endif //N_PUZZLE_GRID_HPP

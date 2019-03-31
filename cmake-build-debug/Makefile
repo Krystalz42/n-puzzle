@@ -231,6 +231,141 @@ srcs/resolver/KStar.cpp.s:
 	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.s
 .PHONY : srcs/resolver/KStar.cpp.s
 
+srcs/visualizer/DisplaySfml.o: srcs/visualizer/DisplaySfml.cpp.o
+
+.PHONY : srcs/visualizer/DisplaySfml.o
+
+# target to build an object file
+srcs/visualizer/DisplaySfml.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/DisplaySfml.cpp.o
+.PHONY : srcs/visualizer/DisplaySfml.cpp.o
+
+srcs/visualizer/DisplaySfml.i: srcs/visualizer/DisplaySfml.cpp.i
+
+.PHONY : srcs/visualizer/DisplaySfml.i
+
+# target to preprocess a source file
+srcs/visualizer/DisplaySfml.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/DisplaySfml.cpp.i
+.PHONY : srcs/visualizer/DisplaySfml.cpp.i
+
+srcs/visualizer/DisplaySfml.s: srcs/visualizer/DisplaySfml.cpp.s
+
+.PHONY : srcs/visualizer/DisplaySfml.s
+
+# target to generate assembly for a file
+srcs/visualizer/DisplaySfml.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/DisplaySfml.cpp.s
+.PHONY : srcs/visualizer/DisplaySfml.cpp.s
+
+srcs/visualizer/GridSprite.o: srcs/visualizer/GridSprite.cpp.o
+
+.PHONY : srcs/visualizer/GridSprite.o
+
+# target to build an object file
+srcs/visualizer/GridSprite.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridSprite.cpp.o
+.PHONY : srcs/visualizer/GridSprite.cpp.o
+
+srcs/visualizer/GridSprite.i: srcs/visualizer/GridSprite.cpp.i
+
+.PHONY : srcs/visualizer/GridSprite.i
+
+# target to preprocess a source file
+srcs/visualizer/GridSprite.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridSprite.cpp.i
+.PHONY : srcs/visualizer/GridSprite.cpp.i
+
+srcs/visualizer/GridSprite.s: srcs/visualizer/GridSprite.cpp.s
+
+.PHONY : srcs/visualizer/GridSprite.s
+
+# target to generate assembly for a file
+srcs/visualizer/GridSprite.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridSprite.cpp.s
+.PHONY : srcs/visualizer/GridSprite.cpp.s
+
+srcs/visualizer/GridVisualizer.o: srcs/visualizer/GridVisualizer.cpp.o
+
+.PHONY : srcs/visualizer/GridVisualizer.o
+
+# target to build an object file
+srcs/visualizer/GridVisualizer.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridVisualizer.cpp.o
+.PHONY : srcs/visualizer/GridVisualizer.cpp.o
+
+srcs/visualizer/GridVisualizer.i: srcs/visualizer/GridVisualizer.cpp.i
+
+.PHONY : srcs/visualizer/GridVisualizer.i
+
+# target to preprocess a source file
+srcs/visualizer/GridVisualizer.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridVisualizer.cpp.i
+.PHONY : srcs/visualizer/GridVisualizer.cpp.i
+
+srcs/visualizer/GridVisualizer.s: srcs/visualizer/GridVisualizer.cpp.s
+
+.PHONY : srcs/visualizer/GridVisualizer.s
+
+# target to generate assembly for a file
+srcs/visualizer/GridVisualizer.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/GridVisualizer.cpp.s
+.PHONY : srcs/visualizer/GridVisualizer.cpp.s
+
+srcs/visualizer/SfVectorInterpolate.o: srcs/visualizer/SfVectorInterpolate.cpp.o
+
+.PHONY : srcs/visualizer/SfVectorInterpolate.o
+
+# target to build an object file
+srcs/visualizer/SfVectorInterpolate.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/SfVectorInterpolate.cpp.o
+.PHONY : srcs/visualizer/SfVectorInterpolate.cpp.o
+
+srcs/visualizer/SfVectorInterpolate.i: srcs/visualizer/SfVectorInterpolate.cpp.i
+
+.PHONY : srcs/visualizer/SfVectorInterpolate.i
+
+# target to preprocess a source file
+srcs/visualizer/SfVectorInterpolate.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/SfVectorInterpolate.cpp.i
+.PHONY : srcs/visualizer/SfVectorInterpolate.cpp.i
+
+srcs/visualizer/SfVectorInterpolate.s: srcs/visualizer/SfVectorInterpolate.cpp.s
+
+.PHONY : srcs/visualizer/SfVectorInterpolate.s
+
+# target to generate assembly for a file
+srcs/visualizer/SfVectorInterpolate.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/SfVectorInterpolate.cpp.s
+.PHONY : srcs/visualizer/SfVectorInterpolate.cpp.s
+
+srcs/visualizer/Visualizer.o: srcs/visualizer/Visualizer.cpp.o
+
+.PHONY : srcs/visualizer/Visualizer.o
+
+# target to build an object file
+srcs/visualizer/Visualizer.cpp.o:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/Visualizer.cpp.o
+.PHONY : srcs/visualizer/Visualizer.cpp.o
+
+srcs/visualizer/Visualizer.i: srcs/visualizer/Visualizer.cpp.i
+
+.PHONY : srcs/visualizer/Visualizer.i
+
+# target to preprocess a source file
+srcs/visualizer/Visualizer.cpp.i:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/Visualizer.cpp.i
+.PHONY : srcs/visualizer/Visualizer.cpp.i
+
+srcs/visualizer/Visualizer.s: srcs/visualizer/Visualizer.cpp.s
+
+.PHONY : srcs/visualizer/Visualizer.s
+
+# target to generate assembly for a file
+srcs/visualizer/Visualizer.cpp.s:
+	$(MAKE) -f CMakeFiles/n_puzzle.dir/build.make CMakeFiles/n_puzzle.dir/srcs/visualizer/Visualizer.cpp.s
+.PHONY : srcs/visualizer/Visualizer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +387,21 @@ help:
 	@echo "... srcs/resolver/KStar.o"
 	@echo "... srcs/resolver/KStar.i"
 	@echo "... srcs/resolver/KStar.s"
+	@echo "... srcs/visualizer/DisplaySfml.o"
+	@echo "... srcs/visualizer/DisplaySfml.i"
+	@echo "... srcs/visualizer/DisplaySfml.s"
+	@echo "... srcs/visualizer/GridSprite.o"
+	@echo "... srcs/visualizer/GridSprite.i"
+	@echo "... srcs/visualizer/GridSprite.s"
+	@echo "... srcs/visualizer/GridVisualizer.o"
+	@echo "... srcs/visualizer/GridVisualizer.i"
+	@echo "... srcs/visualizer/GridVisualizer.s"
+	@echo "... srcs/visualizer/SfVectorInterpolate.o"
+	@echo "... srcs/visualizer/SfVectorInterpolate.i"
+	@echo "... srcs/visualizer/SfVectorInterpolate.s"
+	@echo "... srcs/visualizer/Visualizer.o"
+	@echo "... srcs/visualizer/Visualizer.i"
+	@echo "... srcs/visualizer/Visualizer.s"
 .PHONY : help
 
 

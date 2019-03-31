@@ -19,10 +19,11 @@ public:
 	struct Compare;
 
 	enum eHeuristic {
-		kManhattan,
-		kHamming,
-		kLinearConflict,
-		kEuclidean
+		kManhattan = 0,    //0
+		kHamming,        //1
+		kLinearConflict,//2
+		kEuclidean,        //3
+		kPatternDatabase//4
 	};
 
 	/*
@@ -67,7 +68,7 @@ public:
 
 		Node(const Node &node);
 
-		Node(const GridContainer &grid, const size_t &size);
+		Node(const GridContainer &grid);
 
 		Node &operator=(const Node &rhs);
 
@@ -80,7 +81,6 @@ public:
 		friend std::ostream &operator<<(std::ostream &os, const Node &node);
 
 		GridContainer grid;
-		size_t size;
 
 		const_node_pointer parent;
 		Cost H;
@@ -108,13 +108,16 @@ public:
 	ResolverData buildSolution();
 
 	void
-	resolveCost(node_pointer_reference node, const_node_pointer_reference goal);
+	resolveCost(node_pointer_reference start,
+				const_node_pointer_reference goal);
 
 	bool isSovablePuzzle(const_node_pointer node) const;
 
 	size_t countInversionInPuzzle(const_node_pointer_reference node) const;
 
-	bool isBetween(ValuePuzzle value, ValuePuzzle limit, node_pointer node) const;
+	bool
+	isBetween(ValuePuzzle value, ValuePuzzle limit, node_pointer node) const;
+
 private:
 	HeuristicFunction heuristic_;
 
@@ -122,14 +125,17 @@ private:
 
 	std::set<const_node_pointer> nodeCloseList;
 
+private:
 	const Position direction[4] = {
 			{-1, 0}, //North
 			{1,  0}, // South
 			{0,  -1}, // East
 			{0,  1}, // West
 	};
+
 private:
 
+	const_node_pointer buildDatabase(const_node_pointer node, int step);
 
 	static Position
 	getPositionOf(const_node_pointer_reference node, ValuePuzzle value);
@@ -142,6 +148,11 @@ private:
 public:
 	class Heuristic {
 	public:
+		typedef std::pair<ValuePuzzle, Position> PairValuePosition;
+		typedef std::vector<PairValuePosition> PatternDatabase;
+
+		static const PatternDatabase patternDatabasePuzzle4[3];
+
 		static size_t
 		hamming(const_node_pointer start, const_node_pointer goal);
 
@@ -153,7 +164,21 @@ public:
 
 		static size_t
 		euclidean(const_node_pointer start, const_node_pointer goal);
+
+		static size_t
+		patternDatabase(const_node_pointer start, const_node_pointer goal);
+
 	private:
+
+		static size_t
+		hamming_(const Position &&start, const Position &&goal);
+
+		static size_t
+		manhattan_(const Position &&start, const Position &&goal);
+
+		static size_t
+		euclidean_(const Position &&start, const Position &&goal);
+
 		static size_t
 		getTravelCost(const Position &source, const Position &target);
 	};

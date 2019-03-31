@@ -17,4 +17,4 @@ EXTERN : Boost finded
 -- Found SFML 2.4.2 in /usr/local/include
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/alexandreroulin/n-puzzle
+-- Build files have been written to: /Users/alexandreroulin/n-puzzle/cmake-build-debug
