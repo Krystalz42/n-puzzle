@@ -181,9 +181,11 @@
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="770" />
+    <option name="y" value="159" />
+    <option name="width" value="1790" />
+    <option name="height" value="1256" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -259,7 +261,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="n_puzzle" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--help" PASS_PARENT_ENVS_2="true" PROJECT_NAME="n_puzzle" TARGET_NAME="n_puzzle" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="n_puzzle" RUN_TARGET_NAME="n_puzzle">
+    <configuration name="n_puzzle" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--help" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="n_puzzle" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="n_puzzle">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
