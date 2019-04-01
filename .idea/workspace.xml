@@ -12,13 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="085300e5-cafb-4847-91d0-c0aacd61dba2" name="Default Changelist" comment="Update kStar">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/cores/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cores/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/visualizer/GridSprite.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/visualizer/GridSprite.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/visualizer/GridVisualizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/GridVisualizer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/visualizer/GridVisualizer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/GridVisualizer.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" afterDir="false" />
     </list>
@@ -49,37 +43,16 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8289738">
+    <splitter split-orientation="horizontal" split-proportion="0.7193159">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.57562727">
+        <splitter split-orientation="horizontal" split-proportion="0.58082575">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="120">
-                      <caret line="8" selection-start-line="8" selection-end-line="8" />
-                      <folding>
-                        <element signature="e#0#25#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
               <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.hpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="570">
-                      <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="227">
-                      <caret line="57" selection-start-line="57" selection-end-line="57" />
+                    <state relative-caret-position="328">
+                      <caret line="68" selection-start-line="68" selection-end-line="68" />
                     </state>
                   </provider>
                 </entry>
@@ -91,8 +64,8 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="126">
-                      <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+                    <state relative-caret-position="392">
+                      <caret line="41" selection-start-line="41" selection-end-line="41" />
                       <folding>
                         <element signature="e#0#19#0" expanded="true" />
                       </folding>
@@ -100,11 +73,20 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridVisualizer.hpp">
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="60">
-                      <caret line="4" selection-start-line="4" selection-end-line="5" />
+                    <state relative-caret-position="540">
+                      <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridPuzzle.hpp">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="240">
+                      <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
                       <folding>
                         <element signature="e#13#50#0" expanded="true" />
                       </folding>
@@ -112,23 +94,14 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridVisualizer.cpp">
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridPuzzle.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="727">
+                    <state relative-caret-position="915">
                       <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
                       <folding>
                         <element signature="e#0#29#0" expanded="true" />
                       </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="15">
-                      <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
                     </state>
                   </provider>
                 </entry>
@@ -142,8 +115,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+                <state relative-caret-position="315">
+                  <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -154,10 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>map.getPosition()</find>
-      <find>sizePu</find>
-      <find>Builder</find>
-      <find>std::set&lt;const_node_pointer&gt;</find>
       <find>nodeOpenList</find>
       <find>NodeContainer</find>
       <find>resolvePuzzle</find>
@@ -184,6 +153,10 @@
       <find>gridContainer</find>
       <find>gridContainerToGrid</find>
       <find>PuzzleGrid</find>
+      <find>step_</find>
+      <find>pause</find>
+      <find>pause_</find>
+      <find>resolvedIterCurrentState</find>
     </findStrings>
     <replaceStrings>
       <replace>Grid</replace>
@@ -241,12 +214,12 @@
         <option value="$PROJECT_DIR$/srcs/resolver/KStar.cpp" />
         <option value="$PROJECT_DIR$/files/file_easy_3.np" />
         <option value="$PROJECT_DIR$/srcs/cores/main.cpp" />
-        <option value="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" />
-        <option value="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/GridVisualizer.hpp" />
-        <option value="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/GridVisualizer.cpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.hpp" />
+        <option value="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" />
+        <option value="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" />
+        <option value="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" />
       </list>
     </option>
   </component>
@@ -339,7 +312,7 @@
       <workItem from="1553847374497" duration="175000" />
       <workItem from="1553848461968" duration="14978000" />
       <workItem from="1554027969459" duration="3952000" />
-      <workItem from="1554130342380" duration="18108000" />
+      <workItem from="1554130342380" duration="21249000" />
     </task>
     <task id="LOCAL-00001" summary="Add Grid">
       <created>1553171738093</created>
@@ -387,7 +360,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108210000" />
+    <option name="totallyTimeSpent" value="111351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="23" width="2468" height="1392" extended-state="0" />
@@ -659,16 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/NodeVizualizer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/NodeVizualizer.hpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
@@ -676,13 +639,6 @@
           <folding>
             <element signature="e#55#75#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -703,56 +659,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp">
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/NodeVizualizer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/NodeVizualizer.hpp">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp">
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridPuzzle.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridVisualizer.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="5" />
+        <state relative-caret-position="240">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding>
             <element signature="e#13#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridVisualizer.cpp">
+    <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-310">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp">
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridPuzzle.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="915">
+          <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -761,6 +700,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>

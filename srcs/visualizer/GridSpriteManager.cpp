@@ -55,12 +55,12 @@ namespace Visualizer {
 		size_t index = 0;
 
 		for (auto const &sprite : sprites_) {
-			if (index) {
-				sf::Sprite copy(sprite);
-				copy.setScale(scale);
-				copy.setPosition(copy.getPosition().x * scale.x, copy.getPosition().y * scale.y);
-				render.draw(copy);
-			}
+			sf::Sprite copy(sprite);
+			copy.setScale(scale);
+			copy.setPosition(copy.getPosition().x * scale.x, copy.getPosition().y * scale.y);
+			if (!index)
+				copy.setColor(sf::Color(copy.getColor().r, copy.getColor().g, copy.getColor().b, 96));
+			render.draw(copy);
 			index++;
 		}
 	}
