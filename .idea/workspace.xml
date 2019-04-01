@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="085300e5-cafb-4847-91d0-c0aacd61dba2" name="Default Changelist" comment="Update kStar">
-      <change beforePath="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" afterDir="false" />
     </list>
@@ -51,8 +50,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="328">
-                      <caret line="68" selection-start-line="68" selection-end-line="68" />
+                    <state relative-caret-position="195">
+                      <caret line="14" column="148" selection-start-line="14" selection-start-column="137" selection-end-line="14" selection-end-column="148" />
                     </state>
                   </provider>
                 </entry>
@@ -61,11 +60,11 @@
           </split-first>
           <split-second>
             <leaf>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="392">
-                      <caret line="41" selection-start-line="41" selection-end-line="41" />
+                    <state relative-caret-position="227">
+                      <caret line="96" column="10" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
                       <folding>
                         <element signature="e#0#19#0" expanded="true" />
                       </folding>
@@ -73,11 +72,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="540">
-                      <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+                    <state relative-caret-position="270">
+                      <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
                     </state>
                   </provider>
                 </entry>
@@ -115,8 +114,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="19" />
+                <state relative-caret-position="375">
+                  <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -127,7 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nodeOpenList</find>
       <find>NodeContainer</find>
       <find>resolvePuzzle</find>
       <find>font</find>
@@ -141,7 +139,6 @@
       <find>node</find>
       <find>temp_visualizer</find>
       <find>class Node</find>
-      <find>pixelBorder</find>
       <find>start_</find>
       <find>temp_</find>
       <find>restart</find>
@@ -157,6 +154,8 @@
       <find>pause</find>
       <find>pause_</find>
       <find>resolvedIterCurrentState</find>
+      <find>Number of move to reach final state</find>
+      <find>pixelBorder</find>
     </findStrings>
     <replaceStrings>
       <replace>Grid</replace>
@@ -218,15 +217,15 @@
         <option value="$PROJECT_DIR$/srcs/visualizer/GridVisualizer.cpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.hpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" />
-        <option value="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" />
+        <option value="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="56" />
-    <option name="y" value="23" />
+    <option name="x" value="72" />
+    <option name="y" value="39" />
     <option name="width" value="2468" />
     <option name="height" value="1392" />
   </component>
@@ -312,7 +311,7 @@
       <workItem from="1553847374497" duration="175000" />
       <workItem from="1553848461968" duration="14978000" />
       <workItem from="1554027969459" duration="3952000" />
-      <workItem from="1554130342380" duration="21249000" />
+      <workItem from="1554130342380" duration="21526000" />
     </task>
     <task id="LOCAL-00001" summary="Add Grid">
       <created>1553171738093</created>
@@ -360,10 +359,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111351000" />
+    <option name="totallyTimeSpent" value="111628000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="56" y="23" width="2468" height="1392" extended-state="0" />
+    <frame x="72" y="39" width="2468" height="1392" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18054411" />
@@ -371,13 +370,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3246154" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3246154" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.42692307" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.42692307" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32891566" />
@@ -703,10 +702,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" column="148" selection-start-line="14" selection-start-column="137" selection-end-line="14" selection-end-column="148" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="227">
+          <caret line="96" column="10" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -715,22 +728,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        <state relative-caret-position="375">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
         </state>
       </provider>
     </entry>

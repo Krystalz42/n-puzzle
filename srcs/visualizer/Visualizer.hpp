@@ -27,7 +27,7 @@ namespace Visualizer {
 	};
 
 	constexpr unsigned int pixelBorder = 3;
-
+	constexpr unsigned int sizeInfo = 30;
 	class Vizualizer {
 	public:
 		Vizualizer(unsigned int tileSize);
