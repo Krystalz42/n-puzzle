@@ -9,10 +9,12 @@
 #include <visualizer/GridVisualizer.hpp>
 #include <visualizer/SfVectorInterpolate.hpp>
 #include <visualizer/GridSprite.hpp>
+#include <visualizer/Visualizer.hpp>
 
 //Make Min Max
 
-void temp_visualizer(KStar::ResolverContainer resolverContainer, unsigned int tileSize) {
+void temp_visualizer(KStar::ResolverData resolver, unsigned int tileSize) {
+	KStar::ResolverContainer &resolverContainer = resolver.resolverContainer;
 	bool restart = false;
 
 	sf::Texture tileset_;
@@ -30,7 +32,14 @@ void temp_visualizer(KStar::ResolverContainer resolverContainer, unsigned int ti
 	auto resolvedIterCurrentState = resolverContainer.begin();
 	auto resolvedIterPreviousState = resolverContainer.begin();
 
+	sf::Font font;
+	if (!font.loadFromFile((pathRoot / "ressources" / "OpenSans-Regular.ttf").generic_string()))
+		exit(0);
+
+
 	GridSprite gs(tileset_, sf::Vector2u(tileSize, tileSize));
+	float zoom = 100.f;
+	sf::Vector2i mapPosition(0.f, 0.f);
 
 	while (!display.exit()) {
 		//display.updateInput();
@@ -48,10 +57,31 @@ void temp_visualizer(KStar::ResolverContainer resolverContainer, unsigned int ti
 					case sf::Keyboard::N:
 						restart = true;
 						break;
+					case sf::Keyboard::O:
+						zoom += 2.f;
+						break;
+					case sf::Keyboard::L:
+						zoom -= 2.f;
+						break;
 					default :
 						break;
 				}
 			}
+		}
+
+		static bool firstPress = true;
+		static sf::Vector2i firstPosition;
+		static sf::Vector2i lastPosition;
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+			if (firstPress) {
+				firstPosition = sf::Mouse::getPosition();
+				firstPress = false;
+				lastPosition = sf::Mouse::getPosition();
+			}
+			mapPosition += (sf::Mouse::getPosition() - lastPosition);
+			lastPosition = sf::Mouse::getPosition();
+		} else {
+			firstPress = true;
 		}
 
 		auto delta_time = std::chrono::high_resolution_clock::now() - time_start;
@@ -80,7 +110,50 @@ void temp_visualizer(KStar::ResolverContainer resolverContainer, unsigned int ti
 			gs.updateSpritePositionFromGridContainers(*resolvedIterPreviousState, *resolvedIterCurrentState, ratio);
 		else if (resolvedIterPreviousState != resolverContainer.end())
 			gs.updateSpritePositionFromGridContainers(*resolvedIterPreviousState);
-		gs.renderTarget(display.win_);
+
+		float sizeRender = 0.7f * zoom;
+		float sizeRenderInfo = 0.3f * zoom;
+		sf::Vertex line[] =
+				{
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10, mapPosition.y + 10)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10, mapPosition.y + 10 + sizeRender + sizeRenderInfo)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10 + sizeRender, mapPosition.y + 10 + sizeRender + sizeRenderInfo)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10 + sizeRender, mapPosition.y + 10)),
+
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10, mapPosition.y + 10)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10 + sizeRender, mapPosition.y + 10)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10, mapPosition.y + 10 + sizeRender + sizeRenderInfo)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10 + sizeRender, mapPosition.y + 10 + sizeRender + sizeRenderInfo)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10, mapPosition.y + 10 + sizeRender)),
+						sf::Vertex(sf::Vector2f(mapPosition.x + 10 + sizeRender, mapPosition.y + 10 + sizeRender))
+				};
+		display.win_.draw(line, 10, sf::Lines);
+		sf::RenderTexture renderPuzzle;
+		if (!(renderPuzzle.create(display.win_.getSize().x, display.win_.getSize().y)))
+			exit(0);
+		renderPuzzle.clear();
+		gs.renderTarget(renderPuzzle, sf::Vector2f(1.f, 1.0f));
+		renderPuzzle.display();
+
+		sf::Sprite sprite(renderPuzzle.getTexture());
+		sprite.setPosition(mapPosition.x + 10, mapPosition.y + 10);
+		float ratioRender = display.win_.getSize().y;
+		if (display.win_.getSize().x > display.win_.getSize().y)
+			ratioRender = display.win_.getSize().x;
+		sprite.setScale(sizeRender / ratioRender, sizeRender / ratioRender);
+		display.win_.draw(sprite);
+
+		sf::Text text1;
+		text1.setFont(font);
+		text1.setCharacterSize(sizeRenderInfo * 0.8);
+		text1.setString("OOOKE");
+		text1.setStyle(sf::Text::Regular);
+
+		sf::FloatRect textRect = text1.getLocalBounds();
+		text1.setOrigin(textRect.left + textRect.width / 2.0f,
+						textRect.top  + textRect.height / 2.0f);
+		text1.setPosition(mapPosition.x + 10 + sizeRender / 2, mapPosition.y + 10 + sizeRender + sizeRenderInfo / 2);
+		display.win_.draw(text1);
 		display.render();
 	}
 }
@@ -200,7 +273,7 @@ int main(int argc, char *argv[]) {
 		 * GG WP
 		 */
 		if (vm.count("visualizer"))
-			temp_visualizer(resolverData.resolverContainer, parser.getSize());
+			temp_visualizer(resolverData, parser.getSize());
 
 
 	} catch (const std::exception &e) {

@@ -2,13 +2,23 @@
 #include <cassert>
 #include "SfVectorInterpolate.hpp"
 #include <math.h>
+#include <resolver/KStar.hpp>
 
 void GridSprite::setSpriteRect_() {
-	size_t index = 0;
-	for (auto & sprite : sprites_) {
-		sprite.setTexture(texture_);
-		sprite.setTextureRect(sf::IntRect((index % 3) * pixelTileSize_.x, (index / tileSize_.x) * pixelTileSize_.y, pixelTileSize_.x, pixelTileSize_.y));
-		index++;
+
+
+	KStar::Builder builder;
+	builder.setSize(tileSize_.x);
+	KStar::node_pointer nodePointer = builder.buildGoalGrid();
+
+	std::cout << nodePointer->grid << std::endl;
+
+	for (unsigned int y = 0; y < tileSize_.y; y++) {
+		for (unsigned int x = 0; x < tileSize_.x; x++) {
+			size_t index = nodePointer->grid[x + y * tileSize_.x];
+			sprites_[index].setTextureRect(sf::IntRect(x * pixelTileSize_.x, y * pixelTileSize_.y, pixelTileSize_.x, pixelTileSize_.y));
+			sprites_[index].setTexture(texture_);
+		}
 	}
 }
 
@@ -34,11 +44,16 @@ void GridSprite::updateSpritePositionFromGridContainers(GridContainer &a, GridCo
 	}
 }
 
-void GridSprite::renderTarget(sf::RenderTarget &render) {
+void GridSprite::renderTarget(sf::RenderTarget &render, sf::Vector2f const &scale) {
 	size_t index = 0;
+
 	for (auto const &sprite : sprites_) {
-		if (index)
-			render.draw(sprite);
+		if (index) {
+			sf::Sprite copy(sprite);
+			copy.setScale(scale);
+			copy.setPosition(copy.getPosition().x * scale.x, copy.getPosition().y * scale.y);
+			render.draw(copy);
+		}
 		index++;
 	}
 }

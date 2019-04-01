@@ -2,6 +2,7 @@
 
 #include "KStar.hpp"
 #include <Grid.hpp>
+#include <cassert>
 /*
  * KStar
  */

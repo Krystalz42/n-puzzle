@@ -15,7 +15,7 @@ public:
 	GridSprite(GridSprite const &src) = delete;
 
 	void updateSpritePositionFromGridContainers(GridContainer &a, GridContainer &b, float ratio);
-	void renderTarget(sf::RenderTarget &render);
+	void renderTarget(sf::RenderTarget &render, sf::Vector2f const &scale);
 	void updateSpritePositionFromGridContainers(GridContainer &a);
 
 private:
