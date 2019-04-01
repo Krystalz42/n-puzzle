@@ -38,14 +38,14 @@ add_executable(n_puzzle
         srcs/parser/Parser.hpp
         srcs/visualizer/DisplaySfml.cpp
         srcs/visualizer/DisplaySfml.hpp
-        srcs/visualizer/GridVisualizer.cpp
-        srcs/visualizer/GridVisualizer.hpp
+        srcs/visualizer/GridPuzzle.cpp
+        srcs/visualizer/GridPuzzle.hpp
         srcs/visualizer/SfVectorInterpolate.cpp
         srcs/visualizer/SfVectorInterpolate.hpp
         incs/Grid.hpp
         incs/Position.hpp
         incs/Grid.cpp
-        incs/PriorityQueue.hpp incs/IDisplay.hpp srcs/visualizer/GridSprite.cpp srcs/visualizer/GridSprite.hpp srcs/visualizer/Visualizer.cpp srcs/visualizer/Visualizer.hpp srcs/visualizer/NodeVizualizer.cpp srcs/visualizer/NodeVizualizer.hpp)
+        incs/PriorityQueue.hpp incs/IDisplay.hpp srcs/visualizer/GridSpriteManager.cpp srcs/visualizer/GridSpriteManager.hpp srcs/visualizer/Visualizer.cpp srcs/visualizer/Visualizer.hpp)
 
 include_directories(incs)
 include_directories(srcs)

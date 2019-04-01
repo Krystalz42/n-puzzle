@@ -1,76 +1,97 @@
 #include "Visualizer.hpp"
+#include <exception>
 
-namespace Vizualizer {
+namespace Visualizer {
 
-	Map::Map() :
-		position_(0, 0),
-		zoom_(100.f)
+	Vizualizer::Vizualizer(unsigned int tileSize) :
+	pathRoot_(N_PUZZLE_ROOT),
+	restart_(false) {
+
+		if (!texturePuzzle_.loadFromFile((pathRoot_ / "ressources" / "test.jpg").generic_string()))
+			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
+		if (!font_.loadFromFile((pathRoot_ / "ressources" / "OpenSans-Regular.ttf").generic_string()))
+			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
+		display_ = std::make_unique<DisplaySfml>(texturePuzzle_.getSize().x + pixelBorder * (tileSize - 1), texturePuzzle_.getSize().y + pixelBorder * (tileSize - 1), "Test");
+		display_->win_.setActive(false);
+		gs_ = std::make_unique<GridSpriteManager>(texturePuzzle_, sf::Vector2u(tileSize, tileSize));
+	}
+
+	void Vizualizer::loop(KStar::ResolverData &resolver) {
+		display_->win_.setActive(true);
+
+		KStar::ResolverContainer &resolverContainer = resolver.resolverContainer;
+
+		auto resolvedIterCurrentState = resolverContainer.begin();
+		auto resolvedIterPreviousState = resolverContainer.begin();
+
+
+		while (!display_->exit()) {
+			//display_->updateInput();
+			timeLogic_.update();
+
+			while (display_->win_.pollEvent(display_->ev_)) {
+				if (display_->ev_.type == sf::Event::Closed)
+					display_->exit_ = true;
+				if (display_->ev_.type == sf::Event::KeyPressed) {
+
+					switch (display_->ev_.key.code) {
+						case sf::Keyboard::Escape:
+							display_->exit_ = true;
+							break;
+						case sf::Keyboard::N:
+							restart_ = true;
+							break;
+						default :
+							break;
+					}
+				}
+			}
+
+
+			while (timeLogic_.needLogicUpdate()) {
+				if (restart_) {
+					resolvedIterCurrentState = resolverContainer.begin();
+					restart_ = false;
+				} else if (resolvedIterCurrentState != resolverContainer.end()) {
+					resolvedIterPreviousState = resolvedIterCurrentState;
+					++resolvedIterCurrentState;
+				}
+			}
+
+
+			display_->win_.clear();
+			if (resolvedIterCurrentState != resolverContainer.end())
+				gs_->updateSpritePositionFromGridContainers(*resolvedIterPreviousState, *resolvedIterCurrentState, timeLogic_.getRatio());
+			else if (resolvedIterPreviousState != resolverContainer.end())
+				gs_->updateSpritePositionFromGridContainers(*resolvedIterPreviousState);
+
+			gs_->renderTarget(display_->win_, sf::Vector2f(1.f, 1.0f));
+			display_->render();
+		}
+	}
+
+
+	TimeLogic::TimeLogic() :
+	lag_(std::chrono::nanoseconds(0)),
+	update_(std::chrono::high_resolution_clock::now()),
+	step_(std::chrono::milliseconds(400))
 	{}
 
-	float Map::getZoom() const {
-		return zoom_;
+	void TimeLogic::update() {
+		auto deltaTime = std::chrono::high_resolution_clock::now() - update_;
+		update_ = std::chrono::high_resolution_clock::now();
+		lag_ += std::chrono::duration_cast<std::chrono::nanoseconds>(deltaTime);
 	}
 
-	sf::Vector2i Map::getPosition() const {
-		return position_;
+	bool TimeLogic::needLogicUpdate() {
+		if (lag_ < step_)
+			return false;
+
+		lag_ -= step_;
+		return true;
 	}
 
-	float Map::zoomMax_ = 500;
-	float Map::zoomMin_ = 30;
-
-	Node::Node(Map const &map, sf::Vector2i const &position, sf::Texture const &texture, sf::Vector2u const &tileSize, sf::Font const &font) :
-		map_(map),
-		font_(font),
-		gs_(texture, tileSize),
-		position_(position) {
+	float TimeLogic::getRatio() const {
+		return static_cast<float>(lag_.count()) / static_cast<float>(step_.count());
 	}
-
-	void Node::update(float ratio) {
-
-		sizePuzzle_ = Node::percentSizePuzzle_ * map_.getZoom();
-		sizeData_ = Node::percentSizeData_ * map_.getZoom();
-
-		int i = 0;
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x, map_.getPosition().y + position_.y));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x, map_.getPosition().y + position_.y + sizePuzzle_ + sizeData_));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x + sizePuzzle_, map_.getPosition().y + position_.y + sizePuzzle_ + sizeData_));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x + sizePuzzle_, map_.getPosition().y + position_.y));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x, map_.getPosition().y + position_.y));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x + sizePuzzle_, map_.getPosition().y + position_.y));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x, map_.getPosition().y + position_.y + sizePuzzle_ + sizeData_));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x + sizePuzzle_, map_.getPosition().y + position_.y + sizePuzzle_ + sizeData_));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x, map_.getPosition().y + position_.y + sizePuzzle_));
-		line_[i++] = sf::Vertex(sf::Vector2f(map_.getPosition().x + position_.x + sizePuzzle_, map_.getPosition().y + position_.y + sizePuzzle_));
-
-		//gs_.updateSpritePositionFromGridContainers()
-	}
-
-	void Node::render(sf::RenderTarget &render) {
-
-		//if (line_[2].position.x < 0 && line_[2].position.y < 0)
-		//	return ;
-		render.draw(line_, 10, sf::Lines);
-
-		float ratioRender = render.getSize().y;
-		if (render.getSize().x > render.getSize().y)
-			ratioRender = render.getSize().x;
-		gs_.renderTarget(render, sf::Vector2f(sizePuzzle_ / ratioRender, sizePuzzle_ / ratioRender));
-
-
-
-		sf::Text text1;
-		text1.setFont(font_);
-		text1.setCharacterSize(sizeData_ * 0.8);
-		text1.setString("OOOKE");
-		text1.setStyle(sf::Text::Regular);
-
-		sf::FloatRect textRect = text1.getLocalBounds();
-		text1.setOrigin(textRect.left + textRect.width / 2.0f,
-						textRect.top  + textRect.height / 2.0f);
-		text1.setPosition(map_.getPosition().x + 10 + sizePuzzle_ / 2, map_.getPosition().y + 10 + sizePuzzle_ + sizeData_ / 2);
-		render.draw(text1);
-	}
-
-	float	Node::percentSizePuzzle_ = 0.7f;
-	float	Node::percentSizeData_ = 0.3f;
 }

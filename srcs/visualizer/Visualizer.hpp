@@ -1,43 +1,40 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <visualizer/GridSprite.hpp>
+#include <visualizer/GridSpriteManager.hpp>
+#include <resolver/KStar.hpp>
+#include <chrono>
+#include <boost/filesystem.hpp>
 
-namespace Vizualizer {
+namespace Visualizer {
 
-	class Map {
+	class TimeLogic {
 	public:
-		Map();
-
-		float getZoom() const;
-		sf::Vector2i getPosition() const;
+		TimeLogic();
+		void update();
+		bool needLogicUpdate();
+		float getRatio() const;
 
 	private:
-		sf::Vector2i position_;
-		float	zoom_;
-
-		static float zoomMax_;
-		static float zoomMin_;
+		std::chrono::nanoseconds lag_;
+		std::chrono::steady_clock::time_point update_;
+		std::chrono::nanoseconds step_;
 	};
 
-	class Node {
+	constexpr unsigned int pixelBorder = 3;
+
+	class Vizualizer {
 	public:
-		Node(Map const &map, sf::Vector2i const &position, sf::Texture const &texture, sf::Vector2u const &tileSize, sf::Font const &font);
-		void update(float ratio);
-		void render(sf::RenderTarget &render);
-
+		Vizualizer(unsigned int tileSize);
+		void loop(KStar::ResolverData &resolver);
 	private:
-		//sf::IntRect		bounds;
-		Map				const &map_;
-		sf::Font		const &font_;
-		GridSprite		gs_;
-		sf::Vector2i	position_;
-		sf::Vertex		line_[10];
-		float			sizePuzzle_;
-		float			sizeData_;
+		TimeLogic timeLogic_;
+		boost::filesystem::path pathRoot_;
+		std::unique_ptr<DisplaySfml> display_;
+		sf::Texture texturePuzzle_;
+		sf::Font  font_;
+		std::unique_ptr<GridSpriteManager> gs_;
 
-		static float	percentSizePuzzle_;
-		static float	percentSizeData_;
+		bool restart_;
 	};
-
 }
