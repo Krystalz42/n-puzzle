@@ -51,7 +51,7 @@ namespace Visualizer {
 		}
 	}
 
-	void GridSpriteManager::renderTarget(sf::RenderTarget &render, sf::Vector2f const &scale) {
+	void GridSpriteManager::renderTarget(sf::RenderTarget &render, sf::Vector2f const &scale, sf::Vector2f const &position) {
 		size_t index = 0;
 
 		for (auto const &sprite : sprites_) {
@@ -60,6 +60,7 @@ namespace Visualizer {
 			copy.setPosition(copy.getPosition().x * scale.x, copy.getPosition().y * scale.y);
 			if (!index)
 				copy.setColor(sf::Color(copy.getColor().r, copy.getColor().g, copy.getColor().b, 96));
+			copy.setPosition(copy.getPosition() + position);
 			render.draw(copy);
 			index++;
 		}

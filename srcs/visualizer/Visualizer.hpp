@@ -40,6 +40,7 @@ namespace Visualizer {
 		sf::Font  font_;
 		std::unique_ptr<GridSpriteManager> gs_;
 
+		unsigned int tileSize_;
 		bool restart_;
 		bool pause_;
 	};

@@ -5,6 +5,7 @@ namespace Visualizer {
 
 	Vizualizer::Vizualizer(unsigned int tileSize) :
 	pathRoot_(N_PUZZLE_ROOT),
+	tileSize_(tileSize),
 	restart_(false),
 	pause_(false) {
 
@@ -12,7 +13,7 @@ namespace Visualizer {
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
 		if (!font_.loadFromFile((pathRoot_ / "ressources" / "OpenSans-Regular.ttf").generic_string()))
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
-		display_ = std::make_unique<DisplaySfml>(texturePuzzle_.getSize().x + pixelBorder * (tileSize - 1), texturePuzzle_.getSize().y + pixelBorder * (tileSize - 1) + sizeInfo, "Test");
+		display_ = std::make_unique<DisplaySfml>(texturePuzzle_.getSize().x + pixelBorder * (tileSize - 1), texturePuzzle_.getSize().y + pixelBorder * (tileSize - 1) + sizeInfo * 2, "Test");
 		display_->win_.setActive(false);
 		gs_ = std::make_unique<GridSpriteManager>(texturePuzzle_, sf::Vector2u(tileSize, tileSize));
 	}
@@ -91,11 +92,23 @@ namespace Visualizer {
 			else if (resolvedIterPreviousState != resolverContainer.end())
 				gs_->updateSpritePositionFromGridContainers(*resolvedIterPreviousState);
 
-			gs_->renderTarget(display_->win_, sf::Vector2f(1.f, 1.0f));
+			gs_->renderTarget(display_->win_, sf::Vector2f(1.f, 1.0f), sf::Vector2f(0.f, sizeInfo));
+
+			sf::Text text1;
+			text1.setFont(font_);
+			text1.setCharacterSize(sizeInfo * 0.7);
+			text1.setString(std::string("Complexity in size : ") + std::to_string(resolver.complexityInTime));
+			text1.setStyle(sf::Text::Regular);
+
+			sf::FloatRect textRect = text1.getLocalBounds();
+			text1.setOrigin(textRect.left + textRect.width / 2.0f,
+							textRect.top  + textRect.height / 2.0f);
+			text1.setPosition(display_->win_.getSize().x / tileSize_ / 2.f, display_->win_.getSize().y - sizeInfo / 2.f);
+			display_->win_.draw(text1);
+
 			display_->render();
 		}
 	}
-
 
 	TimeLogic::TimeLogic() :
 	lag_(std::chrono::nanoseconds(0)),
