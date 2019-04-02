@@ -41,6 +41,8 @@ public:
 		size_t complexityInSize;
 		//Number of moves required to transition from the initial state to the final state,according to the search
 		size_t numberOfMove;
+
+		std::string nameHeuristic;
 	};
 
 	typedef std::shared_ptr<Node> node_pointer;
@@ -184,6 +186,7 @@ public:
 	};
 
 	static const std::map<eHeuristic, HeuristicFunction> heuristicArray;
+	static const std::map<eHeuristic, std::string> heuristicNameArray;
 
 	/*
 	 * Builder

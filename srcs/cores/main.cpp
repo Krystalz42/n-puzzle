@@ -124,7 +124,7 @@ int main(int argc, char *argv[]) {
 		 * GG WP
 		 */
 		if (vm.count("visualizer")) {
-			Visualizer::Vizualizer visu(parser.getSize());
+			Visualizer::Core visu(parser.getSize());
 			visu.loop(resolverData);
 		}
 

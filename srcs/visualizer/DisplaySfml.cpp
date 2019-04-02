@@ -40,11 +40,17 @@ void DisplaySfml::updateInput() {
 					break;
 			}
 		}
+		if (callback_)
+			callback_(ev_);
 	}
 }
 
 void DisplaySfml::render() {
 	win_.display();
+}
+
+void DisplaySfml::setCallbackEvent(std::function<void(sf::Event &)> callbackEvent) {
+	callback_ = callbackEvent;
 }
 
 DisplaySfml::SfmlException::SfmlException() noexcept :

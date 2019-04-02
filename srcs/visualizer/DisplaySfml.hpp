@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "IDisplay.hpp"
+#include <functional>
 
 #ifndef N_PUZZLE_ROOT
 	#define N_PUZZLE_ROOT ""
@@ -33,11 +34,14 @@ public:
 
 	void render() override;
 
+	void setCallbackEvent(std::function<void(sf::Event &)> callbackEvent);
+
 public:
 	bool exit_;
 	bool restart_;
 	sf::RenderWindow win_;
 	sf::Event ev_;
+	std::function<void(sf::Event &)> callback_;
 
 	void error_(std::string const &s = std::string("Error"));
 };

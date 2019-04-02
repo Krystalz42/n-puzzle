@@ -15,6 +15,14 @@ const std::map<KStar::eHeuristic, KStar::HeuristicFunction> KStar::heuristicArra
 		{kPatternDatabase,	Heuristic::patternDatabase}
 };
 
+const std::map<KStar::eHeuristic, std::string> KStar::heuristicNameArray = {
+		{kManhattan,		"Manhattan"},
+		{kHamming,			"Hamming"},
+		{kLinearConflict,	"LinearConflict"},
+		{kEuclidean,		"Euclidean"},
+		{kPatternDatabase,	"PatternDatabase"}
+};
+
 void KStar::setHeuristic(const KStar::HeuristicFunction &heuristic) {
 	heuristic_ = heuristic;
 
@@ -123,6 +131,12 @@ KStar::ResolverData KStar::buildSolution() {
 	resolverData.complexityInTime = nodeOpenList.size();
 	resolverData.complexityInSize = nodeCloseList.size();
 	resolverData.numberOfMove = resolverData.resolverContainer.size();
+	for (auto &pair : heuristicArray) {
+		if (pair.second == heuristic_) {
+			resolverData.nameHeuristic = heuristicNameArray.at(pair.first);
+			break;
+		}
+	}
 	return resolverData;
 }
 
