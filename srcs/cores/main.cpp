@@ -26,11 +26,12 @@ int main(int argc, char *argv[]) {
 		desc.add_options()
 				("file,f", boost::program_options::value<std::string>()->required(), "File to be parse")
 				("visualizer,v", "Enable visualizer")
-				("hamming,h", "set heuristic to hamming")
-				("manhattan,m", "set heuristic to manhattan")
-				("euclidean,e", "set heuristic to euclidean")
-				("linear,l", "set heuristic to linear conflict")
+				("hamming,h", "Set heuristic to hamming")
+				("manhattan,m", "Set heuristic to manhattan")
+				("euclidean,e", "Set heuristic to euclidean")
+				("linear,l", "Set heuristic to linear conflict")
 				("force", "Ignore the solvability of the puzzle")
+				("greedy,g", "Make the research greedy")
 				("help", "display this message");
 
 		boost::program_options::variables_map vm;
@@ -38,8 +39,6 @@ int main(int argc, char *argv[]) {
 		boost::program_options::store(
 				boost::program_options::parse_command_line(argc, argv, desc),
 				vm);
-
-
 		/*
 		 * Help management
 		 */
@@ -52,6 +51,11 @@ int main(int argc, char *argv[]) {
 		boost::program_options::notify(vm);
 
 		KStar kStar;
+		/*
+		 * Set the greed
+		 */
+
+		kStar.setGreedy(static_cast<bool>(vm.count("greed")));
 
 		/*
 		 * Option to heuristic management

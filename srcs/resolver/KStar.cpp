@@ -143,7 +143,7 @@ KStar::resolveCost(node_pointer_reference start,
 				   const_node_pointer_reference goal) {
 	start->H = heuristic_(start, goal);
 	start->G = (start->parent ? start->parent->G + 1 : 0);
-	start->F = start->H + start->G;
+	start->F = start->H + (isGreedy() ? 0 : start->G);
 }
 
 
@@ -404,6 +404,7 @@ bool KStar::isSovablePuzzle(const_node_pointer node) {
 		 * If N is odd, then puzzle instance is solvable
 		 * if number of inversions is even in the input state.
 		 */
+
 		return !(inversionCount & 1);
 	} else {
 		size_t positionOfEmptyFromBottom =
@@ -433,13 +434,15 @@ KStar::countInversionInPuzzle(const_node_pointer_reference node) {
 	 */
 	for (int idx = 0; idx < node->grid.size(); ++idx) {
 		for (int idx1 = idx + 1; idx1 < node->grid.size(); ++idx1) {
-			invCount += isBetween(node->grid[idx1], node->grid[idx],
+			if (node->grid[idx1] != 0 && node->grid[idx] != 0)
+				invCount += isBetween(node->grid[idx1], node->grid[idx],
 								  nodePointer);
 		}
 	}
 	return invCount;
 }
-
+//1 2 3 8 4 7 6 5
+//1 2 3 8 4 7 6 5
 bool KStar::isBetween(
 		ValuePuzzle value,
 		ValuePuzzle limit,
@@ -447,11 +450,21 @@ bool KStar::isBetween(
 
 
 	for (const auto &n : node->grid) {
+		if (n == 0)
+			continue;
 		if (value == n)
 			return true;
 		if (limit == n)
 			return false;
 	}
 	return false;
+}
+
+void KStar::setGreedy(bool greedy) {
+	greedy_ = greedy;
+}
+
+bool KStar::isGreedy() const {
+	return greedy_;
 }
 

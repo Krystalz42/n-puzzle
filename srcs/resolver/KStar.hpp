@@ -130,6 +130,13 @@ private:
 
 	static std::array<bool, 15> movable;
 
+	bool greedy_;
+public:
+	bool isGreedy() const;
+
+public:
+	void setGreedy(bool greedy);
+
 private:
 	const Position direction[4] = {
 			{-1, 0}, //North
@@ -201,9 +208,6 @@ public:
 		Direction(eDirection direction);
 
 		Direction &operator++();
-
-		friend std::ostream &
-		operator<<(std::ostream &os, const Direction &direction);
 
 		eDirection direction_;
 	};

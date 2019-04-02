@@ -11,7 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="085300e5-cafb-4847-91d0-c0aacd61dba2" name="Default Changelist" comment="Update kStar" />
+    <list default="true" id="085300e5-cafb-4847-91d0-c0aacd61dba2" name="Default Changelist" comment="Update kStar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/n_puzzle" beforeDir="false" afterPath="$PROJECT_DIR$/n_puzzle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cores/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cores/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/resolver/KStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/resolver/KStar.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/resolver/KStar.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/resolver/KStar.hpp" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="120" column="70" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="70" />
+            <state relative-caret-position="299">
+              <caret line="132" column="14" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
               <folding>
                 <element signature="e#55#75#0" expanded="true" />
               </folding>
@@ -55,11 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="178" column="35" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="115" column="21" selection-start-line="115" selection-start-column="21" selection-end-line="115" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -67,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+            <state relative-caret-position="423">
+              <caret line="86" column="28" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -107,8 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>start</find>
-      <find>const KStar::Node &amp;</find>
       <find>currentNode</find>
       <find>resol</find>
       <find>thro</find>
@@ -137,6 +138,8 @@
       <find>KStar</find>
       <find>std::cout</find>
       <find>isSovablePuzzle</find>
+      <find>set</find>
+      <find>gree</find>
     </findStrings>
     <replaceStrings>
       <replace>Grid</replace>
@@ -156,6 +159,7 @@
       <replace>reference</replace>
       <replace>resolverData.resolverContainer</replace>
       <replace>idx1</replace>
+      <replace>Set</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -180,8 +184,8 @@
         <option value="$PROJECT_DIR$/incs/Grid.hpp" />
         <option value="$PROJECT_DIR$/incs/Grid.cpp" />
         <option value="$PROJECT_DIR$/incs/PriorityQueue.hpp" />
-        <option value="$PROJECT_DIR$/srcs/resolver/KStar.hpp" />
         <option value="$PROJECT_DIR$/srcs/cores/main.cpp" />
+        <option value="$PROJECT_DIR$/srcs/resolver/KStar.hpp" />
         <option value="$PROJECT_DIR$/srcs/resolver/KStar.cpp" />
       </list>
     </option>
@@ -290,7 +294,7 @@
       <workItem from="1552832203161" duration="70997000" />
       <workItem from="1553847374497" duration="175000" />
       <workItem from="1553848461968" duration="14978000" />
-      <workItem from="1554027969459" duration="8316000" />
+      <workItem from="1554027969459" duration="9585000" />
     </task>
     <task id="LOCAL-00001" summary="Add Grid">
       <created>1553171738093</created>
@@ -338,10 +342,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94466000" />
+    <option name="totallyTimeSpent" value="95735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24177396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -647,30 +652,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="115" column="21" selection-start-line="115" selection-start-column="21" selection-end-line="115" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="120" column="70" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="70" />
+        <state relative-caret-position="299">
+          <caret line="132" column="14" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
           <folding>
             <element signature="e#55#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="178" column="35" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+        <state relative-caret-position="423">
+          <caret line="86" column="28" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
