@@ -12,7 +12,7 @@ namespace Visualizer {
 	help_(false),
 	resolverContainer_(nullptr) {
 
-		if (!texturePuzzle_.loadFromFile((pathRoot_ / "ressources" / "test.jpg").generic_string()))
+		if (!texturePuzzle_.loadFromFile((pathRoot_ / "ressources" / "aroulin.jpg").generic_string()))
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
 		if (!font_.loadFromFile((pathRoot_ / "ressources" / "OpenSans-Regular.ttf").generic_string()))
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
@@ -32,13 +32,13 @@ namespace Visualizer {
 	void Core::initText_(KStar::ResolverData &resolver) {
 		std::ostringstream os;
 		os << "Complexity in time [" << resolver.complexityInTime << "]";
-		complexityInTime_->setText(os.str(), sizeInfo * 0.7f);
+		complexityInTime_->setTextInWidth(os.str(), sizeInfo * 0.7f, display_->win_.getSize().x / 2.f * 0.9f);
 		os.str(std::string());
 		os.clear();
 		os << "Complexity in size [" << resolver.complexityInSize << "]";
-		complexityInSize_->setText(os.str(), sizeInfo * 0.7f);
-		nameHeuristique_->setText(resolver.nameHeuristic, sizeInfo * 0.7f);
-		helpText_->setText("Pause: Space\nStep: Left/Right Arrow\nSpeed: +/-\n", sizeInfo * 0.7f);
+		complexityInSize_->setTextInWidth(os.str(), sizeInfo * 0.7f, display_->win_.getSize().x / 2.f * 0.9f);
+		nameHeuristique_->setTextInWidth(resolver.nameHeuristic, sizeInfo * 0.7f, display_->win_.getSize().x * 0.6f);
+		helpText_->setTextInWidth("Pause: Space\nStep: Left/Right Arrow\nSpeed: +/-\n", sizeInfo * 0.7f, display_->win_.getSize().x / tileSize_ * 0.8f);
 	}
 
 	void Core::loop(KStar::ResolverData &resolver) {
@@ -81,9 +81,9 @@ namespace Visualizer {
 			complexityInSize_->render(display_->win_);
 			nameHeuristique_->render(display_->win_);
 
-			numberOfMove_->setText(std::to_string(resolverContainer_->size() - std::distance(iterCurrentState_, resolverContainer_->end())) + "/" + std::to_string(resolverContainer_->size()), sizeInfo * 0.7f);
+			numberOfMove_->setTextInWidth(std::to_string(resolverContainer_->size() - std::distance(iterCurrentState_, resolverContainer_->end())) + "/" + std::to_string(resolverContainer_->size()), sizeInfo * 0.7f, display_->win_.getSize().x * 0.4f);
 			numberOfMove_->render(display_->win_);
-			speed_->setText(std::to_string(timeLogic_.getStep().count()) + "ms", sizeInfo * 0.7f);
+			speed_->setTextInWidth(std::to_string(timeLogic_.getStep().count()) + "ms", sizeInfo * 0.6f, display_->win_.getSize().x * 0.2f);
 			speed_->render(display_->win_);
 
 			if (help_)

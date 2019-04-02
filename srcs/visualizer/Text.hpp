@@ -10,6 +10,8 @@ public:
 	sf::Vector2f getPosition() const;
 	void setText(std::string const &text, unsigned int sizeFont = 11);
 	void render(sf::RenderTarget &render);
+	sf::Text &getText();
+	void setTextInWidth(std::string const &text, unsigned int sizeFont, float width);
 
 private:
 	sf::Font const &font_;
