@@ -29,6 +29,8 @@ public:
 
 	void erase(const_iterator __first, const_iterator __last);
 
+	void clear();
+
 	iterator begin();
 
 	const_iterator cbegin() const;
@@ -134,6 +136,11 @@ template<class _Tp, class _Container, class _Compare>
 void
 PriorityQueue<_Tp, _Container, _Compare>::reserve(size_type __n) {
 	c.reserve(__n);
+}
+
+template<class _Tp, class _Container, class _Compare>
+void PriorityQueue<_Tp, _Container, _Compare>::clear() {
+	c.clear();
 }
 
 #endif //N_PUZZLE_PRIORITY_QUEUE_HPP

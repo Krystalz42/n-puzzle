@@ -92,7 +92,6 @@ int main(int argc, char *argv[]) {
 			{ "manhattan", KStar::kManhattan },
 			{ "linear conflict", KStar::kLinearConflict },
 			{ "euclidiean", KStar::kEuclidean },
-			{ "pattern database", KStar::kPatternDatabase }
 	};
 
 	try {
@@ -102,12 +101,12 @@ int main(int argc, char *argv[]) {
 		boost::program_options::options_description desc("Options");
 		desc.add_options()
 				("file,f", boost::program_options::value<std::string>()->required(), "File to be parse")
-				("hamming,h", "set heuristic to hamming")
 				("visualizer,v", "Enable visualizer")
+				("hamming,h", "set heuristic to hamming")
 				("manhattan,m", "set heuristic to manhattan")
 				("euclidean,e", "set heuristic to euclidean")
-				("linear conflict,l", "set heuristic to linear conflict")
-				("pattern database,p", "set pattern databse (only work with size > 3)")
+				("linear,l", "set heuristic to linear conflict")
+				("force", "Ignore the solvability of the puzzle")
 				("help", "display this message");
 
 		boost::program_options::variables_map vm;
@@ -149,40 +148,44 @@ int main(int argc, char *argv[]) {
 		 */
 
 		Parser parser;
-		std::ifstream file(vm["file"].as<std::string>());
+		std::ifstream file;
+		file.open(vm["file"].as<std::string>(), std::ifstream::in);
 		if (file.is_open())
 			parser.parseFile(file);
-		else
-			; //todo error file
+		else {
+			std::cerr << "n-puzzle error: " << vm["file"].as<std::string>() <<
+			        " : can not be open" << std::endl;
+			return EXIT_FAILURE;
+		}
 
 		/*
 		 * Builder Grid
 		 */
 
-		std::cout << "Hello" << std::endl;
 		KStar::Builder builder;
 		builder.setSize(parser.getSize());
 		builder.setArray(parser.getGridContainer());
-
+		KStar::const_node_pointer startNode = builder.build();
 		/*
 		 * Final goal Grid builder
 		 */
 
-		KStar::const_node_pointer node = builder.buildGoalGrid();
+		KStar::const_node_pointer goalNode = builder.buildGoalGrid();
 
 		/*
 		 * Check if solvable
 		 */
 
-//		if (isSolvable(node->grid)) {
-//			std::cout << "Non solvable" << std::endl;
-//			exit(1);
-//		}
+		if (!KStar::isSovablePuzzle(startNode)) {
+			std::cerr << "Non solvable" << std::endl;
+			exit(1);
+		}
+
 		/*
 		 * Resolver
 		 */
-		assert(node != nullptr);
-		KStar::ResolverData resolverData = kStar.resolvePuzzle(builder.build(), node);
+		assert(goalNode != nullptr);
+		KStar::ResolverData resolverData = kStar.resolvePuzzle(builder.build(), goalNode);
 
 		/*
 		 * Display solution
@@ -204,8 +207,8 @@ int main(int argc, char *argv[]) {
 
 
 	} catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << "n-puzzle error: "<< e.what() << std::endl;
 		return EXIT_FAILURE;
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }
