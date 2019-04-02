@@ -53,6 +53,10 @@ void DisplaySfml::setCallbackEvent(std::function<void(sf::Event &)> callbackEven
 	callback_ = callbackEvent;
 }
 
+sf::RenderWindow &DisplaySfml::getWindow() {
+	return win_;
+}
+
 DisplaySfml::SfmlException::SfmlException() noexcept :
 		error_("Error on DisplaySfml constructor") {}
 DisplaySfml::SfmlException::SfmlException(std::string const &s) noexcept :

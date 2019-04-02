@@ -27,6 +27,8 @@ namespace Visualizer {
 		KStar::ResolverContainer::iterator iterCurrentState_;
 		KStar::ResolverContainer::iterator iterPreviousState_;
 
+		sf::Vector2u winSize_;
+
 		unsigned int tileSize_;
 		bool restart_;
 		bool pause_;
@@ -39,6 +41,7 @@ namespace Visualizer {
 		std::unique_ptr<Text> nameHeuristique_;
 		std::unique_ptr<Text> helpText_;
 
+		void renderText_();
 		void initText_(KStar::ResolverData &resolver);
 		void callbackEvent_(sf::Event &ev);
 	};

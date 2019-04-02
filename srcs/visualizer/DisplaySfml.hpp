@@ -36,7 +36,9 @@ public:
 
 	void setCallbackEvent(std::function<void(sf::Event &)> callbackEvent);
 
-public:
+	sf::RenderWindow &getWindow();
+
+private:
 	bool exit_;
 	bool restart_;
 	sf::RenderWindow win_;
