@@ -12,10 +12,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="085300e5-cafb-4847-91d0-c0aacd61dba2" name="Default Changelist" comment="Update kStar">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/DisplaySfml.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/DisplaySfml.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/DisplaySfml.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/DisplaySfml.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/Visualizer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/n_puzzle.dir/srcs/cores/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/n_puzzle.dir/srcs/resolver/KStar.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/file_easy_4.np" beforeDir="false" afterPath="$PROJECT_DIR$/files/file_easy_4.np" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/file_medium_4.np" beforeDir="false" afterPath="$PROJECT_DIR$/files/file_medium_4.np" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incs/PriorityQueue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/incs/PriorityQueue.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/n_puzzle" beforeDir="false" afterPath="$PROJECT_DIR$/n_puzzle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cores/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cores/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/resolver/KStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/resolver/KStar.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/resolver/KStar.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/resolver/KStar.hpp" afterDir="false" />
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -44,6 +58,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.8051336">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -181,10 +196,84 @@
       <find>pause</find>
       <find>-&gt;F</find>
       <find>heuristicArray</find>
+=======
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="120" column="70" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="70" />
+              <folding>
+                <element signature="e#55#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="178" column="35" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__tuple">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="222" column="63" selection-start-line="222" selection-start-column="63" selection-end-line="222" selection-end-column="63" />
+              <folding>
+                <element signature="e#8750#8775#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incs/PriorityQueue.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="622">
+              <caret line="142" column="14" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
+              <folding>
+                <element signature="e#73#90#0" expanded="true" />
+                <element signature="e#135#246#0" expanded="true" />
+                <element signature="e#3721#3766#0" expanded="true" />
+                <element signature="e#3883#3928#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>start</find>
+      <find>const KStar::Node &amp;</find>
+      <find>currentNode</find>
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
       <find>resol</find>
       <find>ResolverData</find>
       <find>Resol</find>
       <find>resolveCost</find>
+<<<<<<< HEAD
       <find>heuristic_</find>
       <find>setHeuristic</find>
       <find>exit(</find>
@@ -195,6 +284,29 @@
       <find>display_-&gt;win_</find>
       <find>display_-&gt;getWindow().getSize()</find>
       <find>restart</find>
+=======
+      <find>PriorityQueue</find>
+      <find>NodeContainer</find>
+      <find>pop</find>
+      <find>ResolverContainer</find>
+      <find>temp_visualizer</find>
+      <find>resolverContainer</find>
+      <find>typedef</find>
+      <find>begin</find>
+      <find>idx</find>
+      <find>getTravelCost</find>
+      <find>setHe</find>
+      <find>reso</find>
+      <find>heuristic_</find>
+      <find>getPosito</find>
+      <find>&lt;&lt;</find>
+      <find>Builder</find>
+      <find>clear</find>
+      <find>Node</find>
+      <find>KStar</find>
+      <find>std::cout</find>
+      <find>isSovablePuzzle</find>
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
     </findStrings>
     <replaceStrings>
       <replace>Grid</replace>
@@ -244,12 +356,12 @@
         <option value="$PROJECT_DIR$/incs/PriorityQueueIter.hpp" />
         <option value="$PROJECT_DIR$/incs/Position.hpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/incs/PriorityQueue.hpp" />
         <option value="$PROJECT_DIR$/srcs/parser/Parser.hpp" />
         <option value="$PROJECT_DIR$/srcs/parser/Parser.cpp" />
         <option value="$PROJECT_DIR$/incs/n_puzzle.hpp" />
         <option value="$PROJECT_DIR$/incs/Grid.hpp" />
         <option value="$PROJECT_DIR$/incs/Grid.cpp" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/srcs/visualizer/NodeVizualizer.hpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/GridSprite.hpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/GridSprite.cpp" />
@@ -261,7 +373,11 @@
         <option value="$PROJECT_DIR$/srcs/visualizer/GridSpriteManager.cpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/TimeLogic.hpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/TimeLogic.cpp" />
+=======
+        <option value="$PROJECT_DIR$/incs/PriorityQueue.hpp" />
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
         <option value="$PROJECT_DIR$/srcs/resolver/KStar.hpp" />
+        <option value="$PROJECT_DIR$/srcs/cores/main.cpp" />
         <option value="$PROJECT_DIR$/srcs/resolver/KStar.cpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/Text.cpp" />
         <option value="$PROJECT_DIR$/srcs/visualizer/Text.hpp" />
@@ -308,6 +424,27 @@
               <item name="srcs" type="462c0819:PsiDirectoryNode" />
               <item name="cores" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="n_puzzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="n-puzzle" type="462c0819:PsiDirectoryNode" />
+              <item name="srcs" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="n_puzzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="n-puzzle" type="462c0819:PsiDirectoryNode" />
+              <item name="srcs" type="462c0819:PsiDirectoryNode" />
+              <item name="resolver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="n_puzzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="n-puzzle" type="462c0819:PsiDirectoryNode" />
+              <item name="srcs" type="462c0819:PsiDirectoryNode" />
+              <item name="visualizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
           </expand>
           <select />
         </subPane>
@@ -360,8 +497,12 @@
       <workItem from="1552832203161" duration="70997000" />
       <workItem from="1553847374497" duration="175000" />
       <workItem from="1553848461968" duration="14978000" />
+<<<<<<< HEAD
       <workItem from="1554027969459" duration="3952000" />
       <workItem from="1554130342380" duration="22932000" />
+=======
+      <workItem from="1554027969459" duration="8217000" />
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
     </task>
     <task id="LOCAL-00001" summary="Add Grid">
       <created>1553171738093</created>
@@ -409,7 +550,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="124641000" />
+=======
+    <option name="totallyTimeSpent" value="94367000" />
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
   </component>
   <component name="ToolWindowManager">
     <frame x="276" y="119" width="2284" height="1295" extended-state="0" />
@@ -536,6 +681,7 @@
         <state relative-caret-position="-59" />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file:///usr/local/include/asio/executor.hpp" />
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/exception">
       <provider selected="true" editor-type-id="text-editor">
@@ -617,6 +763,9 @@
       </provider>
     </entry>
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/memory">
+=======
+    <entry file="file:///usr/local/include/asio/executor.hpp">
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="4166" column="17" selection-start-line="4166" selection-start-column="17" selection-end-line="4166" selection-end-column="17" />
@@ -720,6 +869,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="808">
@@ -745,6 +895,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/visualizer/TimeLogic.hpp">
+=======
+    <entry file="file://$PROJECT_DIR$/incs/Grid.hpp">
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
@@ -775,20 +928,67 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/srcs/visualizer/DisplaySfml.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+=======
+    <entry file="file://$PROJECT_DIR$/incs/PriorityQueue.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="142" column="14" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
+          <folding>
+            <element signature="e#73#90#0" expanded="true" />
+            <element signature="e#135#246#0" expanded="true" />
+            <element signature="e#3721#3766#0" expanded="true" />
+            <element signature="e#3883#3928#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__tuple">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="222" column="63" selection-start-line="222" selection-start-column="63" selection-end-line="222" selection-end-column="63" />
+          <folding>
+            <element signature="e#8750#8775#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="120" column="70" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="70" />
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
           <folding>
             <element signature="e#14#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/srcs/visualizer/Visualizer.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+=======
+    <entry file="file://$PROJECT_DIR$/srcs/cores/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="178" column="35" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/resolver/KStar.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+>>>>>>> 155401b78f0d2ef70dc0c2d488d89426434cb0eb
           <folding>
             <element signature="e#14#57#0" expanded="true" />
           </folding>

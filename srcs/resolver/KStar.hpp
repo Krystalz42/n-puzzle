@@ -23,7 +23,6 @@ public:
 		kHamming,        //1
 		kLinearConflict,//2
 		kEuclidean,        //3
-		kPatternDatabase//4
 	};
 
 	/*
@@ -97,8 +96,10 @@ public:
 	};
 
 	/*
-	 * KStar function
+	 * KStar
 	 */
+
+	KStar() = default;
 
 	void setHeuristic(const HeuristicFunction &heuristic);
 
@@ -113,19 +114,21 @@ public:
 	resolveCost(node_pointer_reference start,
 				const_node_pointer_reference goal);
 
-	bool isSovablePuzzle(const_node_pointer node) const;
-
-	size_t countInversionInPuzzle(const_node_pointer_reference node) const;
-
-	bool
-	isBetween(ValuePuzzle value, ValuePuzzle limit, node_pointer node) const;
+	static bool isSovablePuzzle(const_node_pointer node);
 
 private:
+	static size_t countInversionInPuzzle(const_node_pointer_reference node);
+
+	static bool
+	isBetween(ValuePuzzle value, ValuePuzzle limit, node_pointer node);
+
 	HeuristicFunction heuristic_;
 
 	NodeContainer nodeOpenList;
 
 	std::set<const_node_pointer> nodeCloseList;
+
+	static std::array<bool, 15> movable;
 
 private:
 	const Position direction[4] = {
@@ -136,8 +139,6 @@ private:
 	};
 
 private:
-
-	const_node_pointer buildDatabase(const_node_pointer node, int step);
 
 	static Position
 	getPositionOf(const_node_pointer_reference node, ValuePuzzle value);
@@ -153,8 +154,6 @@ public:
 		typedef std::pair<ValuePuzzle, Position> PairValuePosition;
 		typedef std::vector<PairValuePosition> PatternDatabase;
 
-		static const PatternDatabase patternDatabasePuzzle4[3];
-
 		static size_t
 		hamming(const_node_pointer start, const_node_pointer goal);
 
@@ -167,11 +166,7 @@ public:
 		static size_t
 		euclidean(const_node_pointer start, const_node_pointer goal);
 
-		static size_t
-		patternDatabase(const_node_pointer start, const_node_pointer goal);
-
 	private:
-
 		static size_t
 		hamming_(const Position &&start, const Position &&goal);
 
