@@ -1,5 +1,6 @@
 #include "Visualizer.hpp"
 #include <exception>
+#include <sstream>
 
 namespace Visualizer {
 
@@ -13,14 +14,34 @@ namespace Visualizer {
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
 		if (!font_.loadFromFile((pathRoot_ / "ressources" / "OpenSans-Regular.ttf").generic_string()))
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
-		display_ = std::make_unique<DisplaySfml>(texturePuzzle_.getSize().x + pixelBorder * (tileSize - 1), texturePuzzle_.getSize().y + pixelBorder * (tileSize - 1) + sizeInfo * 2, "Test");
+		display_ = std::make_unique<DisplaySfml>(texturePuzzle_.getSize().x + pixelBorder * (tileSize - 1), texturePuzzle_.getSize().y + pixelBorder * (tileSize - 1) + sizeInfo * 3, "Test");
 		display_->win_.setActive(false);
 		gs_ = std::make_unique<GridSpriteManager>(texturePuzzle_, sf::Vector2u(tileSize, tileSize));
+
+		complexityInTime_ = std::make_unique<Text>(font_, sf::Vector2f(display_->win_.getSize().x / 2.f / 2.f, display_->win_.getSize().y - sizeInfo / 2.f));
+		complexityInSize_ = std::make_unique<Text>(font_, sf::Vector2f(complexityInTime_->getPosition().x + display_->win_.getSize().x / 2.f, complexityInTime_->getPosition().y));
+		speed_ = std::make_unique<Text>(font_, sf::Vector2f(display_->win_.getSize().x * 0.9, sizeInfo / 2.f));
+		nameHeuristique_ = std::make_unique<Text>(font_, sf::Vector2f(display_->win_.getSize().x * 0.4, sizeInfo / 2.f));
+		numberOfMove_ = std::make_unique<Text>(font_, sf::Vector2f(display_->win_.getSize().x * 0.5, complexityInTime_->getPosition().y - sizeInfo));
+	}
+
+
+	void Vizualizer::initText_(KStar::ResolverData &resolver) {
+		std::ostringstream os;
+		os << "Complexity in time [" << resolver.complexityInTime << "]";
+		complexityInTime_->setText(os.str(), sizeInfo * 0.7f);
+		os.str(std::string());
+		os.clear();
+		os << "Complexity in size [" << resolver.complexityInSize << "]";
+		complexityInSize_->setText(os.str(), sizeInfo * 0.7f);
+		nameHeuristique_->setText("Name Heuristic", sizeInfo * 0.7f);
 	}
 
 	void Vizualizer::loop(KStar::ResolverData &resolver) {
 		display_->win_.setActive(true);
 
+
+		initText_(resolver);
 		KStar::ResolverContainer &resolverContainer = resolver.resolverContainer;
 
 		auto resolvedIterCurrentState = resolverContainer.begin();
@@ -94,17 +115,15 @@ namespace Visualizer {
 
 			gs_->renderTarget(display_->win_, sf::Vector2f(1.f, 1.0f), sf::Vector2f(0.f, sizeInfo));
 
-			sf::Text text1;
-			text1.setFont(font_);
-			text1.setCharacterSize(sizeInfo * 0.7);
-			text1.setString(std::string("Complexity in size : ") + std::to_string(resolver.complexityInTime));
-			text1.setStyle(sf::Text::Regular);
 
-			sf::FloatRect textRect = text1.getLocalBounds();
-			text1.setOrigin(textRect.left + textRect.width / 2.0f,
-							textRect.top  + textRect.height / 2.0f);
-			text1.setPosition(display_->win_.getSize().x / tileSize_ / 2.f, display_->win_.getSize().y - sizeInfo / 2.f);
-			display_->win_.draw(text1);
+			complexityInTime_->render(display_->win_);
+			complexityInSize_->render(display_->win_);
+			nameHeuristique_->render(display_->win_);
+
+			numberOfMove_->setText(std::to_string(resolverContainer.size() - std::distance(resolvedIterCurrentState, resolverContainer.end())) + "/" + std::to_string(resolverContainer.size()), sizeInfo * 0.7f);
+			numberOfMove_->render(display_->win_);
+			speed_->setText(std::to_string(timeLogic_.getStep().count()) + "ms", sizeInfo * 0.7f);
+			speed_->render(display_->win_);
 
 			display_->render();
 		}
