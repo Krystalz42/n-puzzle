@@ -13,8 +13,6 @@ namespace Visualizer {
 		builder.setSize(tileSize_.x);
 		KStar::node_pointer nodePointer = builder.buildGoalGrid();
 
-		std::cout << nodePointer->grid << std::endl;
-
 		for (unsigned int y = 0; y < tileSize_.y; y++) {
 			for (unsigned int x = 0; x < tileSize_.x; x++) {
 				size_t index = nodePointer->grid[x + y * tileSize_.x];
