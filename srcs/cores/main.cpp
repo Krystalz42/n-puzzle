@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
 		 * Check if solvable
 		 */
 
-		if (!KStar::isSovablePuzzle(startNode)) {
+		if (!KStar::isSovablePuzzle(startNode) && !static_cast<bool>(vm.count("force"))) {
 			std::cerr << "Non solvable" << std::endl;
 			exit(1);
 		}

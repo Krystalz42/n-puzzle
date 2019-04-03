@@ -9,7 +9,7 @@
 Parser::Parser() :
 		size_(0),
 		current_(0) {
-	regex[kCommentary] = std::regex(R"(^\s*#.*$)");
+	regex[kCommentary] = std::regex(R"(^#.*$)");
 	regex[kSize] = std::regex(R"(^\s*[0-9]+$)");
 	regex[kArrayLine] = std::regex(R"(\s*[0-9]+\s*)");
 	workFunction[kCommentary] = &Parser::commentaryWork;
@@ -40,18 +40,26 @@ void Parser::parseLine(const std::string &string) {
 			for (; it != std::sregex_iterator() ; ++it) {
 				std::smatch m = *it;
 				(this->*workFunction[index])(m[0]);
+				std::cout << string << index << std::endl;
 			}
 			break;
 		}
 		if (index == kArrayLine) {
+			std::regex r(R"([0-9 ]+)");
+			if (!std::regex_match(string.begin(), string.end(), r)) {
+				std::string buffer("line have wrong format : ");
+				buffer += '\'';
+				buffer += string;
+				buffer += '\'';
+				throw std::runtime_error(buffer);
+			}
 			if (current_ % size_) {
-				std::string buffer("n-puzzle error: missing args on line : ");
+				std::string buffer("missing args on line : ");
 				buffer += string;
 				throw std::runtime_error(buffer);
 			}
 		}
 	}
-
 }
 
 size_t Parser::getSize() const {
@@ -72,9 +80,10 @@ void Parser::sizeWork(const std::string &string) {
 }
 
 void Parser::arrayLineWork(const std::string &string) {
-	if (size_ == 0) {
-		throw std::runtime_error(std::string("n-puzzle error: missing size"));
-	}
+	if (size_ == 0)
+		throw std::runtime_error(std::string("missing size"));
+	if (!gridContainer.range(current_ % size_, current_ / size_))
+		throw std::runtime_error(std::string("too much args"));
 	gridContainer(current_ % size_, current_ / size_) = std::stoul(string);
 	current_++;
 }

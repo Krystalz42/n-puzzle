@@ -278,7 +278,7 @@ std::shared_ptr<KStar::Node> KStar::Builder::build() {
 	assert(data_.size() > 0);
 	for (const auto &item : data_) {
 		if (item < 0 || item >= data_.size())
-			throw std::runtime_error("Size too much");
+			throw std::runtime_error("size too much");
 	}
 	return std::make_shared<Node>(data_);
 }
