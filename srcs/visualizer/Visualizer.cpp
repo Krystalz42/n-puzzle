@@ -12,7 +12,7 @@ namespace Visualizer {
 	help_(false),
 	resolverContainer_(nullptr) {
 
-		if (!texturePuzzle_.loadFromFile((pathRoot_ / "ressources" / "aroulin.jpg").generic_string()))
+		if (!texturePuzzle_.loadFromFile((pathRoot_ / "ressources" / "loup.jpeg").generic_string()))
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));
 		if (!font_.loadFromFile((pathRoot_ / "ressources" / "OpenSans-Regular.ttf").generic_string()))
 			throw(std::runtime_error("N_Puzzle image Visualizer cannot be load"));

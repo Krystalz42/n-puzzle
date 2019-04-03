@@ -131,11 +131,14 @@ private:
 	static std::array<bool, 15> movable;
 
 	bool greedy_;
+	bool uniform_;
 public:
 	bool isGreedy() const;
+	bool isUniform() const;
 
 public:
 	void setGreedy(bool greedy);
+	void setUniform(bool uniform);
 
 private:
 	const Position direction[4] = {

@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
 				("linear,l", "Set heuristic to linear conflict")
 				("force", "Ignore the solvability of the puzzle")
 				("greedy,g", "Make the research greedy")
+				("uniform,u", "Make the research uniform")
 				("help", "display this message");
 
 		boost::program_options::variables_map vm;
@@ -56,6 +57,7 @@ int main(int argc, char *argv[]) {
 		 */
 
 		kStar.setGreedy(static_cast<bool>(vm.count("greed")));
+		kStar.setUniform(static_cast<bool>(vm.count("uniform")));
 
 		/*
 		 * Option to heuristic management

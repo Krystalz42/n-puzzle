@@ -143,7 +143,7 @@ KStar::resolveCost(node_pointer_reference start,
 				   const_node_pointer_reference goal) {
 	start->H = heuristic_(start, goal);
 	start->G = (start->parent ? start->parent->G + 1 : 0);
-	start->F = start->H + (isGreedy() ? 0 : start->G);
+	start->F = (isUniform() ? 0 : start->H) + (isGreedy() ? 0 : start->G);
 }
 
 
@@ -230,7 +230,8 @@ KStar::Heuristic::linearConflict(const_node_pointer start,
 	return H + manhattan(start, goal);
 }
 
-size_t KStar::Heuristic::euclidean(KStar::const_node_pointer start,
+inline size_t
+KStar::Heuristic::euclidean(KStar::const_node_pointer start,
 								   KStar::const_node_pointer goal) {
 	Cost H = 0;
 	for (size_t n = 1; n < start->grid.size(); ++n) {
@@ -422,7 +423,9 @@ bool KStar::isSovablePuzzle(const_node_pointer node) {
 		return (positionOfEmptyFromBottom & 1) ? (inversionCount & 1) : !(inversionCount & 1);
 	}
 }
-
+//1 2 3 8 4 7 6 5
+//8 5 6 1 7 2 4 3
+//3 6 5 0 3 0 1 0 = 18
 size_t
 KStar::countInversionInPuzzle(const_node_pointer_reference node) {
 	Builder builder;
@@ -441,8 +444,7 @@ KStar::countInversionInPuzzle(const_node_pointer_reference node) {
 	}
 	return invCount;
 }
-//1 2 3 8 4 7 6 5
-//1 2 3 8 4 7 6 5
+
 bool KStar::isBetween(
 		ValuePuzzle value,
 		ValuePuzzle limit,
@@ -466,5 +468,13 @@ void KStar::setGreedy(bool greedy) {
 
 bool KStar::isGreedy() const {
 	return greedy_;
+}
+
+void KStar::setUniform(bool uniform) {
+	uniform_ = uniform;
+}
+
+bool KStar::isUniform() const {
+	return uniform_;
 }
 
