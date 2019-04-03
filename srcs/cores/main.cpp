@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 
 		KStar kStar;
 		/*
-		 * Set the greed
+		 * Set the greed / uniform
 		 */
 
 		kStar.setGreedy(static_cast<bool>(vm.count("greed")));

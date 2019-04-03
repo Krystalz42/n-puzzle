@@ -275,7 +275,8 @@ KStar::Builder &KStar::Builder::setArray(const GridContainer &container) {
 }
 
 std::shared_ptr<KStar::Node> KStar::Builder::build() {
-	assert(data_.size() > 0);
+	if (!size_)
+		throw std::runtime_error("Error during parsing");
 	for (const auto &item : data_) {
 		if (item < 0 || item >= data_.size())
 			throw std::runtime_error("size too much");

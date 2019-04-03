@@ -40,7 +40,6 @@ void Parser::parseLine(const std::string &string) {
 			for (; it != std::sregex_iterator() ; ++it) {
 				std::smatch m = *it;
 				(this->*workFunction[index])(m[0]);
-				std::cout << string << index << std::endl;
 			}
 			break;
 		}
@@ -75,7 +74,11 @@ void Parser::commentaryWork(const std::string &string) {
 }
 
 void Parser::sizeWork(const std::string &string) {
+	if (size_)
+		throw std::runtime_error("size already set");
 	size_ = std::stoul(string);
+	if (size_ < 3)
+		throw std::runtime_error("size can't be less than 3");
 	gridContainer.resize(size_, size_);
 }
 
